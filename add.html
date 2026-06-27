@@ -258,7 +258,7 @@
   <!-- CONFIG BANNER — показывается если не задан URL скрипта -->
   <div class="config-banner" id="configBanner">
     <strong>⚙️ Укажи URL Apps Script</strong>
-    https://script.google.com/macros/s/AKfycbxQpeE75x-UDkRakqe1iaF0FO-1t6jGVQt_2PF3jjDxwsx68xqtxcYDgZ90tK7zVkY6/exec
+    Вставь URL задеплоенного скрипта — он сохранится в браузере.
     <div class="url-field">
       <input type="url" id="scriptUrlInput" placeholder="https://script.google.com/macros/s/...">
       <button class="url-save-btn" onclick="saveScriptUrl()">Сохранить</button>
@@ -462,7 +462,6 @@ async function submit() {
   try {
     const resp = await fetch(SCRIPT_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify({ date, time, sys, dia, pulse, note }),
     });
     const json = await resp.json();
