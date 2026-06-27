@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Внести измерение — АД</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f4f3ee;
+    --card: #ffffff;
+    --border: #d3d1c7;
+    --accent: #534AB7;
+    --accent-light: #EEEDFE;
+    --text: #2c2c2a;
+    --muted: #888780;
+    --ok: #1D9E75;
+    --warn: #BA7517;
+    --high: #D85A30;
+    --ok-bg: #E1F5EE;
+    --warn-bg: #FAEEDA;
+    --high-bg: #FAECE7;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header {
+    background: #1a1a2e;
+    color: #fff;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header h1 { font-size: 16px; font-weight: 500; }
+  .header a {
+    color: #fff;
+    opacity: 0.6;
+    text-decoration: none;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .header a:hover { opacity: 1; }
+
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+    width: 100%;
+    flex: 1;
+  }
+
+  /* ZONE INDICATOR */
+  .zone-bar {
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 64px;
+  }
+  .zone-icon { font-size: 28px; line-height: 1; }
+  .zone-text { flex: 1; }
+  .zone-label { font-size: 15px; font-weight: 600; }
+  .zone-desc  { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .zone-value { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+
+  /* CARD */
+  .card {
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 12px;
+  }
+  .card-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+
+  /* FIELD */
+  .field { margin-bottom: 16px; }
+  .field:last-child { margin-bottom: 0; }
+  label {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 16px; /* 16px — убирает zoom на iOS */
+    color: var(--text);
+    background: #fafaf7;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    font-family: inherit;
+  }
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px #534AB720;
+    background: #fff;
+  }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888780' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+
+  /* NUMERIC INPUTS — большие кнопки +/- для телефона */
+  .num-field { display: flex; align-items: center; gap: 8px; }
+  .num-btn {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fafaf7;
+    font-size: 20px;
+    color: var(--accent);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.1s;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  .num-btn:active { background: var(--accent-light); }
+  .num-input {
+    flex: 1;
+    text-align: center;
+    font-size: 22px !important;
+    font-weight: 600;
+    padding: 10px 8px !important;
+  }
+
+  /* 2-col grid для SYS/DIA */
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* SUBMIT */
+  .submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    -webkit-tap-highlight-color: transparent;
+    margin-top: 8px;
+    font-family: inherit;
+  }
+  .submit-btn:active { transform: scale(0.98); }
+  .submit-btn:disabled { opacity: 0.5; cursor: default; }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #1a1a2e;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    white-space: nowrap;
+    z-index: 100;
+    max-width: calc(100vw - 32px);
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.error { background: var(--high); }
+  .toast.success { background: var(--ok); }
+
+  /* CONFIG BANNER */
+  .config-banner {
+    background: var(--warn-bg);
+    border: 0.5px solid #E8B86D;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    font-size: 12px;
+    color: #633806;
+    line-height: 1.6;
+    display: none;
+  }
+  .config-banner.visible { display: block; }
+  .config-banner strong { display: block; margin-bottom: 4px; font-size: 13px; }
+
+  /* SCRIPT URL input */
+  .url-field {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+  }
+  .url-field input {
+    font-size: 12px !important;
+    padding: 8px 10px !important;
+  }
+  .url-save-btn {
+    padding: 8px 14px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+  }
+
+  @media (max-width: 360px) {
+    .row2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📝 Внести измерение</h1>
+  <a href="index.html">← Дашборд</a>
+</div>
+
+<div class="container">
+
+  <!-- CONFIG BANNER — показывается если не задан URL скрипта -->
+  <div class="config-banner" id="configBanner">
+    <strong>⚙️ Укажи URL Apps Script</strong>
+    Вставь URL задеплоенного скрипта — он сохранится в браузере.
+    <div class="url-field">
+      <input type="url" id="scriptUrlInput" placeholder="https://script.google.com/macros/s/...">
+      <button class="url-save-btn" onclick="saveScriptUrl()">Сохранить</button>
+    </div>
+  </div>
+
+  <!-- ZONE INDICATOR -->
+  <div class="zone-bar" id="zoneBar">
+    <div class="zone-icon" id="zoneIcon">💓</div>
+    <div class="zone-text">
+      <div class="zone-label" id="zoneLabel">Введи значения</div>
+      <div class="zone-desc" id="zoneDesc">Систола и диастола</div>
+    </div>
+    <div class="zone-value" id="zoneValue" style="color: var(--muted)">—/—</div>
+  </div>
+
+  <!-- ДАТА И ВРЕМЯ -->
+  <div class="card">
+    <div class="card-title">Когда</div>
+    <div class="row2">
+      <div class="field">
+        <label>Дата</label>
+        <input type="date" id="dateInput">
+      </div>
+      <div class="field">
+        <label>Время</label>
+        <select id="timeSelect"></select>
+      </div>
+    </div>
+  </div>
+
+  <!-- ПОКАЗАТЕЛИ -->
+  <div class="card">
+    <div class="card-title">Показатели</div>
+
+    <div class="row2">
+      <div class="field">
+        <label>Систола (мм рт.ст.)</label>
+        <div class="num-field">
+          <button class="num-btn" onclick="adj('sys', -1)">−</button>
+          <input class="num-input" type="number" id="sysInput" value="120" min="60" max="220" oninput="updateZone()">
+          <button class="num-btn" onclick="adj('sys', +1)">+</button>
+        </div>
+      </div>
+      <div class="field">
+        <label>Диастола (мм рт.ст.)</label>
+        <div class="num-field">
+          <button class="num-btn" onclick="adj('dia', -1)">−</button>
+          <input class="num-input" type="number" id="diaInput" value="80" min="40" max="140" oninput="updateZone()">
+          <button class="num-btn" onclick="adj('dia', +1)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="field" style="margin-top: 4px;">
+      <label>Пульс (уд/мин)</label>
+      <div class="num-field">
+        <button class="num-btn" onclick="adj('pulse', -1)">−</button>
+        <input class="num-input" type="number" id="pulseInput" value="70" min="30" max="200" style="max-width:160px;">
+        <button class="num-btn" onclick="adj('pulse', +1)">+</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ЗАМЕТКА -->
+  <div class="card">
+    <div class="card-title">Заметка (необязательно)</div>
+    <div class="field">
+      <input type="text" id="noteInput" placeholder="самочувствие, контекст...">
+    </div>
+  </div>
+
+  <button class="submit-btn" id="submitBtn" onclick="submit()">
+    Сохранить измерение
+  </button>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── CONFIG ───────────────────────────────────────────────
+// URL Apps Script хранится в localStorage — вводится один раз
+let SCRIPT_URL = localStorage.getItem('bp_script_url') || '';
+
+function saveScriptUrl() {
+  const val = document.getElementById('scriptUrlInput').value.trim();
+  if (!val.startsWith('https://script.google.com')) {
+    showToast('Неверный URL', 'error'); return;
+  }
+  SCRIPT_URL = val;
+  localStorage.setItem('bp_script_url', val);
+  document.getElementById('configBanner').classList.remove('visible');
+  showToast('URL сохранён ✓', 'success');
+}
+
+// ── INIT ─────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  // показать баннер если нет URL
+  if (!SCRIPT_URL) {
+    document.getElementById('configBanner').classList.add('visible');
+  }
+
+  // дата — сегодня
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth()+1).padStart(2,'0');
+  const dd = String(today.getDate()).padStart(2,'0');
+  document.getElementById('dateInput').value = `${yyyy}-${mm}-${dd}`;
+
+  // время — слоты с интервалом 15 минут
+  const sel = document.getElementById('timeSelect');
+  const now = today.getHours() * 60 + today.getMinutes();
+  let closestIdx = 0, closestDiff = Infinity;
+  let idx = 0;
+
+  for (let h = 0; h < 24; h++) {
+    for (let m = 0; m < 60; m += 15) {
+      const hh = String(h).padStart(2,'0');
+      const mm2 = String(m).padStart(2,'0');
+      const label = `${hh}:${mm2}`;
+      const opt = document.createElement('option');
+      opt.value = label;
+      opt.textContent = label;
+
+      // подсветка трёх рекомендуемых слотов
+      if ((h === 7 && m === 0) || (h === 13 && m === 0) || (h === 19 && m === 0)) {
+        opt.textContent = label + ' ★';
+      }
+      sel.appendChild(opt);
+
+      const diff = Math.abs(h * 60 + m - now);
+      if (diff < closestDiff) { closestDiff = diff; closestIdx = idx; }
+      idx++;
+    }
+  }
+  sel.selectedIndex = closestIdx;
+
+  updateZone();
+});
+
+// ── ADJUST NUMERIC ───────────────────────────────────────
+function adj(field, delta) {
+  const id = { sys: 'sysInput', dia: 'diaInput', pulse: 'pulseInput' }[field];
+  const el = document.getElementById(id);
+  el.value = Math.max(+el.min, Math.min(+el.max, +el.value + delta));
+  updateZone();
+}
+
+// ── ZONE ─────────────────────────────────────────────────
+function updateZone() {
+  const sys = parseInt(document.getElementById('sysInput').value);
+  const dia = parseInt(document.getElementById('diaInput').value);
+  if (isNaN(sys) || isNaN(dia)) return;
+
+  let label, desc, icon, color;
+
+  if (sys < 120 && dia < 80) {
+    label = 'Оптимальное'; desc = 'Отличный результат'; icon = '✅'; color = 'var(--ok)';
+  } else if (sys < 130 && dia < 85) {
+    label = 'Нормальное'; desc = 'В пределах нормы'; icon = '🟢'; color = 'var(--ok)';
+  } else if (sys < 140 && dia < 90) {
+    label = 'Высокое нормальное'; desc = 'Обрати внимание'; icon = '🟡'; color = 'var(--warn)';
+  } else if (sys < 160 && dia < 100) {
+    label = 'АГ I степени'; desc = 'Повышенное — отметь заметкой'; icon = '🟠'; color = 'var(--high)';
+  } else {
+    label = 'АГ II степени'; desc = 'Значительно повышено'; icon = '🔴'; color = 'var(--high)';
+  }
+
+  document.getElementById('zoneIcon').textContent = icon;
+  document.getElementById('zoneLabel').textContent = label;
+  document.getElementById('zoneLabel').style.color = color;
+  document.getElementById('zoneDesc').textContent = desc;
+  document.getElementById('zoneValue').textContent = `${sys}/${dia}`;
+  document.getElementById('zoneValue').style.color = color;
+}
+
+// ── SUBMIT ───────────────────────────────────────────────
+async function submit() {
+  if (!SCRIPT_URL) {
+    document.getElementById('configBanner').classList.add('visible');
+    showToast('Сначала укажи URL скрипта', 'error');
+    return;
+  }
+
+  const date  = document.getElementById('dateInput').value;
+  const time  = document.getElementById('timeSelect').value;
+  const sys   = document.getElementById('sysInput').value;
+  const dia   = document.getElementById('diaInput').value;
+  const pulse = document.getElementById('pulseInput').value;
+  const note  = document.getElementById('noteInput').value.trim();
+
+  if (!date || !sys || !dia || !pulse) {
+    showToast('Заполни все поля', 'error'); return;
+  }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Сохраняю...';
+
+  try {
+    const resp = await fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({ date, time, sys, dia, pulse, note }),
+    });
+    const json = await resp.json();
+
+    if (json.status === 'ok') {
+      showToast('✓ Сохранено', 'success');
+      // сбрасываем заметку, обновляем время
+      document.getElementById('noteInput').value = '';
+      // обновляем время на текущее
+      const now = new Date();
+      const curr = `${String(now.getHours()).padStart(2,'0')}:${String(Math.floor(now.getMinutes()/15)*15).padStart(2,'0')}`;
+      const sel = document.getElementById('timeSelect');
+      for (let i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value === curr) { sel.selectedIndex = i; break; }
+      }
+    } else {
+      showToast('Ошибка: ' + json.message, 'error');
+    }
+  } catch(e) {
+    showToast('Ошибка соединения', 'error');
+    console.error(e);
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Сохранить измерение';
+}
+
+// ── TOAST ────────────────────────────────────────────────
+function showToast(msg, type = '') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast ' + type;
+  void t.offsetWidth;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+</script>
+</body>
+</html>
