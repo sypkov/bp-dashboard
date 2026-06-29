@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="АД — График">
-<link rel="apple-touch-icon" href="icon-dash.png">
+<link rel="apple-touch-icon" href="Icon-dash.png">
 <meta name="theme-color" content="#1a1a2e">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
@@ -433,7 +433,12 @@ function setFilter(f, el) {
 function getFiltered() {
   let data = [...allData];
   if (activeFilter === '07:00' || activeFilter === '13:00' || activeFilter === '19:00') {
-    data = data.filter(r => r.time.startsWith(activeFilter.slice(0,2)));
+    data = data.filter(r => {
+      const h = parseInt(r.time);
+      if (activeFilter === '07:00') return h >= 5  && h < 11;  // Утро: 05–10
+      if (activeFilter === '13:00') return h >= 11 && h < 17;  // День: 11–16
+      if (activeFilter === '19:00') return h >= 17 || h < 5;   // Вечер: 17–04
+    });
   } else if (activeFilter === '7d') {
     const cutoff = Date.now() - 7*86400000;
     data = data.filter(r => parseDateRU(r.date, r.time) >= cutoff);
