@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Анализ проблем — живые данные</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f4f3ee; color: #2c2c2a; font-size: 14px; }
+  .header { background: #534AB7; color: #fff; padding: 20px 24px; }
+  .header h1 { font-size: 20px; font-weight: 500; }
+  .header p { font-size: 13px; opacity: 0.8; margin-top: 4px; }
+  .container { max-width: 900px; margin: 0 auto; padding: 20px 16px; }
+  .section-title { font-size: 15px; font-weight: 500; color: #444441; margin: 24px 0 10px; padding-bottom: 6px; border-bottom: 1px solid #d3d1c7; display:flex; align-items:center; gap:8px; }
+  .card-panel { background: #fff; border-radius: 10px; padding: 16px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .card-panel h3 { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 4px; }
+  .card-panel .sub { font-size: 11px; color: #888780; margin-bottom: 10px; }
+  .warn-box { background: #FAECE7; border: 0.5px solid #F0997B; border-radius: 8px; padding: 10px 14px; margin: 10px 0; font-size: 12px; color: #712B13; line-height: 1.6; }
+  .note-box { background: #E1F5EE; border: 0.5px solid #5DCAA5; border-radius: 8px; padding: 10px 14px; margin: 10px 0; font-size: 12px; color: #085041; line-height: 1.6; }
+  .legend-strip { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 18px; }
+  .legend-chip { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #444; background: #fff; border: 0.5px solid #d3d1c7; border-radius: 20px; padding: 4px 10px; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .live-badge { font-size: 10px; font-weight: 400; color: #888780; }
+  .err-box { display:none; font-size:12px; color:#712B13; margin-top:8px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Анализ проблем</h1>
+  <p>Тестостерон · Эстрадиол · Гематокрит · Давление · Пульс — живые данные из Google Sheets · Сыпков А.В.</p>
+</div>
+
+<div class="container">
+
+<div class="section-title">Периоды протокола Омнадрена</div>
+<div class="legend-strip">
+  <div class="legend-chip"><span class="legend-dot" style="background:#888780;"></span>до ГЗТ</div>
+  <div class="legend-chip"><span class="legend-dot" style="background:#BA7517;"></span>250 мг</div>
+  <div class="legend-chip"><span class="legend-dot" style="background:#D85A30;"></span>125 мг</div>
+  <div class="legend-chip"><span class="legend-dot" style="background:#534AB7;"></span>60 мг/нед</div>
+  <div class="legend-chip"><span class="legend-dot" style="background:#1D9E75;"></span>30 мг ×2/нед</div>
+</div>
+
+<div class="warn-box">
+  ⚠ Все графики ниже загружаются напрямую из Google Таблицы «Дневник АД — Сыпков» при каждом открытии страницы. Файл должен быть открыт как веб-страница (например, через GitHub Pages) — локальное открытие на iOS блокирует такие запросы. Точки из лабораторий, отличных от KDL, показаны полым маркером и пунктирной линией.
+</div>
+
+<!-- ГЕМАТОКРИТ -->
+<div class="card-panel">
+  <h3>Гематокрит (%) <span id="hctBadge" class="live-badge">· загрузка…</span></h3>
+  <div class="sub">Норма: 40,0–49,4 · Порог флеботомии: ≥54%</div>
+  <div style="height:220px;position:relative;"><canvas id="hctChart"></canvas></div>
+  <div id="hctErr" class="err-box">Не удалось загрузить. <a href="https://docs.google.com/spreadsheets/d/1y_YVB55h0YtJ5vXi08R4UoTaJ7z5NvpstY6ZkdwnUYI/edit" target="_blank">Открыть таблицу</a></div>
+</div>
+
+<!-- ЭСТРАДИОЛ -->
+<div class="card-panel">
+  <h3>Эстрадиол Е2 (пмоль/л) <span id="estBadge" class="live-badge">· загрузка…</span></h3>
+  <div class="sub">Норма муж.: 40–161</div>
+  <div style="height:220px;position:relative;"><canvas id="estChart"></canvas></div>
+  <div id="estErr" class="err-box">Не удалось загрузить. <a href="https://docs.google.com/spreadsheets/d/1y_YVB55h0YtJ5vXi08R4UoTaJ7z5NvpstY6ZkdwnUYI/edit" target="_blank">Открыть таблицу</a></div>
+</div>
+
+<!-- ТЕСТОСТЕРОН -->
+<div class="card-panel">
+  <h3>Тестостерон общий (нмоль/л) <span id="testBadge" class="live-badge">· загрузка…</span></h3>
+  <div class="sub">Норма: 8,33–30,19</div>
+  <div style="height:220px;position:relative;"><canvas id="testChart"></canvas></div>
+  <div id="testErr" class="err-box">Не удалось загрузить. <a href="https://docs.google.com/spreadsheets/d/1y_YVB55h0YtJ5vXi08R4UoTaJ7z5NvpstY6ZkdwnUYI/edit" target="_blank">Открыть таблицу</a></div>
+</div>
+
+<div class="section-title">Давление и пульс — последние 7 дней</div>
+
+<!-- ДАВЛЕНИЕ -->
+<div class="card-panel">
+  <h3>Артериальное давление <span id="bpBadge" class="live-badge">· загрузка…</span></h3>
+  <div class="sub">Систолическое / диастолическое, мм рт.ст.</div>
+  <div style="height:200px;position:relative;"><canvas id="bpChart"></canvas></div>
+  <div id="bpErr" class="err-box">Не удалось загрузить. <a href="https://docs.google.com/spreadsheets/d/1y_YVB55h0YtJ5vXi08R4UoTaJ7z5NvpstY6ZkdwnUYI/edit" target="_blank">Открыть таблицу</a></div>
+</div>
+
+<!-- ПУЛЬС -->
+<div class="card-panel">
+  <h3>Пульс <span id="pulseBadge" class="live-badge">· загрузка…</span></h3>
+  <div class="sub">уд/мин</div>
+  <div style="height:200px;position:relative;"><canvas id="pulseChart"></canvas></div>
+  <div id="pulseErr" class="err-box">Не удалось загрузить. <a href="https://docs.google.com/spreadsheets/d/1y_YVB55h0YtJ5vXi08R4UoTaJ7z5NvpstY6ZkdwnUYI/edit" target="_blank">Открыть таблицу</a></div>
+</div>
+
+<div style="text-align:center;color:#888780;font-size:11px;padding:20px 0;">
+  Данные носят информационный характер. Интерпретацию и рекомендации даёт лечащий врач.
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const SHEET_ID = '1y_YVB55h0YtJ5vXi08R4UoTaJ7z5NvpstY6ZkdwnUYI';
+const COL = { none:'#888780', d250:'#BA7517', d125:'#D85A30', d60:'#534AB7', d30x2:'#1D9E75' };
+
+function bandColor(hex, alpha) { return hex + alpha; }
+
+function csvUrl(sheetName) {
+  return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(sheetName)}`;
+}
+
+function parseCsvLine(line) {
+  const re = /("([^"]|"")*"|[^,]*)(,|$)/g;
+  const out = [];
+  let m;
+  while ((m = re.exec(line)) !== null) {
+    if (m.index === re.lastIndex && m[0] === '') break;
+    let val = m[1];
+    if (val.startsWith('"') && val.endsWith('"')) val = val.slice(1, -1).replace(/""/g, '"');
+    out.push(val);
+    if (m[3] === '') break;
+  }
+  return out;
+}
+
+async function fetchSheet(sheetName) {
+  const res = await fetch(csvUrl(sheetName));
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  const text = await res.text();
+  const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+  return lines.slice(1).map(parseCsvLine);
+}
+
+function parseRuDate(s) {
+  const [d, m, y] = s.trim().split('.').map(Number);
+  return new Date(y, m - 1, d);
+}
+
+function boundaryPixel(scale, idx, numLabels, chartArea) {
+  if (idx <= 0) return chartArea.left;
+  if (idx >= numLabels) return chartArea.right;
+  const pPrev = scale.getPixelForValue(idx - 1);
+  const pCur = scale.getPixelForValue(idx);
+  return (pPrev + pCur) / 2;
+}
+const protocolBandsPlugin = {
+  id: 'protocolBands',
+  beforeDraw(chart, args, opts) {
+    if (!opts || !opts.bands) return;
+    const { ctx, chartArea, scales } = chart;
+    const xScale = scales.x;
+    const numLabels = chart.data.labels.length;
+    ctx.save();
+    opts.bands.forEach(b => {
+      const x0 = boundaryPixel(xScale, b.start, numLabels, chartArea);
+      const x1 = boundaryPixel(xScale, b.end, numLabels, chartArea);
+      ctx.fillStyle = b.color;
+      ctx.fillRect(x0, chartArea.top, x1 - x0, chartArea.height);
+    });
+    ctx.restore();
+  }
+};
+Chart.register(protocolBandsPlugin);
+
+async function loadProtocol() {
+  try {
+    const rows = await fetchSheet('Протокол');
+    const entries = rows
+      .filter(r => r[1] && r[1].trim().toLowerCase() === 'омнадрен')
+      .map(r => {
+        const dose = (r[2] || '').trim();
+        let color = COL.none;
+        if (dose.includes('250')) color = COL.d250;
+        else if (dose.includes('125')) color = COL.d125;
+        else if (dose.includes('60')) color = COL.d60;
+        else if (dose.includes('30')) color = COL.d30x2;
+        return { date: parseRuDate(r[0]), color };
+      })
+      .sort((a, b) => a.date - b.date);
+    return entries;
+  } catch (e) {
+    console.error('Protocol load error:', e);
+    return [];
+  }
+}
+function colorForDate(protocolEntries, date) {
+  let color = COL.none;
+  for (const e of protocolEntries) {
+    if (e.date <= date) color = e.color; else break;
+  }
+  return color;
+}
+
+async function loadMetricChart(canvasId, badgeId, errId, metricName, yMin, yMax, yUnit, normLines, protocolEntries) {
+  const badge = document.getElementById(badgeId);
+  const errBox = document.getElementById(errId);
+  try {
+    const rows = await fetchSheet('Анализы');
+    let points = rows
+      .filter(r => r[1] && r[1].trim() === metricName)
+      .map(r => ({
+        date: parseRuDate(r[0]),
+        value: parseFloat((r[2] || '').replace(',', '.')),
+        lab: (r[6] || '').trim(),
+        note: (r[7] || '').trim(),
+      }))
+      .filter(p => !isNaN(p.value))
+      .sort((a, b) => a.date - b.date);
+
+    if (points.length === 0) throw new Error('Нет данных для ' + metricName);
+
+    const labels = points.map(p =>
+      p.date.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: '2-digit' })
+      + (p.lab && p.lab.toUpperCase() !== 'KDL' ? '\n' + p.lab : '')
+    );
+    const data = points.map(p => p.value);
+    const isOther = points.map(p => p.lab && p.lab.toUpperCase() !== 'KDL');
+    const pointColors = points.map(p => colorForDate(protocolEntries, p.date));
+
+    labels.push('');
+    const nowColor = colorForDate(protocolEntries, new Date());
+
+    const allColors = [...pointColors, nowColor];
+    const bands = [];
+    let segStart = 0;
+    for (let i = 1; i <= allColors.length; i++) {
+      if (i === allColors.length || allColors[i] !== allColors[segStart]) {
+        bands.push({ start: segStart, end: i, color: bandColor(allColors[segStart], '28') });
+        segStart = i;
+      }
+    }
+
+    const datasets = [
+      {
+        label: metricName,
+        data: [...data, null],
+        borderColor: '#3C3489',
+        borderWidth: 2,
+        pointRadius: 6,
+        pointStyle: [...isOther, false].map(v => v ? 'rectRot' : 'circle'),
+        pointBackgroundColor: [...isOther, false].map(v => v ? '#fff' : '#3C3489'),
+        pointBorderColor: '#3C3489',
+        pointBorderWidth: 2,
+        tension: 0.3,
+        spanGaps: true,
+        fill: false,
+      }
+    ];
+    normLines.forEach(nl => {
+      datasets.push({
+        label: nl.label,
+        data: Array(labels.length).fill(nl.value),
+        borderColor: nl.color, borderWidth: 1, borderDash: [5,4], pointRadius: 0,
+      });
+    });
+
+    new Chart(document.getElementById(canvasId), {
+      type: 'line',
+      data: { labels, datasets },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          protocolBands: { bands },
+          tooltip: { callbacks: { label: ctx => ctx.dataset.label === metricName ? metricName + ': ' + ctx.raw + ' ' + yUnit + (isOther[ctx.dataIndex] ? ' (' + points[ctx.dataIndex].lab + ')' : ' (KDL)') : ctx.dataset.label } }
+        },
+        scales: {
+          x: { ticks: { font: { size: 9 }, maxRotation: 0 }, grid: { display: false } },
+          y: { min: yMin, max: yMax, ticks: { font: { size: 10 } } }
+        }
+      }
+    });
+
+    badge.textContent = `· обновлено, ${points.length} замеров`;
+    badge.style.color = '#1D9E75';
+  } catch (err) {
+    console.error(metricName + ' load error:', err);
+    badge.textContent = '· не удалось загрузить';
+    badge.style.color = '#993C1D';
+    errBox.style.display = 'block';
+  }
+}
+
+function normalizeBpRow(cells) {
+  cells = cells.map(c => c.trim());
+  if (cells.length >= 9) {
+    return {
+      date: cells[0], time: cells[1],
+      sys: parseFloat(cells[2] + '.' + cells[3]),
+      dia: parseFloat(cells[4] + '.' + cells[5]),
+      pulse: parseFloat(cells[6] + '.' + cells[7]),
+      note: cells[8] || ''
+    };
+  } else if (cells.length >= 6) {
+    return {
+      date: cells[0], time: cells[1],
+      sys: parseFloat(cells[2].replace(',', '.')),
+      dia: parseFloat(cells[3].replace(',', '.')),
+      pulse: parseFloat(cells[4].replace(',', '.')),
+      note: cells[5] || ''
+    };
+  }
+  return null;
+}
+
+async function loadBpPulseCharts() {
+  const bpBadge = document.getElementById('bpBadge');
+  const pulseBadge = document.getElementById('pulseBadge');
+  const bpErr = document.getElementById('bpErr');
+  const pulseErr = document.getElementById('pulseErr');
+  try {
+    const rawRows = await fetchSheet('Лист1');
+    let rows = rawRows.map(normalizeBpRow).filter(r => r && !isNaN(r.sys));
+    rows = rows.filter(r => !/тест/i.test(r.note));
+
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+    rows = rows.filter(r => parseRuDate(r.date) >= sevenDaysAgo);
+    rows.sort((a, b) => (parseRuDate(a.date) - parseRuDate(b.date)) || a.time.localeCompare(b.time));
+
+    const labels = rows.map(r => r.date.slice(0, 5) + ' ' + r.time.slice(0, 5));
+
+    new Chart(document.getElementById('bpChart'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          { label: 'Систолическое', data: rows.map(r => r.sys), borderColor: '#E64980', backgroundColor: '#E6498022', borderWidth: 2, pointRadius: 3, tension: 0.3 },
+          { label: 'Диастолическое', data: rows.map(r => r.dia), borderColor: '#4C6EF5', backgroundColor: '#4C6EF522', borderWidth: 2, pointRadius: 3, tension: 0.3 },
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: true, position: 'bottom', labels: { font: { size: 10 }, boxWidth: 12 } } },
+        scales: {
+          x: { ticks: { font: { size: 8 }, maxRotation: 60, minRotation: 60 }, grid: { display: false } },
+          y: { min: 60, max: 140, ticks: { font: { size: 10 } }, title: { display: true, text: 'мм рт.ст.', font: { size: 10 } } }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('pulseChart'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          { label: 'Пульс', data: rows.map(r => r.pulse), borderColor: '#40C057', backgroundColor: '#40C05722', borderWidth: 2, pointRadius: 3, tension: 0.3, fill: true },
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { font: { size: 8 }, maxRotation: 60, minRotation: 60 }, grid: { display: false } },
+          y: { min: 50, max: 110, ticks: { font: { size: 10 } }, title: { display: true, text: 'уд/мин', font: { size: 10 } } }
+        }
+      }
+    });
+
+    bpBadge.textContent = `· обновлено, ${rows.length} замеров за 7 дн.`;
+    bpBadge.style.color = '#1D9E75';
+    pulseBadge.textContent = `· обновлено, ${rows.length} замеров за 7 дн.`;
+    pulseBadge.style.color = '#1D9E75';
+  } catch (err) {
+    console.error('BP/Pulse load error:', err);
+    bpBadge.textContent = '· не удалось загрузить';
+    bpBadge.style.color = '#993C1D';
+    bpErr.style.display = 'block';
+    pulseBadge.textContent = '· не удалось загрузить';
+    pulseBadge.style.color = '#993C1D';
+    pulseErr.style.display = 'block';
+  }
+}
+
+(async function init() {
+  const protocolEntries = await loadProtocol();
+
+  await loadMetricChart('hctChart', 'hctBadge', 'hctErr', 'Гематокрит', 44, 56, '%',
+    [{ label: 'Норма макс. (49,4)', value: 49.4, color: '#1D9E75' },
+     { label: 'Порог флеботомии (54)', value: 54, color: '#BA1717' }],
+    protocolEntries);
+
+  await loadMetricChart('estChart', 'estBadge', 'estErr', 'Эстрадиол', 100, 280, 'пмоль/л',
+    [{ label: 'Верхняя норма (161)', value: 161, color: '#1D9E75' }],
+    protocolEntries);
+
+  await loadMetricChart('testChart', 'testBadge', 'testErr', 'Тестостерон общий', 0, 52, 'нмоль/л',
+    [{ label: 'Верхняя норма (30,19)', value: 30.19, color: '#D85A30' }],
+    protocolEntries);
+
+  await loadBpPulseCharts();
+})();
+</script>
+
+</body>
+</html>
