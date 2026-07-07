@@ -325,20 +325,33 @@
   </tbody>
 </table>
 
-<!-- АРТЕРИАЛЬНОЕ ДАВЛЕНИЕ (ЖИВЫЕ ДАННЫЕ) -->
+<!-- АРТЕРИАЛЬНОЕ ДАВЛЕНИЕ (ЖИВЫЕ ДАННЫЕ, 7 ДНЕЙ) -->
 <div class="section-title">
-  Артериальное давление и пульс
+  Артериальное давление (7 дней)
   <span id="bpLiveBadge" style="font-size:10px;font-weight:400;color:#888780;">· загрузка…</span>
 </div>
 <div style="background:#fff;border-radius:10px;padding:16px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
-  <div style="height:220px;position:relative;"><canvas id="bpChart"></canvas></div>
+  <div style="height:200px;position:relative;"><canvas id="bpChart"></canvas></div>
   <div id="bpError" style="display:none;font-size:12px;color:#712B13;margin-top:8px;">
     Не удалось загрузить данные автоматически. Открыть таблицу напрямую:
     <a href="https://docs.google.com/spreadsheets/d/1y_YVB55h0YtJ5vXi08R4UoTaJ7z5NvpstY6ZkdwnUYI/edit" target="_blank">Дневник АД — Сыпков</a>
   </div>
 </div>
+
+<!-- ПУЛЬС (ЖИВЫЕ ДАННЫЕ, 7 ДНЕЙ) -->
+<div class="section-title">
+  Пульс (7 дней)
+  <span id="pulseLiveBadge" style="font-size:10px;font-weight:400;color:#888780;">· загрузка…</span>
+</div>
+<div style="background:#fff;border-radius:10px;padding:16px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+  <div style="height:180px;position:relative;"><canvas id="pulseChart"></canvas></div>
+  <div id="pulseError" style="display:none;font-size:12px;color:#712B13;margin-top:8px;">
+    Не удалось загрузить данные автоматически. Открыть таблицу напрямую:
+    <a href="https://docs.google.com/spreadsheets/d/1y_YVB55h0YtJ5vXi08R4UoTaJ7z5NvpstY6ZkdwnUYI/edit" target="_blank">Дневник АД — Сыпков</a>
+  </div>
+</div>
 <div class="note-box">
-  ℹ Этот график подтягивает данные напрямую из Google Таблицы «Дневник АД» при каждом открытии файла — всегда актуален, даже если сам дашборд давно не обновлялся вручную. Требуется подключение к интернету.
+  ℹ Эти графики подтягивают данные напрямую из Google Таблицы «Дневник АД» при каждом открытии файла (последние 7 дней) — всегда актуальны, даже если сам дашборд давно не обновлялся вручную. Требуется подключение к интернету и открытие файла как веб-страницы (не локально на iOS).
 </div>
 
 <!-- ПРОЧИЕ -->
@@ -891,12 +904,14 @@ new Chart(document.getElementById('compChart'), {
   options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:true,position:'bottom',labels:{font:{size:10},padding:8,boxWidth:12}}}, scales:{ x:{ticks:{font:{size:9}},grid:{display:false}}, y:{min:19,max:53,ticks:{font:{size:10},callback:v=>v+'%'},grid:{color:'#f0f0f0'}} }}
 });
 
-// ===== ЖИВОЙ ГРАФИК АД ИЗ GOOGLE SHEETS =====
-(async function loadBPChart() {
+// ===== ЖИВЫЕ ГРАФИКИ АД И ПУЛЬСА ИЗ GOOGLE SHEETS (7 ДНЕЙ) =====
+(async function loadBPCharts() {
   const SHEET_ID = '1y_YVB55h0YtJ5vXi08R4UoTaJ7z5NvpstY6ZkdwnUYI';
   const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=0`;
-  const badge = document.getElementById('bpLiveBadge');
-  const errBox = document.getElementById('bpError');
+  const bpBadge = document.getElementById('bpLiveBadge');
+  const bpErrBox = document.getElementById('bpError');
+  const pulseBadge = document.getElementById('pulseLiveBadge');
+  const pulseErrBox = document.getElementById('pulseError');
 
   function parseCsvLine(line) {
     const re = /("([^"]|"")*"|[^,]*)(,|$)/g;
@@ -934,28 +949,37 @@ new Chart(document.getElementById('compChart'), {
     return null;
   }
 
+  function parseRuDate(s) {
+    const [d, m, y] = s.trim().split('.').map(Number);
+    return new Date(y, m - 1, d);
+  }
+
   try {
     const res = await fetch(CSV_URL);
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const text = await res.text();
     const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
     const dataLines = lines.slice(1);
-    const rows = dataLines.map(l => normalizeRow(parseCsvLine(l))).filter(r => r && !isNaN(r.sys));
-    const clean = rows.filter(r => !/\u0442\u0435\u0441\u0442/i.test(r.note));
+    let rows = dataLines.map(l => normalizeRow(parseCsvLine(l))).filter(r => r && !isNaN(r.sys));
+    rows = rows.filter(r => !/\u0442\u0435\u0441\u0442/i.test(r.note));
 
-    const labels = clean.map(r => r.date.slice(0, 5) + ' ' + r.time.slice(0, 5));
-    const sysData = clean.map(r => r.sys);
-    const diaData = clean.map(r => r.dia);
-    const pulseData = clean.map(r => r.pulse);
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+    rows = rows.filter(r => parseRuDate(r.date) >= sevenDaysAgo);
+    rows.sort((a, b) => (parseRuDate(a.date) - parseRuDate(b.date)) || a.time.localeCompare(b.time));
+
+    const labels = rows.map(r => r.date.slice(0, 5) + ' ' + r.time.slice(0, 5));
+    const sysData = rows.map(r => r.sys);
+    const diaData = rows.map(r => r.dia);
+    const pulseData = rows.map(r => r.pulse);
 
     new Chart(document.getElementById('bpChart'), {
       type: 'line',
       data: {
         labels,
         datasets: [
-          { label: 'Систолическое', data: sysData, borderColor: '#E64980', backgroundColor: '#E6498022', borderWidth: 2, pointRadius: 2, tension: 0.3, yAxisID: 'y' },
-          { label: 'Диастолическое', data: diaData, borderColor: '#4C6EF5', backgroundColor: '#4C6EF522', borderWidth: 2, pointRadius: 2, tension: 0.3, yAxisID: 'y' },
-          { label: 'Пульс', data: pulseData, borderColor: '#40C057', borderWidth: 2, pointRadius: 2, tension: 0.3, borderDash: [4,3], yAxisID: 'y2' },
+          { label: 'Систолическое', data: sysData, borderColor: '#E64980', backgroundColor: '#E6498022', borderWidth: 2, pointRadius: 3, tension: 0.3 },
+          { label: 'Диастолическое', data: diaData, borderColor: '#4C6EF5', backgroundColor: '#4C6EF522', borderWidth: 2, pointRadius: 3, tension: 0.3 },
         ]
       },
       options: {
@@ -963,19 +987,41 @@ new Chart(document.getElementById('compChart'), {
         plugins: { legend: { display: true, position: 'bottom', labels: { font: { size: 10 }, boxWidth: 12 } } },
         scales: {
           x: { ticks: { font: { size: 8 }, maxRotation: 60, minRotation: 60 }, grid: { display: false } },
-          y: { type: 'linear', position: 'left', min: 60, max: 140, title: { display: true, text: 'мм рт.ст.', font: { size: 10 } } },
-          y2: { type: 'linear', position: 'right', min: 50, max: 110, title: { display: true, text: 'уд/мин', font: { size: 10 } }, grid: { drawOnChartArea: false } }
+          y: { min: 60, max: 140, ticks: { font: { size: 10 } }, title: { display: true, text: 'мм рт.ст.', font: { size: 10 } } }
         }
       }
     });
 
-    badge.textContent = `· обновлено сейчас, ${clean.length} замеров`;
-    badge.style.color = '#1D9E75';
+    new Chart(document.getElementById('pulseChart'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          { label: 'Пульс', data: pulseData, borderColor: '#40C057', backgroundColor: '#40C05722', borderWidth: 2, pointRadius: 3, tension: 0.3, fill: true },
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { font: { size: 8 }, maxRotation: 60, minRotation: 60 }, grid: { display: false } },
+          y: { min: 50, max: 110, ticks: { font: { size: 10 } }, title: { display: true, text: 'уд/мин', font: { size: 10 } } }
+        }
+      }
+    });
+
+    bpBadge.textContent = `· обновлено, ${rows.length} замеров за 7 дн.`;
+    bpBadge.style.color = '#1D9E75';
+    pulseBadge.textContent = `· обновлено, ${rows.length} замеров за 7 дн.`;
+    pulseBadge.style.color = '#1D9E75';
   } catch (err) {
-    console.error('BP load error:', err);
-    badge.textContent = '· не удалось загрузить';
-    badge.style.color = '#993C1D';
-    errBox.style.display = 'block';
+    console.error('BP/Pulse load error:', err);
+    bpBadge.textContent = '· не удалось загрузить';
+    bpBadge.style.color = '#993C1D';
+    bpErrBox.style.display = 'block';
+    pulseBadge.textContent = '· не удалось загрузить';
+    pulseBadge.style.color = '#993C1D';
+    pulseErrBox.style.display = 'block';
   }
 })();
 </script>
