@@ -4,12 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Медицинский дашборд — Сыпков А.В.</title>
+<link rel="apple-touch-icon" href="Shield.png">
+<link rel="icon" type="image/png" href="Shield.png">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f4f3ee; color: #2c2c2a; font-size: 14px; }
-  .header { background: #534AB7; color: #fff; padding: 20px 24px; }
-  .header h1 { font-size: 20px; font-weight: 500; }
-  .header p { font-size: 13px; opacity: 0.8; margin-top: 4px; }
+  .header { background: #534AB7; color: #fff; padding: 20px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .header-text h1 { font-size: 20px; font-weight: 500; }
+  .header-text p { font-size: 13px; opacity: 0.8; margin-top: 4px; }
+  .header-icon { width: 48px; height: 48px; flex-shrink: 0; border-radius: 10px; }
   .container { max-width: 1100px; margin: 0 auto; padding: 20px 16px; }
   .section-title { font-size: 15px; font-weight: 500; color: #444441; margin: 24px 0 10px; padding-bottom: 6px; border-bottom: 1px solid #d3d1c7; }
   .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 8px; }
@@ -45,8 +48,11 @@
 <body>
 
 <div class="header">
-  <h1>Медицинский дашборд</h1>
-  <p>Сыпков Алексей Васильевич · 16.06.1980 · 46 лет · Последнее обновление: 10.07.26</p>
+  <div class="header-text">
+    <h1>Медицинский дашборд</h1>
+    <p>Сыпков Алексей Васильевич · 16.06.1980 · 46 лет · Последнее обновление: 10.07.26</p>
+  </div>
+  <img src="Shield.png" alt="" class="header-icon">
 </div>
 
 <div class="container">
