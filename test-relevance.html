@@ -15,7 +15,7 @@
   table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08); margin-bottom: 8px; }
   th { background: #EEEDFE; color: #3C3489; font-size: 11px; text-align: left; padding: 8px 10px; font-weight: 600; }
   td { padding: 8px 10px; font-size: 12.5px; border-top: 1px solid #f0efe9; vertical-align: top; }
-  .badge { display:inline-block; padding:2px 8px; border-radius:10px; font-size:11px; font-weight:600; white-space:nowrap; }
+  .badge { display:inline-block; max-width:180px; padding:2px 8px; border-radius:10px; font-size:11px; font-weight:600; white-space:normal; line-height:1.4; }
   .badge-urgent { background:#FAECE7; color:#993C1D; }
   .badge-soon { background:#FFF4E0; color:#8A5B00; }
   .badge-ok { background:#E1F5EE; color:#0B6E52; }
@@ -30,7 +30,7 @@
 
 <div class="header">
   <h1>Актуальность анализов</h1>
-  <p>Плановые даты пересдачи по всем показателям, релевантным текущему протоколу · Сыпков А.В. · на 10.07.26</p>
+  <p>Плановые даты пересдачи по всем показателям, релевантным текущему протоколу · Сыпков А.В. · на 20.07.26</p>
 </div>
 
 <div class="container">
@@ -43,26 +43,31 @@
 </div>
 
 <div class="section-title">Срочно / уже назрело</div>
+<div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
 <table>
   <thead><tr><th>Показатель</th><th>Последний замер</th><th>Плановая дата</th><th>Причина</th></tr></thead>
   <tbody>
-    <tr><td><strong>Витамин B12 + фолиевая кислота</strong></td><td>не проверялось</td><td><span class="badge badge-urgent">до 15.07.26</span></td><td>Уточнение причины сниженных тромбоцитов (164), обсуждалось 06-07.07, ещё не заказано</td></tr>
-    <tr><td><strong>Ферритин</strong></td><td>22.02.26</td><td><span class="badge badge-urgent">после полной флеботомии</span></td><td>10.07 флеботомия прошла лишь частично (50 мл вместо 200 — не было помпы нужного объёма); полная процедура перенесена на следующую неделю, дата уточняется — ферритин сдать сразу после неё</td></tr>
-    <tr><td><strong>Витамин D (25-OH)</strong></td><td>10.07.25</td><td><span class="badge badge-urgent">до 20.07.26</span></td><td>Больше года с последнего замера</td></tr>
+    <tr><td><strong>Витамин B12 + фолиевая кислота</strong></td><td>13.07.26: B12 465 (норма), B9 3,9 (норма, у нижней границы)</td><td><span class="badge badge-later">не срочно</span></td><td>B12 в норме, дефицит маловероятен как причина тромбоцитопении; фолиевая — под наблюдение</td></tr>
+    <tr><td><strong>Ферритин</strong></td><td>22.02.26</td><td><span class="badge badge-urgent">после полной флеботомии (дата не определена)</span></td><td>10.07 и 16.07 — ещё две частичные флеботомии по 50 мл (суммарно 100 мл), оборудование для полного объёма всё ещё не прибыло. Сдать сразу после полной процедуры, когда она состоится</td></tr>
+    <tr><td><strong>Витамин D (25-OH)</strong></td><td>13.07.26: 22,0 нг/мл (недостаточность)</td><td><span class="badge badge-urgent">повтор через 2-3 мес после начала добавки</span></td><td>Ниже целевого уровня (30-60), было 32,6 год назад — обсудить дозу добавки с врачом</td></tr>
   </tbody>
 </table>
+</div>
 
 <div class="section-title">В ближайшие 2-4 недели</div>
+<div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
 <table>
   <thead><tr><th>Показатель</th><th>Последний замер</th><th>Плановая дата</th><th>Причина</th></tr></thead>
   <tbody>
-    <tr><td><strong>Тестостерон общий + Эстрадиол</strong></td><td>06.07.26</td><td><span class="badge badge-soon">~03.08.26</span></td><td>Оценка эффекта новой схемы Омнадрена 30×2/нед (нужно 3-4 недели на стабилизацию фона)</td></tr>
-    <tr><td><strong>ОАК с лейкоцитарной формулой</strong> (гематокрит, эритроциты, тромбоциты)</td><td>06.07.26</td><td><span class="badge badge-soon">13.07.26 (пн, подтверждено)</span></td><td>Контроль после частичной флеботомии 10.07 (50 мл) + продолжение мониторинга гематокрита на новой схеме</td></tr>
+    <tr><td><strong>Тестостерон общий + Эстрадиол</strong></td><td>20.07.26: тестостерон 27,25 (норма!), эстрадиол 113 (норма!)</td><td><span class="badge badge-later">~20.08.26</span></td><td>Впервые оба показателя в норме — плановый контроль через месяц для подтверждения устойчивости</td></tr>
+    <tr><td><strong>ОАК с лейкоцитарной формулой</strong> (тромбоциты в особенности)</td><td>20.07.26: гематокрит 51,0% (снизился), тромбоциты 127 (продолжают снижаться)</td><td><span class="badge badge-urgent">срочно, по решению врача</span></td><td>Тромбоциты — устойчивый тренд вниз через 5 замеров подряд (165→169→164→156→127), требует прицельного разбора причины</td></tr>
     <tr><td><strong>Ферритин (повторно)</strong></td><td>—</td><td><span class="badge badge-soon">через 4-6 недель после первого замера</span></td><td>Контроль — не ушли ли запасы железа в дефицит после серии флеботомий</td></tr>
   </tbody>
 </table>
+</div>
 
 <div class="section-title">В плановом порядке (1-3 месяца)</div>
+<div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
 <table>
   <thead><tr><th>Показатель</th><th>Последний замер</th><th>Плановая дата</th><th>Причина</th></tr></thead>
   <tbody>
@@ -72,21 +77,24 @@
     <tr><td>Пролактин</td><td>09.06.26</td><td><span class="badge badge-ok">~09.09.26</span></td><td>Плановый контроль на ГЗТ, раз в 3 мес</td></tr>
     <tr><td>Мочевая кислота</td><td>29.06.26</td><td><span class="badge badge-ok">~29.09.26</span></td><td>Значение 381,7 — уже нормализовалась, плановый контроль раз в 3 мес</td></tr>
     <tr><td>Креатинин / СКФ</td><td>09.06.26</td><td><span class="badge badge-ok">после ~23.07.26</span></td><td>Значение повышено, но это временный эффект восстановления после операции — пересдать только после полного завершения реабилитации (явка к колопроктологу ~23.07)</td></tr>
-    <tr><td>ЛГ, ФСГ</td><td>22.02.26</td><td><span class="badge badge-ok">~03.08.26</span></td><td>Можно совместить с контролем тестостерона/эстрадиола</td></tr>
+    <tr><td>ЛГ, ФСГ</td><td>22.02.26</td><td><span class="badge badge-later">пропущено осознанно</span></td><td>Пациент считает нецелесообразным — показатели предсказуемо подавлены на активном ГЗТ, новой информации не даст</td></tr>
   </tbody>
 </table>
+</div>
 
 <div class="section-title">Можно отложить (полгода-год)</div>
+<div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
 <table>
   <thead><tr><th>Показатель</th><th>Последний замер</th><th>Плановая дата</th><th>Причина</th></tr></thead>
   <tbody>
     <tr><td>Коагулограмма</td><td>09.06.26</td><td><span class="badge badge-later">~09.12.26</span></td><td>В норме, риска гиперкоагуляции нет — частый контроль не требуется; пересдать раньше при новой операции</td></tr>
     <tr><td>Инсулин</td><td>22.02.26</td><td><span class="badge badge-later">~22.08.26</span></td><td>Стабильный показатель, полугодовой интервал достаточен</td></tr>
-    <tr><td>Кортизол (утро)</td><td>22.02.26</td><td><span class="badge badge-later">~22.02.27</span></td><td>В норме, без клинических показаний к частому контролю</td></tr>
+    <tr><td>Кортизол (утро)</td><td>13.07.26: 17,2 мкг/дл (норма)</td><td><span class="badge badge-later">~13.07.27</span></td><td>Проверялся под гипотезу о причине ранних пробуждений — не подтвердилась, показатель в норме</td></tr>
     <tr><td>Инфекции: ВИЧ, гепатиты B/C, сифилис</td><td>10.06.26</td><td><span class="badge badge-later">~10.06.27</span></td><td>Стандартный ежегодный контроль</td></tr>
     <tr><td>Общий анализ мочи (плотность и др.)</td><td>09.06.26</td><td><span class="badge badge-later">по показаниям</span></td><td>Разовое незначительное отклонение, не требует планового повтора</td></tr>
   </tbody>
 </table>
+</div>
 
 <div class="note-box">
   ℹ Даты рассчитаны на основе клинической логики (частота, разумная для каждого показателя с учётом активного протокола ГЗТ, флеботомии и Тирзепатида), а не назначены врачом напрямую. Финальное решение по срокам и необходимости — всегда за лечащим врачом, особенно если на приёме появятся новые указания.
