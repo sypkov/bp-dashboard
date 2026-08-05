@@ -43,6 +43,8 @@
   @media (max-width: 600px) { .grid2 { grid-template-columns: 1fr; } }
   .warn-box { background: #FAECE7; border: 0.5px solid #F0997B; border-radius: 8px; padding: 10px 14px; margin: 10px 0; font-size: 12px; color: #712B13; line-height: 1.6; }
   .note-box { background: #E1F5EE; border: 0.5px solid #5DCAA5; border-radius: 8px; padding: 10px 14px; margin: 10px 0; font-size: 12px; color: #085041; line-height: 1.6; }
+  .period-btn { flex: 1; background: #fff; border: 1px solid #d3d1c7; border-radius: 8px; padding: 8px 0; font-size: 12px; font-weight: 500; color: #666; cursor: pointer; }
+  .period-btn-active { background: #534AB7; border-color: #534AB7; color: #fff; }
 </style>
 </head>
 <body>
@@ -1313,6 +1315,11 @@ new Chart(document.getElementById('pltChart'), {
   </div>
 </div>
 
+<div style="display:flex;gap:8px;margin-bottom:10px;">
+  <button id="btnPeriodAll" class="period-btn period-btn-active" onclick="setBodyPeriod('all')">Всё</button>
+  <button id="btnPeriodMonth" class="period-btn" onclick="setBodyPeriod('month')">Месяц</button>
+  <button id="btnPeriodQuarter" class="period-btn" onclick="setBodyPeriod('quarter')">Квартал</button>
+</div>
 <div style="background:#fff;border-radius:10px;padding:16px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
   <div style="font-weight:600;font-size:13px;color:#444;margin-bottom:10px;">Вес (кг)</div>
   <div style="height:180px;position:relative;"><canvas id="weightChart"></canvas></div>
@@ -1359,12 +1366,51 @@ const bWeight = [69.0,69.1,69.3,69.2,69.5,69.8,69.7,69.5,69.6,69.0,68.8,68.8,68.
 const bFat    = [22.0,22.2,22.2,21.6,22.2,22.4,22.5,22.4,22.3,22.0,21.8,22.0,21.1,20.9,21.4,21.3,21.5,21.2,21.0,21.1,21.2,21.2,20.3,20.9,20.1,20.9,20.9,20.8,20.8,21.0,20.7,20.5,20.6,20.5,20.6,21.0,21.2,20.9,20.9,20.8,21.0,20.35,19.4];
 const bMuscle = [51.0,51.0,51.2,51.5,51.3,51.4,51.2,51.2,51.3,51.0,51.0,50.9,50.9,50.5,50.9,50.9,50.8,50.66,50.43,50.78,50.73,50.79,50.49,50.56,50.53,50.76,50.63,50.84,50.55,50.64,50.63,50.46,50.27,50.33,50.37,50.71,50.91,50.47,50.72,50.47,50.38,50.23,49.97];
 
-new Chart(document.getElementById('weightChart'), {
+// Метки вида "MM-DD" -> реальная дата 2026 года (все точки в пределах одного года)
+function bLabelToDate(lbl) {
+  const [m, d] = lbl.split('-').map(Number);
+  return new Date(2026, m - 1, d);
+}
+
+let weightChartInstance, compChartInstance;
+let currentBodyPeriod = 'all';
+
+function getFilteredBodyIndices(period) {
+  if (period === 'all') return bLabels.map((_, i) => i);
+  const lastDate = bLabelToDate(bLabels[bLabels.length - 1]);
+  const cutoff = new Date(lastDate);
+  if (period === 'month') cutoff.setDate(cutoff.getDate() - 30);
+  if (period === 'quarter') cutoff.setDate(cutoff.getDate() - 90);
+  return bLabels.map((lbl, i) => ({ lbl, i })).filter(o => bLabelToDate(o.lbl) >= cutoff).map(o => o.i);
+}
+
+function setBodyPeriod(period) {
+  currentBodyPeriod = period;
+  ['all', 'month', 'quarter'].forEach(p => {
+    document.getElementById('btnPeriod' + p.charAt(0).toUpperCase() + p.slice(1)).classList.toggle('period-btn-active', p === period);
+  });
+  const idx = getFilteredBodyIndices(period);
+  const labels = idx.map(i => bLabels[i]);
+  const weight = idx.map(i => bWeight[i]);
+  const fat = idx.map(i => bFat[i]);
+  const muscle = idx.map(i => bMuscle[i]);
+
+  weightChartInstance.data.labels = labels;
+  weightChartInstance.data.datasets[0].data = weight;
+  weightChartInstance.update();
+
+  compChartInstance.data.labels = labels;
+  compChartInstance.data.datasets[0].data = fat;
+  compChartInstance.data.datasets[1].data = muscle;
+  compChartInstance.update();
+}
+
+weightChartInstance = new Chart(document.getElementById('weightChart'), {
   type: 'line',
   data: { labels: bLabels, datasets: [{ label: 'Вес (кг)', data: bWeight, borderColor: '#534AB7', backgroundColor: '#534AB722', borderWidth: 2, pointRadius: 3, tension: 0.3, fill: true }]},
   options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{ x:{ticks:{font:{size:9}},grid:{display:false}}, y:{min:65,max:71,ticks:{font:{size:10},callback:v=>v+' кг'},grid:{color:'#f0f0f0'}} }}
 });
-new Chart(document.getElementById('compChart'), {
+compChartInstance = new Chart(document.getElementById('compChart'), {
   type: 'line',
   data: { labels: bLabels, datasets: [
     { label: '% жира', data: bFat, borderColor: '#D85A30', borderWidth: 2, pointRadius: 2, tension: 0.3, fill: false },
