@@ -54,7 +54,8 @@
 <div class="header">
   <div class="header-text">
     <h1>Медицинский дашборд</h1>
-    <p>Сыпков Алексей Васильевич · 16.06.1980 · 46 лет · Последнее обновление: 04.08.26</p>
+    <p style="font-size:17px;font-weight:600;opacity:1;margin-top:6px;">Сыпков Алексей Васильевич</p>
+    <p style="margin-top:2px;">16.06.1980 · 46 лет · Последнее обновление: 04.08.26</p>
     <div style="margin-top:10px;display:flex;gap:8px;">
       <button onclick="setAllSections(false)" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.4);color:#fff;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;">Развернуть всё</button>
       <button onclick="setAllSections(true)" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.4);color:#fff;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;">Свернуть всё</button>
@@ -1321,18 +1322,18 @@ new Chart(document.getElementById('pltChart'), {
   </div>
 </div>
 
-<div style="display:flex;gap:8px;margin-bottom:10px;">
-  <div style="flex:1;background:#fff;border-radius:10px;padding:10px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
-    <div style="font-size:10px;color:#888;text-transform:uppercase;letter-spacing:0.03em;">Вес</div>
-    <div id="deltaWeight" style="font-size:16px;font-weight:700;margin-top:2px;">—</div>
+<div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:nowrap;">
+  <div style="flex:1;min-width:0;background:#fff;border-radius:10px;padding:8px 4px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+    <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:0.02em;">Вес</div>
+    <div id="deltaWeight" style="font-size:14px;font-weight:700;margin-top:2px;white-space:nowrap;">—</div>
   </div>
-  <div style="flex:1;background:#fff;border-radius:10px;padding:10px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
-    <div style="font-size:10px;color:#888;text-transform:uppercase;letter-spacing:0.03em;">% жира</div>
-    <div id="deltaFat" style="font-size:16px;font-weight:700;margin-top:2px;">—</div>
+  <div style="flex:1;min-width:0;background:#fff;border-radius:10px;padding:8px 4px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+    <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:0.02em;">% жира</div>
+    <div id="deltaFat" style="font-size:14px;font-weight:700;margin-top:2px;white-space:nowrap;">—</div>
   </div>
-  <div style="flex:1;background:#fff;border-radius:10px;padding:10px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
-    <div style="font-size:10px;color:#888;text-transform:uppercase;letter-spacing:0.03em;">% мышц</div>
-    <div id="deltaMuscle" style="font-size:16px;font-weight:700;margin-top:2px;">—</div>
+  <div style="flex:1;min-width:0;background:#fff;border-radius:10px;padding:8px 4px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+    <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:0.02em;">% мышц</div>
+    <div id="deltaMuscle" style="font-size:14px;font-weight:700;margin-top:2px;white-space:nowrap;">—</div>
   </div>
 </div>
 <div style="display:flex;gap:8px;margin-bottom:10px;">
@@ -1652,7 +1653,7 @@ updateDelta('deltaWater', waterData.map(o => o.value), 1, '%', 'up');
 function setSectionCollapsed(title, collapsed) {
   title.classList.toggle('collapsed', collapsed);
   var el = title.nextElementSibling;
-  while (el && !el.classList.contains('section-title')) {
+  while (el && !el.classList.contains('section-title') && !el.classList.contains('no-collapse-boundary')) {
     el.style.display = collapsed ? 'none' : '';
     el = el.nextElementSibling;
   }
@@ -1675,7 +1676,7 @@ document.querySelectorAll('.section-title').forEach(function(title) {
   });
 });
 </script>
-<div style="text-align:center;padding:30px 0;border-top:1px solid #d3d1c7;margin-top:20px;">
+<div class="no-collapse-boundary" style="text-align:center;padding:30px 0;border-top:1px solid #d3d1c7;margin-top:20px;">
   <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fsypkov.github.io%2Fbp-dashboard%2Flab-dashboard.html" alt="QR-код страницы" style="width:180px;height:180px;">
   <div style="font-size:11px;color:#888780;margin-top:8px;">Отсканируйте, чтобы открыть эту страницу — удобно показать врачу</div>
 </div>
