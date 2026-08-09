@@ -581,6 +581,7 @@
     <tr><th>Показатель</th><th>Результат</th><th>Статус</th><th>Дата</th></tr>
   </thead>
   <tbody>
+    <tr><td>ТТГ (тиреотропный гормон)</td><td>2,18 мМЕ/мл</td><td><span class="badge badge-ok">норма (0,35–4,94)</span></td><td>25.11.2024</td></tr>
     <tr><td>С-реактивный белок (СРБ)</td><td>5,35 мг/л</td><td><span class="badge badge-high">↑ минимально выше нормы (&lt;5,00)</span></td><td>27.07.26</td></tr>
     <tr><td>Гомоцистеин</td><td>12,88 мкмоль/л</td><td><span class="badge badge-ok">норма (5,46–16,20)</span></td><td>27.07.26</td></tr>
     <tr><td>ММП-9 / ТИМП-1</td><td>—</td><td><span class="badge" style="background:#EEEDFE;color:#3C3489;">назначено, результата ещё нет</span></td><td>27.07.26</td></tr>
@@ -883,15 +884,6 @@
     <tr><th>Дата</th><th>День</th><th>Доза</th><th>Статус</th></tr>
   </thead>
   <tbody>
-    <tr style="border-left:4px solid #888780;background:#f5f5f4;">
-      <td>19.07.26</td><td>Вс</td><td>—</td>
-      <td><span class="badge" style="background:#f5f5f4;color:#666;">пропущена</span></td>
-    </tr>
-    <tr style="border-left:4px solid #e05a3a;background:#fdf1ee;">
-      <td>21.07.26</td><td>Вт</td><td>—</td>
-      <td><span class="badge" style="background:#fdf1ee;color:#993C1D;">забыл сделать</span></td>
-    </tr>
-    <tr><td>22.07.26</td><td>Ср</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
     <tr><td>24.07.26</td><td>Пт</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
     <tr style="border-left:4px solid #e05a3a;background:#fdf1ee;">
       <td>26.07.26</td><td>Вс</td><td>—</td>
@@ -903,14 +895,19 @@
     </tr>
     <tr><td>02.08.26</td><td>Вс</td><td>500 ед</td><td><span class="badge badge-ok">выполнено · возврат к обычной схеме</span></td></tr>
     <tr><td>04.08.26</td><td>Вт</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
+    <tr style="border-left:4px solid #e05a3a;background:#fdf1ee;">
+      <td>06.08.26</td><td>Чт</td><td>—</td>
+      <td><span class="badge" style="background:#fdf1ee;color:#993C1D;">пропущена</span></td>
+    </tr>
+    <tr><td>09.08.26</td><td>Вс</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
   </tbody>
 </table>
 </div>
 <div class="note-box" style="margin-top:0;margin-bottom:12px;">
-  ℹ Схема ХГЧ (Вт/Чт/Вс, 500 ед) вернулась к обычному ритму со 02.08. Пропуски (21.07, 26.07) компенсированы, гормональная картина стабилизируется.
+  ℹ Схема ХГЧ (Вт/Чт/Вс, 500 ед) в целом соблюдается, но с эпизодическими пропусками (21.07, 26.07, 06.08).
 </div>
 <details style="margin-bottom:12px;">
-  <summary style="cursor:pointer;font-size:12px;color:#3C3489;padding:6px 0;">Показать более раннюю историю (27 записей)</summary>
+  <summary style="cursor:pointer;font-size:12px;color:#3C3489;padding:6px 0;">Показать более раннюю историю (30 записей)</summary>
   <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
 <table style="margin-top:8px;">
     <thead>
@@ -943,6 +940,9 @@
       <tr><td>09.07.26</td><td>Чт</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
       <tr><td>12.07.26</td><td>Вс</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
       <tr><td>14.07.26</td><td>Вт</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
+      <tr><td>19.07.26</td><td>Вс</td><td>—</td><td><span class="badge" style="background:#f5f5f4;color:#666;">пропущена</span></td></tr>
+      <tr><td>21.07.26</td><td>Вт</td><td>—</td><td><span class="badge" style="background:#fdf1ee;color:#993C1D;">забыл сделать</span></td></tr>
+      <tr><td>22.07.26</td><td>Ср</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
       <tr><td>19.07.26</td><td>Вс</td><td>—</td><td><span class="badge" style="background:#f5f5f4;color:#666;">пропущена</span></td></tr>
     </tbody>
   </table>
@@ -1322,18 +1322,18 @@ new Chart(document.getElementById('pltChart'), {
   </div>
 </div>
 
-<div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:nowrap;">
-  <div style="flex:1;min-width:0;background:#fff;border-radius:10px;padding:8px 4px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:10px;">
+  <div style="background:#fff;border-radius:10px;padding:8px 4px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);overflow:hidden;">
     <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:0.02em;">Вес</div>
-    <div id="deltaWeight" style="font-size:14px;font-weight:700;margin-top:2px;white-space:nowrap;">—</div>
+    <div id="deltaWeight" style="font-size:13px;font-weight:700;margin-top:2px;white-space:nowrap;">—</div>
   </div>
-  <div style="flex:1;min-width:0;background:#fff;border-radius:10px;padding:8px 4px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+  <div style="background:#fff;border-radius:10px;padding:8px 4px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);overflow:hidden;">
     <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:0.02em;">% жира</div>
-    <div id="deltaFat" style="font-size:14px;font-weight:700;margin-top:2px;white-space:nowrap;">—</div>
+    <div id="deltaFat" style="font-size:13px;font-weight:700;margin-top:2px;white-space:nowrap;">—</div>
   </div>
-  <div style="flex:1;min-width:0;background:#fff;border-radius:10px;padding:8px 4px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+  <div style="background:#fff;border-radius:10px;padding:8px 4px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);overflow:hidden;">
     <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:0.02em;">% мышц</div>
-    <div id="deltaMuscle" style="font-size:14px;font-weight:700;margin-top:2px;white-space:nowrap;">—</div>
+    <div id="deltaMuscle" style="font-size:13px;font-weight:700;margin-top:2px;white-space:nowrap;">—</div>
   </div>
 </div>
 <div style="display:flex;gap:8px;margin-bottom:10px;">
