@@ -55,7 +55,7 @@
   <div class="header-text">
     <h1>Медицинский дашборд</h1>
     <p style="font-size:17px;font-weight:600;opacity:1;margin-top:6px;">Сыпков Алексей Васильевич</p>
-    <p style="margin-top:2px;">16.06.1980 · 46 лет · Последнее обновление: 10.08.26</p>
+    <p style="margin-top:2px;">16.06.1980 · 46 лет · Последнее обновление: 11.08.26</p>
     <div style="margin-top:10px;display:flex;gap:8px;">
       <button onclick="setAllSections(false)" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.4);color:#fff;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;">Развернуть всё</button>
       <button onclick="setAllSections(true)" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.4);color:#fff;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;">Свернуть всё</button>
@@ -951,6 +951,7 @@
       <td><span class="badge" style="background:#fdf1ee;color:#993C1D;">пропущена</span></td>
     </tr>
     <tr><td>09.08.26</td><td>Вс</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
+    <tr><td>11.08.26</td><td>Вт</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
   </tbody>
 </table>
 </div>
@@ -958,7 +959,7 @@
   ℹ Схема ХГЧ (Вт/Чт/Вс, 500 ед) в целом соблюдается, но с эпизодическими пропусками (21.07, 26.07, 06.08).
 </div>
 <details style="margin-bottom:12px;">
-  <summary style="cursor:pointer;font-size:12px;color:#3C3489;padding:6px 0;">Показать более раннюю историю (30 записей)</summary>
+  <summary style="cursor:pointer;font-size:12px;color:#3C3489;padding:6px 0;">Показать более раннюю историю (31 запись)</summary>
   <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
 <table style="margin-top:8px;">
     <thead>
@@ -994,6 +995,7 @@
       <tr><td>19.07.26</td><td>Вс</td><td>—</td><td><span class="badge" style="background:#f5f5f4;color:#666;">пропущена</span></td></tr>
       <tr><td>21.07.26</td><td>Вт</td><td>—</td><td><span class="badge" style="background:#fdf1ee;color:#993C1D;">забыл сделать</span></td></tr>
       <tr><td>22.07.26</td><td>Ср</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
+      <tr><td>24.07.26</td><td>Пт</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
       <tr><td>19.07.26</td><td>Вс</td><td>—</td><td><span class="badge" style="background:#f5f5f4;color:#666;">пропущена</span></td></tr>
     </tbody>
   </table>
@@ -1319,7 +1321,6 @@ new Chart(document.getElementById('pltChart'), {
   Данные носят информационный характер. Интерпретацию и рекомендации даёт лечащий врач.
 </div>
 
-</div>
 <!-- ===== ПРОТОКОЛ ДОБАВОК ===== -->
 <div class="section-title" style="margin-top:32px;">Протокол добавок и препаратов — расписание по времени суток</div>
 <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
@@ -1450,10 +1451,10 @@ new Chart(document.getElementById('pltChart'), {
 </div>
 
 <script>
-const bLabels = ["05-01","05-04","05-05","05-06","05-08","05-10","05-12","05-13","05-17","05-18","05-19","05-24","05-25","05-26","05-27","05-29","05-31","06-01","06-03","06-04","06-05","06-06","06-07","06-11","06-12","06-15","06-16","06-21","06-24","06-25","06-26","06-27","06-28","06-29","07-02","07-03","07-04","07-05","07-08","07-09","07-12","07-14","08-04"];
-const bWeight = [69.0,69.1,69.3,69.2,69.5,69.8,69.7,69.5,69.6,69.0,68.8,68.8,68.0,67.2,68.2,68.2,68.3,67.8,67.35,67.85,67.85,68.0,66.8,67.35,66.65,67.7,67.5,67.65,67.3,67.6,67.35,66.9,66.75,66.75,66.85,67.7,68.1,67.25,67.6,67.2,67.2,66.5,65.40];
-const bFat    = [22.0,22.2,22.2,21.6,22.2,22.4,22.5,22.4,22.3,22.0,21.8,22.0,21.1,20.9,21.4,21.3,21.5,21.2,21.0,21.1,21.2,21.2,20.3,20.9,20.1,20.9,20.9,20.8,20.8,21.0,20.7,20.5,20.6,20.5,20.6,21.0,21.2,20.9,20.9,20.8,21.0,20.35,19.4];
-const bMuscle = [51.0,51.0,51.2,51.5,51.3,51.4,51.2,51.2,51.3,51.0,51.0,50.9,50.9,50.5,50.9,50.9,50.8,50.66,50.43,50.78,50.73,50.79,50.49,50.56,50.53,50.76,50.63,50.84,50.55,50.64,50.63,50.46,50.27,50.33,50.37,50.71,50.91,50.47,50.72,50.47,50.38,50.23,49.97];
+const bLabels = ["05-01","05-04","05-05","05-06","05-08","05-10","05-12","05-13","05-17","05-18","05-19","05-24","05-25","05-26","05-27","05-29","05-31","06-01","06-03","06-04","06-05","06-06","06-07","06-11","06-12","06-15","06-16","06-21","06-24","06-25","06-26","06-27","06-28","06-29","07-02","07-03","07-04","07-05","07-08","07-09","07-12","07-14","08-04","08-11"];
+const bWeight = [69.0,69.1,69.3,69.2,69.5,69.8,69.7,69.5,69.6,69.0,68.8,68.8,68.0,67.2,68.2,68.2,68.3,67.8,67.35,67.85,67.85,68.0,66.8,67.35,66.65,67.7,67.5,67.65,67.3,67.6,67.35,66.9,66.75,66.75,66.85,67.7,68.1,67.25,67.6,67.2,67.2,66.5,65.40,65.25];
+const bFat    = [22.0,22.2,22.2,21.6,22.2,22.4,22.5,22.4,22.3,22.0,21.8,22.0,21.1,20.9,21.4,21.3,21.5,21.2,21.0,21.1,21.2,21.2,20.3,20.9,20.1,20.9,20.9,20.8,20.8,21.0,20.7,20.5,20.6,20.5,20.6,21.0,21.2,20.9,20.9,20.8,21.0,20.35,19.4,19.4];
+const bMuscle = [51.0,51.0,51.2,51.5,51.3,51.4,51.2,51.2,51.3,51.0,51.0,50.9,50.9,50.5,50.9,50.9,50.8,50.66,50.43,50.78,50.73,50.79,50.49,50.56,50.53,50.76,50.63,50.84,50.55,50.64,50.63,50.46,50.27,50.33,50.37,50.71,50.91,50.47,50.72,50.47,50.38,50.23,49.97,49.89];
 
 // Метки вида "MM-DD" -> реальная дата 2026 года (все точки в пределах одного года)
 function bLabelToDate(lbl) {
@@ -1728,6 +1729,7 @@ document.querySelectorAll('.section-title').forEach(function(title) {
   });
 });
 </script>
+</div>
 <div class="no-collapse-boundary" style="text-align:center;padding:30px 0;border-top:1px solid #d3d1c7;margin-top:20px;">
   <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fsypkov.github.io%2Fbp-dashboard%2Flab-dashboard.html" alt="QR-код страницы" style="width:180px;height:180px;">
   <div style="font-size:11px;color:#888780;margin-top:8px;">Отсканируйте, чтобы открыть эту страницу — удобно показать врачу</div>
