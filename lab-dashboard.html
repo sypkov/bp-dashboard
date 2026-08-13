@@ -55,7 +55,7 @@
   <div class="header-text">
     <h1>Медицинский дашборд</h1>
     <p style="font-size:17px;font-weight:600;opacity:1;margin-top:6px;">Сыпков Алексей Васильевич</p>
-    <p style="margin-top:2px;">16.06.1980 · 46 лет · Последнее обновление: 11.08.26</p>
+    <p style="margin-top:2px;">16.06.1980 · 46 лет · Последнее обновление: 13.08.26</p>
     <div style="margin-top:10px;display:flex;gap:8px;">
       <button onclick="setAllSections(false)" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.4);color:#fff;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;">Развернуть всё</button>
       <button onclick="setAllSections(true)" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.4);color:#fff;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;">Свернуть всё</button>
@@ -508,7 +508,12 @@
     <tr><th>Показатель</th><th>Результат</th><th>Референс</th><th>Дата</th><th>Статус</th></tr>
   </thead>
   <tbody>
-    <tr><td>Креатинин</td><td>118 мкмоль/л</td><td>74–110</td><td>09.06.26</td><td><span class="badge badge-high">↑ выше нормы</span></td></tr>
+    <tr><td>Креатинин</td><td>122 мкмоль/л</td><td>74–110</td><td>13.08.26</td><td><span class="badge" style="background:#EEEDFE;color:#3C3489;">хронический baseline, см. ниже</span></td></tr>
+    <tr><td>Мочевина</td><td>7,7 ммоль/л</td><td>2,8–7,2</td><td>13.08.26</td><td><span class="badge badge-high">↑ чуть выше нормы, новая точка</span></td></tr>
+    <tr><td>Глюкоза</td><td>5,29 ммоль/л</td><td>4,10–5,90</td><td>13.08.26</td><td><span class="badge badge-ok">норма</span></td></tr>
+    <tr><td>Билирубин общий</td><td>11,2 мкмоль/л</td><td>5,0–21,0</td><td>13.08.26</td><td><span class="badge badge-ok">норма</span></td></tr>
+    <tr><td>Общий белок</td><td>77,3 г/л</td><td>66,0–83,0</td><td>13.08.26</td><td><span class="badge badge-ok">норма</span></td></tr>
+    <tr><td>Креатинин</td><td>118 мкмоль/л</td><td>74–110</td><td>09.06.26</td><td><span class="badge" style="background:#EEEDFE;color:#3C3489;">хронический baseline</span></td></tr>
     <tr><td>Глюкоза</td><td>5,05 ммоль/л</td><td>4,1–5,9</td><td>09.06.26</td><td><span class="badge badge-ok">норма</span></td></tr>
     <tr><td>АлАТ</td><td>17 Ед/л</td><td>&lt;41</td><td>31.05.26</td><td><span class="badge badge-ok">норма</span></td></tr>
     <tr><td>АсАТ</td><td>16 Ед/л</td><td>&lt;37</td><td>31.05.26</td><td><span class="badge badge-ok">норма</span></td></tr>
@@ -516,8 +521,14 @@
     <tr><td>Гамма-ГТ</td><td>18 Ед/л</td><td>&lt;49</td><td>31.05.26</td><td><span class="badge badge-ok">норма</span></td></tr>
     <tr><td>Фосфатаза щелочная</td><td>72 Ед/л</td><td>40–150</td><td>31.05.26</td><td><span class="badge badge-ok">норма</span></td></tr>
     <tr><td>Общий белок</td><td>69 г/л</td><td>64–83</td><td>31.05.26 · Invitro</td><td><span class="badge badge-ok">норма</span></td></tr>
+    <tr><td>Креатинин</td><td>133 мкмоль/л</td><td>74–110</td><td>16.12.2014</td><td><span class="badge" style="background:#EEEDFE;color:#3C3489;">хронический baseline</span></td></tr>
+    <tr><td>Креатинин</td><td>121 мкмоль/л</td><td>74–110</td><td>07.12.2014</td><td><span class="badge" style="background:#EEEDFE;color:#3C3489;">хронический baseline</span></td></tr>
+    <tr><td>Креатинин</td><td>113 мкмоль/л</td><td>74–110</td><td>13.07.2014</td><td><span class="badge" style="background:#EEEDFE;color:#3C3489;">хронический baseline</span></td></tr>
   </tbody>
 </table>
+</div>
+<div class="note-box">
+  ✓ <strong>Креатинин — хронически выше "популяционной" нормы уже 12+ лет</strong> (113/121/133 в 2014, 118/122 в 2026) — судя по всему, личный физиологический baseline (часто встречается при развитой мышечной массе, так как креатинин образуется из мышечного метаболизма), а не новая проблема с почками. <strong>Мочевина (7,7)</strong> — новая точка данных без такой длинной истории, стоит понаблюдать, но не повод для тревоги на фоне давно стабильного креатинина. Если беспокоит — можно спросить врача про СКФ и цистатин C (не зависят от мышечной массы, точнее отражают функцию почек).
 </div>
 
 <!-- ЛИПИДЫ -->
@@ -554,17 +565,18 @@
 </div>
 
 <!-- КОАГУЛОЛОГИЯ -->
-<div class="section-title">Коагулограмма (09.06.26)</div>
+<div class="section-title">Коагулограмма (13.08.26 / 09.06.26)</div>
 <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
 <table>
   <thead>
-    <tr><th>Показатель</th><th>Результат</th><th>Референс</th><th>Статус</th></tr>
+    <tr><th>Показатель</th><th>Результат</th><th>Референс</th><th>Дата</th><th>Статус</th></tr>
   </thead>
   <tbody>
-    <tr><td>Фибриноген</td><td>3,02 г/л</td><td>2,0–4,0</td><td><span class="badge badge-ok">норма</span></td></tr>
-    <tr><td>АЧТВ</td><td>40,8 сек</td><td>30,8–41,4</td><td><span class="badge badge-ok">норма</span></td></tr>
-    <tr><td>МНО</td><td>1,20</td><td>0,8–1,2</td><td><span class="badge badge-ok">норма</span></td></tr>
-    <tr><td>Протромбин %</td><td>73%</td><td>70–120</td><td><span class="badge badge-ok">норма</span></td></tr>
+    <tr><td>АЧТВ</td><td>40,9 сек</td><td>30,8–41,4</td><td>13.08.26</td><td><span class="badge badge-ok">норма</span></td></tr>
+    <tr><td>Фибриноген</td><td>3,02 г/л</td><td>2,0–4,0</td><td>09.06.26</td><td><span class="badge badge-ok">норма</span></td></tr>
+    <tr><td>АЧТВ</td><td>40,8 сек</td><td>30,8–41,4</td><td>09.06.26</td><td><span class="badge badge-ok">норма</span></td></tr>
+    <tr><td>МНО</td><td>1,20</td><td>0,8–1,2</td><td>09.06.26</td><td><span class="badge badge-ok">норма</span></td></tr>
+    <tr><td>Протромбин %</td><td>73%</td><td>70–120</td><td>09.06.26</td><td><span class="badge badge-ok">норма</span></td></tr>
   </tbody>
 </table>
 </div>
@@ -585,8 +597,15 @@
     <tr><td>HBsAg (гепатит B)</td><td><span class="badge badge-ok">не обнаружено</span></td><td>10.06.26</td></tr>
     <tr><td>Anti-HCV (гепатит C)</td><td><span class="badge badge-ok">не обнаружено</span></td><td>10.06.26</td></tr>
     <tr><td>Сифилис (Tr. pallidum)</td><td><span class="badge badge-ok">отрицательный</span></td><td>10.06.26</td></tr>
+    <tr><td>Сифилис (Tr. pallidum), повтор</td><td><span class="badge" style="background:#EEEDFE;color:#3C3489;">в обработке</span></td><td>13.08.26</td></tr>
   </tbody>
 </table>
+</div>
+
+<!-- ОБЩИЙ АНАЛИЗ МОЧИ -->
+<div class="section-title">Общий анализ мочи (13.08.26)</div>
+<div class="note-box">
+  ✓ Полностью без отклонений: белок, глюкоза, кетоны, нитриты, билирубин — не обнаружены/в норме. Бактерии не обнаружены. Эритроциты, лейкоциты, эпителий, цилиндры — все в пределах референса. Цвет соломенный, прозрачность полная, плотность 1.018 (норма 1.010–1.025), pH 5.0.
 </div>
 
 <!-- АРТЕРИАЛЬНОЕ ДАВЛЕНИЕ (ЖИВЫЕ ДАННЫЕ, 7 ДНЕЙ) -->
@@ -636,6 +655,7 @@
     <tr><td>Витамин B12</td><td>465 пг/мл</td><td><span class="badge badge-ok">норма (187–883)</span></td><td>13.07.26</td></tr>
     <tr><td>Кортизол (утро)</td><td>17,2 мкг/дл</td><td><span class="badge badge-ok">норма 3,7–19,4 (до 10:00)</span></td><td>13.07.26</td></tr>
     <tr><td>Витамин D (25-OH)</td><td>32,6 нг/мл</td><td><span class="badge badge-ok">целевой 30–60</span></td><td>10.07.25</td></tr>
+    <tr><td>Общий белок</td><td>77,3 г/л</td><td><span class="badge badge-ok">норма 66,0–83,0</span></td><td>13.08.26</td></tr>
     <tr><td>Общий белок</td><td>73,8 г/л</td><td><span class="badge badge-ok">норма 66–83</span></td><td>06.07.26</td></tr>
     <tr><td>Общий белок</td><td>69 г/л</td><td><span class="badge badge-ok">норма 64–83 · Invitro</span></td><td>31.05.26</td></tr>
     <tr><td>Пролактин</td><td>228,95 мМЕ/л</td><td><span class="badge badge-ok">норма</span></td><td>09.06.26</td></tr>
@@ -737,12 +757,13 @@
 </div>
 
 <!-- КЛЮЧЕВЫЕ ВЫВОДЫ -->
-<div class="section-title">Ключевые моменты для обсуждения с врачом (на 10.08.26)</div>
+<div class="section-title">Ключевые моменты для обсуждения с врачом (на 13.08.26)</div>
 <div class="warn-box">
   <strong>Требуют решения:</strong><br>
-  1. <strong>Проба на 60 мг/нед завершена (3 недели) — решение принято: остаёмся на 60 мг.</strong> По позиции врача, высокий тестостерон сам по себе не проблема на ГЗТ — значение имеют сопутствующие показатели. Тестостерон вырос до 34,1 (выше нормы 30,19), но ключевые метрики: <strong>эстрадиол стабильно выше нормы весь период</strong> (165→176→172, норма до 161) и <strong>гематокрит всё ещё повышен</strong> (52,4%, норма до 49,4, порог флеботомии 54%) — оба пока не нормализовались, хоть и не в критической зоне. При этом гематологически доза работает хорошо — тромбоциты и PDW продолжают улучшаться. <strong>Стратегия дальше:</strong> продолжаем 60 мг/нед; если гематокрит превысит 54% — пропуск инъекции той недели, как защитный клапан.<br>
-  2. <strong>Анальная трещина (с 27.07, К60.0)</strong> — тренировки полностью на паузе до восстановления, дата возврата не определена.<br>
-  3. ММП-9/ТИМП-1 и витамин K — KDL этот анализ не делает, нужно найти другую лабораторию.<br>
+  1. <strong>Мочевина 7,7 (13.08)</strong> — чуть выше нормы (2,8–7,2), первая такая точка данных. Креатинин (122) на этот раз не тревожит — обнаружена история с 2014 года (113/121/133), показывающая, что это хронический личный baseline, не новая проблема. Мочевину стоит понаблюдать на следующем контроле.<br>
+  2. <strong>Проба на 60 мг/нед завершена (3 недели) — решение принято: остаёмся на 60 мг.</strong> По позиции врача, высокий тестостерон сам по себе не проблема на ГЗТ — значение имеют сопутствующие показатели. Тестостерон вырос до 34,1 (выше нормы 30,19), но ключевые метрики: <strong>эстрадиол стабильно выше нормы весь период</strong> (165→176→172, норма до 161) и <strong>гематокрит всё ещё повышен</strong> (52,4%, норма до 49,4, порог флеботомии 54%) — оба пока не нормализовались, хоть и не в критической зоне. При этом гематологически доза работает хорошо — тромбоциты и PDW продолжают улучшаться. <strong>Стратегия дальше:</strong> продолжаем 60 мг/нед; если гематокрит превысит 54% — пропуск инъекции той недели, как защитный клапан.<br>
+  3. <strong>Анальная трещина (с 27.07, К60.0)</strong> — тренировки полностью на паузе до восстановления, дата возврата не определена.<br>
+  4. ММП-9/ТИМП-1 и витамин K — KDL этот анализ не делает, нужно найти другую лабораторию.<br>
 </div>
 <div class="note-box">
   <strong>Хорошие новости:</strong><br>
