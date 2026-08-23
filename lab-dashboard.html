@@ -55,7 +55,7 @@
   <div class="header-text">
     <h1>Медицинский дашборд</h1>
     <p style="font-size:17px;font-weight:600;opacity:1;margin-top:6px;">Сыпков Алексей Васильевич</p>
-    <p style="margin-top:2px;">16.06.1980 · 46 лет · Последнее обновление: 20.08.26</p>
+    <p style="margin-top:2px;">16.06.1980 · 46 лет · Последнее обновление: 23.08.26</p>
     <div style="margin-top:10px;display:flex;gap:8px;">
       <button onclick="setAllSections(false)" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.4);color:#fff;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;">Развернуть всё</button>
       <button onclick="setAllSections(true)" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.4);color:#fff;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;">Свернуть всё</button>
@@ -960,7 +960,6 @@
     <tr><th>Дата</th><th>День</th><th>Доза</th><th>Статус</th></tr>
   </thead>
   <tbody>
-    <tr><td>04.08.26</td><td>Вт</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
     <tr style="border-left:4px solid #e05a3a;background:#fdf1ee;">
       <td>06.08.26</td><td>Чт</td><td>—</td>
       <td><span class="badge" style="background:#fdf1ee;color:#993C1D;">пропущена</span></td>
@@ -970,14 +969,19 @@
     <tr><td>16.08.26</td><td>Вс</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
     <tr><td>18.08.26</td><td>Вт</td><td>500 ед</td><td><span class="badge badge-ok">выполнено · врач на дому</span></td></tr>
     <tr><td>20.08.26</td><td>Чт</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
+    <tr style="border-left:4px solid #F2C230;background:#fffbea;">
+      <td>23.08.26</td><td>Вс</td><td>500 ед</td>
+      <td><span class="badge" style="background:#fffbea;color:#8A5B00;">выполнено · депо-схема (1/3 нед)</span></td>
+    </tr>
   </tbody>
 </table>
 </div>
 <div class="note-box" style="margin-top:0;margin-bottom:12px;">
-  ℹ Схема ХГЧ (Вт/Чт/Вс, 500 ед) в целом соблюдается, но с эпизодическими пропусками (21.07, 26.07, 06.08).
+  ℹ <strong>Временная депо-схема ХГЧ (согласовано с д-ром Зеленским):</strong> расходуем 3 оставшиеся ампулы по 1500 ед — Вс+Вт по 500 ед (из ампул 500 ед) + Чт 1500 ед (из ампулы 1500 ед). Недельная доза временно растёт с 1500 до 2500 ед на 3 недели, затем возврат к стандартной схеме 500 ед.<br>
+  <strong>23.08.26 — начат Телмисартан 40 мг</strong> (впервые, для снижения гематокрита, согласовано с врачом). ОАК запланирован на завтра (24.08) для оценки эффекта.
 </div>
 <details style="margin-bottom:12px;">
-  <summary style="cursor:pointer;font-size:12px;color:#3C3489;padding:6px 0;">Показать более раннюю историю (34 записи)</summary>
+  <summary style="cursor:pointer;font-size:12px;color:#3C3489;padding:6px 0;">Показать более раннюю историю (35 записей)</summary>
   <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
 <table style="margin-top:8px;">
     <thead>
@@ -1017,6 +1021,7 @@
       <tr><td>26.07.26</td><td>Вс</td><td>—</td><td><span class="badge" style="background:#f5f5f4;color:#666;">пропущена</span></td></tr>
       <tr><td>27.07.26</td><td>Пн</td><td>1500 ед</td><td><span class="badge" style="background:#fffbea;color:#8A5B00;">выполнено · компенсация пропуска</span></td></tr>
       <tr><td>02.08.26</td><td>Вс</td><td>500 ед</td><td><span class="badge badge-ok">выполнено · возврат к обычной схеме</span></td></tr>
+      <tr><td>04.08.26</td><td>Вт</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
       <tr><td>19.07.26</td><td>Вс</td><td>—</td><td><span class="badge" style="background:#f5f5f4;color:#666;">пропущена</span></td></tr>
     </tbody>
   </table>
@@ -1033,8 +1038,6 @@
     <tr><th>Дата</th><th>День</th><th>Доза</th><th>Статус</th></tr>
   </thead>
   <tbody>
-    <tr><td>19.06.26</td><td>Пт</td><td>2,5 мг</td><td><span class="badge badge-ok">выполнено</span></td></tr>
-    <tr><td>03.07.26</td><td>Пт</td><td>2,5 мг</td><td><span class="badge badge-ok">выполнено</span></td></tr>
     <tr><td>10.07.26</td><td>Пт</td><td>2,5 мг</td><td><span class="badge badge-ok">выполнено</span></td></tr>
     <tr><td>17.07.26</td><td>Пт</td><td>2,5 мг</td><td><span class="badge badge-ok">выполнено</span></td></tr>
     <tr style="border-left:4px solid #12D6B8;">
@@ -1046,17 +1049,25 @@
       <td><span class="badge badge-ok">выполнено · доза снижена обратно</span></td>
     </tr>
     <tr style="border-left:4px solid #888780;background:#f5f5f4;">
-      <td><strong>07.08.26</strong></td><td><strong>Пт</strong></td><td>—</td>
-      <td><span class="badge" style="background:#f5f5f4;color:#666;">план · инъекция пропускается</span></td>
+      <td>07.08.26</td><td>Пт</td><td>—</td>
+      <td><span class="badge" style="background:#f5f5f4;color:#666;">пропущена</span></td>
+    </tr>
+    <tr style="border-left:4px solid #888780;background:#f5f5f4;">
+      <td>14.08.26</td><td>Пт</td><td>—</td>
+      <td><span class="badge" style="background:#f5f5f4;color:#666;">пропущена</span></td>
+    </tr>
+    <tr style="border-left:4px solid #888780;background:#f5f5f4;">
+      <td>21.08.26</td><td>Пт</td><td>—</td>
+      <td><span class="badge" style="background:#f5f5f4;color:#666;">пропущена</span></td>
     </tr>
   </tbody>
 </table>
 </div>
 <div class="note-box" style="margin-top:0;margin-bottom:12px;">
-  ℹ 24.07.26 — доза повышена с 2,5 до 5 мг/нед (цель: сдвинуть висцеральный жир с плато 11-12). 31.07.26 — возврат на 2,5 мг/нед (тренировки приостановлены из-за трещины). <strong>04.08.26 — решено пропустить инъекцию 07.08 целиком</strong>: состав тела (04.08) показал новый минимум веса (65,40 кг) и жира (19,4%, впервые ниже 20%), но впервые за долгое время мышечная масса помечена приложением как «нуждается в внимании» (49,97 кг) — первый признак возможной потери мышц на фоне нулевой активности и недавней дозы 5 мг.
+  ℹ 24.07.26 — доза повышена с 2,5 до 5 мг/нед (цель: сдвинуть висцеральный жир с плато 11-12). 31.07.26 — возврат на 2,5 мг/нед (тренировки приостановлены из-за трещины). <strong>С 04.08.26 — инъекции сознательно пропускаются подряд (07.08, 14.08, 21.08)</strong>: цель — немного набрать вес обратно и остановить снижение мышечной массы, которое впервые было отмечено 04.08 (49,97 кг, помечено приложением как «нуждается в внимании»).
 </div>
 <details style="margin-bottom:12px;">
-  <summary style="cursor:pointer;font-size:12px;color:#3C3489;padding:6px 0;">Показать более раннюю историю (18 записей)</summary>
+  <summary style="cursor:pointer;font-size:12px;color:#3C3489;padding:6px 0;">Показать более раннюю историю (20 записей)</summary>
   <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
 <table style="margin-top:8px;">
     <thead>
@@ -1081,6 +1092,8 @@
       <tr><td>29.05.26</td><td>Пт</td><td>2,5 мг</td><td><span class="badge badge-ok">выполнено</span></td></tr>
       <tr><td>05.06.26</td><td>Пт</td><td>2,5 мг</td><td><span class="badge badge-ok">выполнено</span></td></tr>
       <tr><td>12.06.26</td><td>Пт</td><td>2,5 мг</td><td><span class="badge badge-ok">выполнено</span></td></tr>
+      <tr><td>19.06.26</td><td>Пт</td><td>2,5 мг</td><td><span class="badge badge-ok">выполнено</span></td></tr>
+      <tr><td>03.07.26</td><td>Пт</td><td>2,5 мг</td><td><span class="badge badge-ok">выполнено</span></td></tr>
     </tbody>
   </table>
 </div>
@@ -1353,6 +1366,7 @@ new Chart(document.getElementById('pltChart'), {
     <tr><td>Утро, до завтрака</td><td>Хофитол (1/3)</td><td>Желчегонный + гепатопротектор, назначен андрологом 29.06 под гематокрит/вязкость</td></tr>
     <tr><td>Утро, натощак</td><td>Lacto-Fit Gold, 1 саше</td><td>—</td></tr>
     <tr><td>Утро</td><td>Витамин D3+K2 (Dr.Zubareva, 10000 МЕ/50 мкг)</td><td>Под подтверждённую недостаточность D (22,0 нг/мл, 13.07)</td></tr>
+    <tr><td>Утро (с 23.08.26)</td><td>Телмисартан 40 мг</td><td>Впервые начат — снижение гематокрита через блокаду AT1-рецепторов (согласовано с д-ром Зеленским). ОАК-контроль 24.08</td></tr>
     <tr><td>Завтрак</td><td>Яйцо, творог</td><td>Обеспечивает жир для усвоения цинка/омеги/витамина D</td></tr>
     <tr><td>После завтрака</td><td>Цинк пиколинат 22 мг + Omega 3-6-9 (NOW)</td><td>Omega 3-6-9 — вспомогательная, не основной инструмент под гематокрит</td></tr>
     <tr><td>11:30 (за час до обеда, натощак)</td><td>L-Тирозин 500 мг + Альфа-GPC 300 мг + L-Теанин/Инозитол 200 мг</td><td>Вместе, обильно запивая водой</td></tr>
