@@ -55,7 +55,7 @@
   <div class="header-text">
     <h1>Медицинский дашборд</h1>
     <p style="font-size:17px;font-weight:600;opacity:1;margin-top:6px;">Сыпков Алексей Васильевич</p>
-    <p style="margin-top:2px;">16.06.1980 · 46 лет · Последнее обновление: 23.08.26</p>
+    <p style="margin-top:2px;">16.06.1980 · 46 лет · Последнее обновление: 24.08.26</p>
     <div style="margin-top:10px;display:flex;gap:8px;">
       <button onclick="setAllSections(false)" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.4);color:#fff;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;">Развернуть всё</button>
       <button onclick="setAllSections(true)" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.4);color:#fff;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;">Свернуть всё</button>
@@ -67,9 +67,19 @@
 <div class="container">
 
 <!-- ГОРМОНЫ -->
-<div class="section-title">Гормоны (последний срез: 10.08.26 / 03.08.26 / 27.07.26 / 20.07.26)</div>
+<div class="section-title">Гормоны (последний срез: 24.08.26 / 10.08.26 / 03.08.26 / 27.07.26)</div>
 
 <div class="cards">
+  <div class="card" style="border:1.5px solid #e05a3a;">
+    <div class="card-label">Тестостерон общий<br><span style="font-size:10px;color:#aaa">24.08.26 · КДЛ</span></div>
+    <div class="card-value high">32,3 <span style="font-size:13px">нмоль/л</span><span class="flag flag-high">↑ выше нормы</span></div>
+    <div class="card-ref">Норма: 8,33–30,19 · чуть снизился (было 34,1), всё ещё выше</div>
+  </div>
+  <div class="card" style="border:1.5px solid #BA1717;">
+    <div class="card-label">Эстрадиол (Е2)<br><span style="font-size:10px;color:#aaa">24.08.26 · КДЛ</span></div>
+    <div class="card-value high">199 <span style="font-size:13px">пмоль/л</span><span class="flag flag-high">↑↑ заметный рост</span></div>
+    <div class="card-ref">Норма муж: 40–161 · выросло с 172, причина пока не ясна (доза ХГЧ на 24.08 ещё не менялась)</div>
+  </div>
   <div class="card" style="border:1.5px solid #BA1717;">
     <div class="card-label">Тестостерон общий<br><span style="font-size:10px;color:#aaa">10.08.26 · КДЛ</span></div>
     <div class="card-value high">34,1 <span style="font-size:13px">нмоль/л</span><span class="flag flag-high">↑↑ выше нормы</span></div>
@@ -183,12 +193,52 @@
 </div>
 
 <div class="warn-box">
-  ⚠ <strong>Проба на 60 мг завершена (10.08) — тестостерон превысил норму, решение принято: продолжаем.</strong> Эстрадиол: 220 (17.05) → 193 (09.06) → 236 (29.06) → 261 (06.07) → 113 (20.07, до эффекта 60 мг) → 165 (27.07, неделя 1) → 176 (03.08, неделя 2) → <strong>172 (10.08, неделя 3, стабильно выше нормы)</strong> пмоль/л. Тестостерон: 46,24 (29.06, пик) → 42,21 (06.07) → 27,25 (20.07, до эффекта 60 мг) → 22,8 (27.07, неделя 1) → 30,11 (03.08, неделя 2, на грани) → <strong>34,1 (10.08, неделя 3, выше нормы 30,19)</strong> нмоль/л. <strong>Важно:</strong> точка 20.07 — это не результат дозы 60 мг, а спад после пропущенной инъекции 16.07. По позиции врача, сама цифра T не проблема на ГЗТ — важнее эстрадиол и гематокрит, которые остаются выше нормы. <strong>С 23.08 — добавлен Телмисартан 40 мг</strong> для медикаментозного снижения гематокрита; отдельно временная депо-схема ХГЧ (2500 ед/нед на 3 недели вместо обычных 1500) может дополнительно влиять на оба показателя — стоит учитывать при следующем контроле. ФСГ ранее был подавлен до 0,09 мМЕ/мл — ожидаемо на ГЗТ.
+  ⚠ <strong>Проба на 60 мг завершена (10.08) — тестостерон превысил норму, решение принято: продолжаем.</strong> Эстрадиол: 220 (17.05) → 193 (09.06) → 236 (29.06) → 261 (06.07) → 113 (20.07, до эффекта 60 мг) → 165 (27.07, неделя 1) → 176 (03.08, неделя 2) → <strong>172 (10.08, неделя 3, стабильно выше нормы)</strong> пмоль/л. Тестостерон: 46,24 (29.06, пик) → 42,21 (06.07) → 27,25 (20.07, до эффекта 60 мг) → 22,8 (27.07, неделя 1) → 30,11 (03.08, неделя 2, на грани) → <strong>34,1 (10.08, неделя 3, выше нормы 30,19)</strong> нмоль/л. <strong>Важно:</strong> точка 20.07 — это не результат дозы 60 мг, а спад после пропущенной инъекции 16.07. По позиции врача, сама цифра T не проблема на ГЗТ — важнее эстрадиол и гематокрит, которые остаются выше нормы. <strong>С 23.08 — добавлен Телмисартан 40 мг</strong> для медикаментозного снижения гематокрита; <strong>с 24.08 — пауза в ХГЧ на пару недель по указанию врача</strong> (24.08 эстрадиол вырос до 199, причина пока не ясна — стоит проверить, как повлияет пауза в ХГЧ). ФСГ ранее был подавлен до 0,09 мМЕ/мл — ожидаемо на ГЗТ.
 </div>
 
 <!-- ГЕМАТОЛОГИЯ -->
-<div class="section-title">Гематология (10.08.26 / 03.08.26 / 27.07.26 / 20.07.26 / 13.07.26)</div>
+<div class="section-title">Гематология (24.08.26 / 10.08.26 / 03.08.26 / 27.07.26 / 20.07.26)</div>
 <div class="cards">
+  <div class="card" style="border:1.5px solid #e05a3a;">
+    <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">24.08.26 · КДЛ</span></div>
+    <div class="card-value high">52,3 <span style="font-size:13px">%</span><span class="flag flag-high">↓ 4-й замер подряд</span></div>
+    <div class="card-ref">Норма: 40,0–49,4 · устойчиво снижается 4 замера подряд (53,3→52,7→52,4→52,3) — стабильная схема 60 мг работает</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Эритроциты<br><span style="font-size:10px;color:#aaa">24.08.26 · КДЛ</span></div>
+    <div class="card-value high">5,81 <span style="font-size:13px">×10¹²/л</span><span class="flag flag-high">↑</span></div>
+    <div class="card-ref">Норма: 4,44–5,61 · без изменений</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Гемоглобин<br><span style="font-size:10px;color:#aaa">24.08.26 · КДЛ</span></div>
+    <div class="card-value high">173 <span style="font-size:13px">г/л</span><span class="flag flag-high">↑</span></div>
+    <div class="card-ref">Норма: 135–169</div>
+  </div>
+  <div class="card" style="border:1.5px solid #BA1717;">
+    <div class="card-label">Тромбоциты<br><span style="font-size:10px;color:#aaa">24.08.26 · КДЛ</span></div>
+    <div class="card-value low">151 <span style="font-size:13px">×10⁹/л</span><span class="flag flag-low">↓↓ откат</span></div>
+    <div class="card-ref">Норма: 166–308 · прервал серию из 3 нормальных замеров (169→151)</div>
+  </div>
+  <div class="card" style="border:1.5px solid #1D9E75;">
+    <div class="card-label">PDW (ширина тромб.)<br><span style="font-size:10px;color:#aaa">24.08.26 · КДЛ</span></div>
+    <div class="card-value ok">15,5 <span style="font-size:13px">%</span><span class="flag flag-ok">✓ норма!</span></div>
+    <div class="card-ref">Норма: 10,1–16,1 · полностью нормализовался (было 16,3)</div>
+  </div>
+  <div class="card">
+    <div class="card-label">MPV (средний объём тромб.)<br><span style="font-size:10px;color:#aaa">24.08.26 · КДЛ</span></div>
+    <div class="card-value ok">11,9 <span style="font-size:13px">фл</span><span class="flag flag-ok">✓ норма</span></div>
+    <div class="card-ref">Норма: 9,3–12,1 · впервые в норме (было 12,7)</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Лейкоциты<br><span style="font-size:10px;color:#aaa">24.08.26 · КДЛ</span></div>
+    <div class="card-value ok">7,54 <span style="font-size:13px">×10⁹/л</span></div>
+    <div class="card-ref">Норма: 3,91–8,77</div>
+  </div>
+  <div class="card">
+    <div class="card-label">СОЭ<br><span style="font-size:10px;color:#aaa">24.08.26 · КДЛ</span></div>
+    <div class="card-value ok">4 <span style="font-size:13px">мм/час</span></div>
+    <div class="card-ref">Норма: 0–15</div>
+  </div>
   <div class="card" style="border:1.5px solid #e05a3a;">
     <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">10.08.26 · КДЛ</span></div>
     <div class="card-value high">52,4 <span style="font-size:13px">%</span><span class="flag flag-high">↓ немного</span></div>
@@ -688,8 +738,9 @@
       <strong>03.08.26</strong> — <strong>Омнадрен 60 мг</strong> (3-я инъекция, неделя 2 фактического эффекта дозы). Тестостерон подошёл к верхней границе нормы (30,11), эстрадиол выше нормы (176) — проба ещё не завершена. Инъекция ГК+Маннитол (сеанс 4/~6-7).<br>
       <strong>10.08.26 — точка принятия решения (неделя 3):</strong> <strong>Омнадрен 60 мг</strong> (4-я инъекция подряд). Тестостерон 34,1 нмоль/л — <strong>впервые превысил норму</strong> (было 30,11). Эстрадиол 172 — стабильно выше нормы. При этом тромбоциты (169) и PDW (16,3%, почти норма) продолжили улучшаться третий раз подряд. Итог пробы: гематологически 60 мг работает хорошо, но гормонально доза избыточна на 3-й неделе — по позиции врача, важнее не сама цифра T, а эстрадиол/гематокрит, которые ещё не полностью нормализовались. <strong>Стратегия дальше:</strong> остаёмся на 60 мг/нед; если гематокрит превысит 54% — пропуск инъекции той недели. Инъекция ГК+Маннитол (сеанс 5/~6-7).<br>
       <strong>18.08.26</strong> — визит на дому: <strong>Омнадрен 60 мг</strong> (перенос с 17.08) + ХГЧ 500 ед (врач сделал сам, вместо самостоятельной инъекции).<br>
-      <strong>23.08.26</strong> — обсуждён и начат <strong>Телмисартан 40 мг</strong> — снижение гематокрита медикаментозно (блокада AT1-рецепторов), в дополнение к правилу «гематокрит &gt;54% → пропуск инъекции». Также начата временная депо-схема ХГЧ (Вс+Вт 500 ед + Чт 1500 ед, 3 недели, чтобы израсходовать оставшиеся ампулы 1500 ед). Первый ОАК-контроль на эффект телмисартана — 24.08.<br>
-      <strong>Акне:</strong> решение по системной терапии пока не найдено, продолжается топический уход (Циновит).
+      <strong>23.08.26</strong> — обсуждён и начат <strong>Телмисартан 40 мг</strong> — снижение гематокрита медикаментозно (блокада AT1-рецепторов), в дополнение к правилу «гематокрит &gt;54% → пропуск инъекции». Также обсуждалась временная депо-схема ХГЧ для расхода ампул 1500 ед — план не был реализован (см. визит 24.08).<br>
+      <strong>24.08.26</strong> — <strong>Омнадрен 60 мг</strong>. По итогам осмотра врач попросил <strong>сделать паузу в ХГЧ на пару недель</strong> — депо-схема отменена/приостановлена, не успев выйти за рамки обычной дозы.<br>
+      <strong>Акне:</strong> ✓ решено топически — комбинация спрея Циновит, шампуня Dercos anti-forfora 1,3% и, вероятно, цинка пиколината. Системная терапия не потребовалась.
     </div>
   </div>
   <div class="diag-card">
@@ -759,21 +810,22 @@
 </div>
 
 <!-- КЛЮЧЕВЫЕ ВЫВОДЫ -->
-<div class="section-title">Ключевые моменты для обсуждения с врачом (на 23.08.26)</div>
+<div class="section-title">Ключевые моменты для обсуждения с врачом (на 24.08.26)</div>
 <div class="warn-box">
   <strong>Требуют внимания / контроля:</strong><br>
-  1. <strong>Телмисартан 40 мг — начат сегодня (23.08), первый ОАК-контроль завтра (24.08).</strong> Цель — снизить гематокрит медикаментозно (блокада AT1-рецепторов), в дополнение к правилу «гематокрит &gt;54% → пропуск инъекции Омнадрена». Эффект по литературе обычно накопительный (недели), не мгновенный — не стоит ждать резкого сдвига уже на первом контроле.<br>
-  2. <strong>Временная депо-схема ХГЧ (Вс+Вт 500 ед + Чт 1500 ед, 3 недели)</strong> — недельная доза выросла с 1500 до 2500 ед, чтобы израсходовать оставшиеся ампулы 1500 ед без хранения разведённого раствора. Стоит держать в уме как дополнительный фактор при интерпретации ближайших анализов на тестостерон/эстрадиол.<br>
-  3. <strong>Тирзепатид — сознательно пропускается третью неделю подряд</strong> (07.08, 14.08, 21.08) — цель: остановить снижение мышечной массы и немного набрать вес после того, как 04.08 впервые появился сигнал о потере мышц (49,97 кг).<br>
-  4. <strong>Мочевина 7,7 (13.08)</strong> — чуть выше нормы (2,8–7,2), первая такая точка данных, стоит понаблюдать на следующем контроле. Креатинин (122) — не тревожит, хронический личный baseline с 2014 года.<br>
-  5. <strong>Гематокрит остаётся высоким: 52,4% (10.08)</strong> — три недели на 60 мг/нед не опустили его ниже 52%. Эстрадиол тоже стабильно выше нормы (172). Решение по дозе Омнадрена принято 10.08 (продолжаем 60 мг/нед), телмисартан — новая попытка справиться именно с гематокритом отдельно от дозы.<br>
+  1. <strong>Тромбоциты откатились: 151 (24.08)</strong> — прервали серию из 3 нормальных замеров подряд (167→169→151). Причина неясна — <strong>не депо-схема ХГЧ</strong> (её отличительная доза 1500 ед по четвергам на 24.08 ещё не наступала, была только обычная 500 ед в воскресенье 23.08). Стоит explicitly обсудить с врачом настоящую причину, не откладывая.<br>
+  2. <strong>Эстрадиол заметно вырос: 199 (24.08)</strong> — было 172 на 10.08. Причина пока не ясна: доза ХГЧ на этот момент не менялась (депо-эффект ещё не начался), Омнадрен стабильно 60 мг всё это время. Тестостерон при этом чуть снизился (32,3, было 34,1), но всё ещё выше нормы (30,19).<br>
+  3. <strong>С 24.08 — пауза в ХГЧ на пару недель</strong> (по указанию врача на визите 24.08). Ранее обсуждавшаяся депо-схема (Вс+Вт 500 ед + Чт 1500 ед) отменена — фактически так и не вышла за рамки обычной дозы, последний укол (23.08) был стандартным 500 ед.<br>
+  4. <strong>Тирзепатид — сознательно пропускается уже 3 недели подряд</strong> (07.08, 14.08, 21.08) — цель: остановить снижение мышечной массы и немного набрать вес после сигнала о потере мышц 04.08 (49,97 кг).<br>
+  5. <strong>Мочевина 7,7 (13.08)</strong> — чуть выше нормы (2,8–7,2), первая такая точка данных, стоит понаблюдать. Креатинин (122) — не тревожит, хронический личный baseline с 2014 года.<br>
   6. <strong>Анальная трещина (с 27.07, К60.0)</strong> — тренировки полностью на паузе до восстановления, дата возврата не определена.<br>
   7. ММП-9/ТИМП-1 и витамин K — KDL этот анализ не делает, нужно найти другую лабораторию.<br>
 </div>
 <div class="note-box">
   <strong>Хорошие новости:</strong><br>
-  ✓✓ <strong>Тромбоциты в норме третий раз подряд: 169×10⁹/л (10.08)</strong> — устойчивое улучшение (127→141→167→169), похоже на надёжный разворот долгого нисходящего тренда.<br>
-  ✓✓ PDW почти полностью нормализовался — 16,3% (норма до 16,1), было 21,0→17,5→16,3.<br>
+  ✓✓ <strong>Гематокрит устойчиво снижается 4 замера подряд</strong> (53,3%→52,7%→52,4%→52,3%) — похоже, стабильная схема 60 мг раз в неделю без пропусков сама по себе постепенно нормализует показатель, ещё до эффекта телмисартана (начат только 23.08).<br>
+  ✓✓ PDW полностью нормализовался — 15,5% (норма до 16,1), устойчивое улучшение (23,5→21,0→17,5→16,3→15,5).<br>
+  ✓✓ MPV впервые в норме — 11,9 (норма 9,3–12,1), было 12,7.<br>
   ✓ Сифилис (повторный тест, 13.08) — отрицательно.<br>
   ✓ СРБ (5,35) и гомоцистеин (12,88, норма) — скрытого воспаления/сосудистой проблемы не выявлено.<br>
   ✓ ТТГ (2,18, норма) — щитовидная железа в порядке, дополнительных вопросов не вызывает.<br>
@@ -782,11 +834,12 @@
   ✓ Общий анализ мочи (13.08) — полностью без отклонений.<br>
   ✓ <strong>Липидный профиль (09.07) существенно улучшился</strong> — триглицериды нормализовались (2,77→1,30), КА вошёл в норму (4,0→3,4), холестерин общий и ЛПВП в норме, ЛПНП 3,28 (вблизи оптимального).<br>
   ✓ Мочевая кислота нормализовалась — 459,5 (11.2024) → 381,7 (29.06.26), в пределах нормы.<br>
-  ✓ Витамин B12 (465, норма) — маловероятен как причина тромбоцитопении, тем более раз она уже разрешилась сама. Фолиевая кислота (3,9) у нижней границы — можно снять с наблюдения.<br>
+  ✓ Витамин B12 (465, норма) — маловероятен как причина тромбоцитопении. Фолиевая кислота (3,9) у нижней границы — можно снять с наблюдения.<br>
   ✓ Витамин D — 22,0 нг/мл (недостаточность), добавка начата (D3+K2, 10000 МЕ/50 мкг) — контроль ~октябрь 2026.<br>
   ✓ Пролактин — в норме.<br>
   ✓ Инфекции (ВИЧ, гепатиты B/C, сифилис) — отрицательные.<br>
   ✓ Глюкоза, HbA1c — в норме (Тирзепатид работает, гликемия под контролем).<br>
+  ✓ <strong>Акне — решено топически</strong> (Циновит, Dercos anti-forfora 1,3%, цинк пиколинат), системная терапия не потребовалась.<br>
 </div>
 <!-- ДИНАМИКА ТЕСТОСТЕРОНА -->
 <div class="section-title">Динамика тестостерона на фоне ГЗТ</div>
@@ -940,11 +993,15 @@
       <td>18.08.26</td><td>Вт <span style="font-size:10px;color:#888;">(перенос с Пн 17.08)</span></td><td>60 мг</td><td>7</td>
       <td><span class="badge badge-ok">выполнено · врач на дому</span></td>
     </tr>
+    <tr style="border-left:4px solid #534AB7;">
+      <td>24.08.26</td><td>Пн</td><td>60 мг</td><td>7</td>
+      <td><span class="badge badge-ok">выполнено · визит к врачу</span></td>
+    </tr>
   </tbody>
 </table>
 </div>
 <div class="note-box" style="margin-top:0;margin-bottom:12px;">
-  ✓ <strong>Проба завершена (10.08, неделя 3) — решение: остаёмся на 60 мг.</strong> Итог: гематологически доза работает хорошо (тромбоциты и PDW продолжают улучшаться). Тестостерон вырос до 34,1 (выше нормы 30,19), но по позиции врача сама по себе цифра T не проблема — важны эстрадиол и гематокрит, которые пока не полностью нормализовались, но и не критичны. Точка 20.07 в анализах отражала спад после пропуска 16.07, а не саму дозу 60 мг; реальные данные по эффекту — 27.07/03.08/10.08. <strong>Правило безопасности:</strong> если гематокрит превысит 54% — пропуск инъекции той недели.
+  ⚠ <strong>Проба завершена (10.08) — решение: остаёмся на 60 мг, но 24.08 принёс тревожный сигнал.</strong> Гематологически доза долго работала хорошо (тромбоциты 3 раза подряд в норме), но на 24.08 <strong>тромбоциты откатились до 151</strong> (норма 166-308) — стоит обсудить с врачом причину. Тестостерон снизился до 32,3 (был 34,1), но эстрадиол вырос до 199 (было 172) — возможно, из-за временной депо-схемы ХГЧ (2500 ед/нед с 23.08). Гематокрит держится на 52,3-52,4% несколько замеров подряд — <strong>с 23.08 добавлен Телмисартан 40 мг</strong> для медикаментозного снижения; эффект через день ещё не ожидался. <strong>Правило безопасности:</strong> если гематокрит превысит 54% — пропуск инъекции той недели.
 </div>
 <div class="note-box" style="margin-top:0;margin-bottom:12px;">
   ℹ <strong>Исходный план (20.07):</strong> Омнадрен 60 мг раз в неделю 3 недели подряд (20.07/27.07/03.08) вместо схемы 25 мг×2/нед — доктор был недоступен по чт/пт, а разовая недельная доза не даёт тестостерону падать ниже нормы между уколами. Это также давало более чистую оценку эффекта именно 60 мг — предыдущий период на этой дозе (22.06-05.07) был на фоне остаточного депо от более высоких доз. Итог пробы см. выше — тестостерон превысил норму на 3-й неделе (10.08).
@@ -967,28 +1024,25 @@
     <tr><th>Дата</th><th>День</th><th>Доза</th><th>Статус</th></tr>
   </thead>
   <tbody>
-    <tr style="border-left:4px solid #e05a3a;background:#fdf1ee;">
-      <td>06.08.26</td><td>Чт</td><td>—</td>
-      <td><span class="badge" style="background:#fdf1ee;color:#993C1D;">пропущена</span></td>
-    </tr>
     <tr><td>09.08.26</td><td>Вс</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
     <tr><td>11.08.26</td><td>Вт</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
     <tr><td>16.08.26</td><td>Вс</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
     <tr><td>18.08.26</td><td>Вт</td><td>500 ед</td><td><span class="badge badge-ok">выполнено · врач на дому</span></td></tr>
     <tr><td>20.08.26</td><td>Чт</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
-    <tr style="border-left:4px solid #F2C230;background:#fffbea;">
-      <td>23.08.26</td><td>Вс</td><td>500 ед</td>
-      <td><span class="badge" style="background:#fffbea;color:#8A5B00;">выполнено · депо-схема (1/3 нед)</span></td>
+    <tr><td>23.08.26</td><td>Вс</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
+    <tr style="border-left:4px solid #888780;background:#f5f5f4;">
+      <td>с 24.08.26</td><td>—</td><td>—</td>
+      <td><span class="badge" style="background:#f5f5f4;color:#666;">пауза ~2 недели (по указанию врача)</span></td>
     </tr>
   </tbody>
 </table>
 </div>
 <div class="note-box" style="margin-top:0;margin-bottom:12px;">
-  ℹ <strong>Временная депо-схема ХГЧ (согласовано с д-ром Зеленским):</strong> расходуем 3 оставшиеся ампулы по 1500 ед — Вс+Вт по 500 ед (из ампул 500 ед) + Чт 1500 ед (из ампулы 1500 ед). Недельная доза временно растёт с 1500 до 2500 ед на 3 недели, затем возврат к стандартной схеме 500 ед.<br>
-  <strong>23.08.26 — начат Телмисартан 40 мг</strong> (впервые, для снижения гематокрита, согласовано с врачом). ОАК запланирован на завтра (24.08) для оценки эффекта.
+  ℹ <strong>24.08.26 — врач попросил сделать паузу в ХГЧ на пару недель.</strong> Ранее обсуждавшаяся временная депо-схема (Вс+Вт 500 ед + Чт 1500 ед, для расхода ампул 1500 ед) отменена/приостановлена — на практике так и не вышла за рамки обычной дозы 500 ед (последняя доза 23.08 была стандартной).<br>
+  <strong>23.08.26 — начат Телмисартан 40 мг</strong> (для снижения гематокрита). <strong>ОАК 24.08:</strong> гематокрит продолжил плавно снижаться — 4-й замер подряд (53,3→52,7→52,4→52,3%), похоже, стабильная еженедельная доза Омнадрена 60 мг (без пропусков/метаний) сама по себе постепенно нормализует показатель, отдельно от телмисартана (начат только накануне, эффекта пока не ждали). Тромбоциты откатились до 151 (были 169) — причина пока не ясна, но точно не ХГЧ (депо-доза так и не наступила).
 </div>
 <details style="margin-bottom:12px;">
-  <summary style="cursor:pointer;font-size:12px;color:#3C3489;padding:6px 0;">Показать более раннюю историю (35 записей)</summary>
+  <summary style="cursor:pointer;font-size:12px;color:#3C3489;padding:6px 0;">Показать более раннюю историю (36 записей)</summary>
   <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
 <table style="margin-top:8px;">
     <thead>
@@ -1029,6 +1083,7 @@
       <tr><td>27.07.26</td><td>Пн</td><td>1500 ед</td><td><span class="badge" style="background:#fffbea;color:#8A5B00;">выполнено · компенсация пропуска</span></td></tr>
       <tr><td>02.08.26</td><td>Вс</td><td>500 ед</td><td><span class="badge badge-ok">выполнено · возврат к обычной схеме</span></td></tr>
       <tr><td>04.08.26</td><td>Вт</td><td>500 ед</td><td><span class="badge badge-ok">выполнено</span></td></tr>
+      <tr><td>06.08.26</td><td>Чт</td><td>—</td><td><span class="badge" style="background:#fdf1ee;color:#993C1D;">пропущена</span></td></tr>
       <tr><td>19.07.26</td><td>Вс</td><td>—</td><td><span class="badge" style="background:#f5f5f4;color:#666;">пропущена</span></td></tr>
     </tbody>
   </table>
@@ -1171,9 +1226,9 @@ Chart.register(protocolBandsPlugin);
 
 const labels = [
   '25.11.24', '10.07.25', '03.03', '22.03', '25.03\n↓250мг', '19.04', '27.04\n↓250мг',
-  '17.05', '27.05\n↓125мг', '31.05', '09.06', '10.06\n125мг', '22.06\n↓60мг', '29.06\ntrough', '06.07\n↓30×2', '20.07\n↓60мг', '27.07', '03.08', '10.08', ''
+  '17.05', '27.05\n↓125мг', '31.05', '09.06', '10.06\n125мг', '22.06\n↓60мг', '29.06\ntrough', '06.07\n↓30×2', '20.07\n↓60мг', '27.07', '03.08', '10.08', '24.08', ''
 ];
-const tData = [11.03, 13.08, 15.86, 9.35, null, 19.23, null, 28.25, null, 45.59, 38.08, null, null, 46.24, 42.21, 27.25, 22.8, 30.11, 34.1, null];
+const tData = [11.03, 13.08, 15.86, 9.35, null, 19.23, null, 28.25, null, 45.59, 38.08, null, null, 46.24, 42.21, 27.25, 22.8, 30.11, 34.1, 32.3, null];
 const tBands = [
   { start: 0, end: 4, color: pBandColor(PCOL.none, '22') },
   { start: 4, end: 8, color: pBandColor(PCOL.d250, '28') },
@@ -1181,7 +1236,7 @@ const tBands = [
   { start: 12, end: 14, color: pBandColor(PCOL.d60, '28') },
   { start: 14, end: 15, color: pBandColor(PCOL.d30x2, '28') },
   { start: 15, end: 16, color: pBandColor(PCOL.d25x2, '28') },
-  { start: 16, end: 20, color: pBandColor(PCOL.d60, '28') },
+  { start: 16, end: 21, color: pBandColor(PCOL.d60, '28') },
 ];
 
 new Chart(document.getElementById('testChart'), {
@@ -1275,16 +1330,16 @@ new Chart(document.getElementById('testChart'), {
   <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:#444;background:#fff;border:0.5px solid #d3d1c7;border-radius:20px;padding:3px 9px;"><span style="width:9px;height:9px;border-radius:50%;background:#E64980;display:inline-block;"></span>25 мг ×2/нед</div>
 </div>
 <script>
-const oakLabels = ['05.04.26', '19.04.26', '09.06.26', '29.06.26', '06.07.26', '13.07.26', '20.07.26', '27.07.26', '03.08.26', '10.08.26', ''];
+const oakLabels = ['05.04.26', '19.04.26', '09.06.26', '29.06.26', '06.07.26', '13.07.26', '20.07.26', '27.07.26', '03.08.26', '10.08.26', '24.08.26', ''];
 
 new Chart(document.getElementById('hctChart'), {
   type: 'line',
   data: {
     labels: oakLabels,
     datasets: [
-      { label: 'Гематокрит (%), KDL', data: [49.8, 52.4, 52.1, 53.0, 53.7, 54.2, 51.0, 53.3, 52.7, 52.4, null], borderColor: '#D85A30', backgroundColor: '#D85A3022', borderWidth: 2, pointRadius: 5, tension: 0.3, fill: true, spanGaps: true },
-      { label: 'Норма макс. (49,4%)', data: [49.4, 49.4, 49.4, 49.4, 49.4, 49.4, 49.4, 49.4, 49.4, 49.4, 49.4], borderColor: '#888', borderWidth: 1, borderDash: [5,5], pointRadius: 0 },
-      { label: 'Порог флеботомии (54%)', data: [54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54], borderColor: '#BA1717', borderWidth: 1, borderDash: [3,3], pointRadius: 0 },
+      { label: 'Гематокрит (%), KDL', data: [49.8, 52.4, 52.1, 53.0, 53.7, 54.2, 51.0, 53.3, 52.7, 52.4, 52.3, null], borderColor: '#D85A30', backgroundColor: '#D85A3022', borderWidth: 2, pointRadius: 5, tension: 0.3, fill: true, spanGaps: true },
+      { label: 'Норма макс. (49,4%)', data: [49.4, 49.4, 49.4, 49.4, 49.4, 49.4, 49.4, 49.4, 49.4, 49.4, 49.4, 49.4], borderColor: '#888', borderWidth: 1, borderDash: [5,5], pointRadius: 0 },
+      { label: 'Порог флеботомии (54%)', data: [54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54], borderColor: '#BA1717', borderWidth: 1, borderDash: [3,3], pointRadius: 0 },
     ]
   },
   options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 12 } }, protocolBands: { bands: [
@@ -1293,20 +1348,20 @@ new Chart(document.getElementById('hctChart'), {
     { start: 3, end: 4, color: pBandColor(PCOL.d60, '28') },
     { start: 4, end: 6, color: pBandColor(PCOL.d30x2, '28') },
     { start: 6, end: 7, color: pBandColor(PCOL.d25x2, '28') },
-    { start: 7, end: 11, color: pBandColor(PCOL.d60, '28') },
+    { start: 7, end: 12, color: pBandColor(PCOL.d60, '28') },
   ] } }, scales: { y: { min: 44, max: 56 } } }
 });
 
-const cbcLabels = ['09.06.26', '29.06.26', '06.07.26', '13.07.26', '20.07.26', '27.07.26', '03.08.26', '10.08.26', ''];
+const cbcLabels = ['09.06.26', '29.06.26', '06.07.26', '13.07.26', '20.07.26', '27.07.26', '03.08.26', '10.08.26', '24.08.26', ''];
 
 new Chart(document.getElementById('hgbChart'), {
   type: 'line',
   data: {
     labels: cbcLabels,
     datasets: [
-      { label: 'Гемоглобин (г/л), KDL', data: [174, 174, 178, 176, 169, 173, 178, 174, null], borderColor: '#534AB7', backgroundColor: '#534AB722', borderWidth: 2, pointRadius: 5, tension: 0.3, yAxisID: 'y', spanGaps: true },
-      { label: 'Эритроциты (×10¹²/л), KDL', data: [5.88, 5.89, 6.01, 6.01, 5.64, 5.87, 5.93, 5.81, null], borderColor: '#BA7517', backgroundColor: '#BA751722', borderWidth: 2, pointRadius: 5, tension: 0.3, yAxisID: 'y2', spanGaps: true },
-      { label: 'Норм. Hb макс (169)', data: [169, 169, 169, 169, 169, 169, 169, 169, 169], borderColor: '#888', borderWidth: 1, borderDash: [5,5], pointRadius: 0, yAxisID: 'y' },
+      { label: 'Гемоглобин (г/л), KDL', data: [174, 174, 178, 176, 169, 173, 178, 174, 173, null], borderColor: '#534AB7', backgroundColor: '#534AB722', borderWidth: 2, pointRadius: 5, tension: 0.3, yAxisID: 'y', spanGaps: true },
+      { label: 'Эритроциты (×10¹²/л), KDL', data: [5.88, 5.89, 6.01, 6.01, 5.64, 5.87, 5.93, 5.81, 5.81, null], borderColor: '#BA7517', backgroundColor: '#BA751722', borderWidth: 2, pointRadius: 5, tension: 0.3, yAxisID: 'y2', spanGaps: true },
+      { label: 'Норм. Hb макс (169)', data: [169, 169, 169, 169, 169, 169, 169, 169, 169, 169], borderColor: '#888', borderWidth: 1, borderDash: [5,5], pointRadius: 0, yAxisID: 'y' },
     ]
   },
   options: {
@@ -1316,7 +1371,7 @@ new Chart(document.getElementById('hgbChart'), {
       { start: 1, end: 2, color: pBandColor(PCOL.d60, '28') },
       { start: 2, end: 4, color: pBandColor(PCOL.d30x2, '28') },
       { start: 4, end: 5, color: pBandColor(PCOL.d25x2, '28') },
-      { start: 5, end: 9, color: pBandColor(PCOL.d60, '28') },
+      { start: 5, end: 10, color: pBandColor(PCOL.d60, '28') },
     ] } },
     scales: {
       y: { type: 'linear', position: 'left', min: 160, max: 182, title: { display: true, text: 'Hb г/л', font: { size: 10 } } },
@@ -1325,14 +1380,14 @@ new Chart(document.getElementById('hgbChart'), {
   }
 });
 
-const estLabels = ['17.05.26', '09.06.26', '29.06.26', '06.07.26', '20.07.26', '27.07.26', '03.08.26', '10.08.26', ''];
+const estLabels = ['17.05.26', '09.06.26', '29.06.26', '06.07.26', '20.07.26', '27.07.26', '03.08.26', '10.08.26', '24.08.26', ''];
 new Chart(document.getElementById('estradiolChart'), {
   type: 'line',
   data: {
     labels: estLabels,
     datasets: [
-      { label: 'Эстрадиол (пмоль/л), KDL', data: [220, 193, 236, 261, 113, 165, 176, 172, null], borderColor: '#993C1D', backgroundColor: '#993C1D22', borderWidth: 2, pointRadius: 5, tension: 0.3, fill: true, spanGaps: true },
-      { label: 'Верхняя норма (161)', data: [161, 161, 161, 161, 161, 161, 161, 161, 161], borderColor: '#1D9E75', borderWidth: 1, borderDash: [6,4], pointRadius: 0 },
+      { label: 'Эстрадиол (пмоль/л), KDL', data: [220, 193, 236, 261, 113, 165, 176, 172, 199, null], borderColor: '#993C1D', backgroundColor: '#993C1D22', borderWidth: 2, pointRadius: 5, tension: 0.3, fill: true, spanGaps: true },
+      { label: 'Верхняя норма (161)', data: [161, 161, 161, 161, 161, 161, 161, 161, 161, 161], borderColor: '#1D9E75', borderWidth: 1, borderDash: [6,4], pointRadius: 0 },
     ]
   },
   options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 12 } }, protocolBands: { bands: [
@@ -1341,7 +1396,7 @@ new Chart(document.getElementById('estradiolChart'), {
     { start: 2, end: 3, color: pBandColor(PCOL.d60, '28') },
     { start: 3, end: 4, color: pBandColor(PCOL.d30x2, '28') },
     { start: 4, end: 5, color: pBandColor(PCOL.d25x2, '28') },
-    { start: 5, end: 9, color: pBandColor(PCOL.d60, '28') },
+    { start: 5, end: 10, color: pBandColor(PCOL.d60, '28') },
   ] } }, scales: { y: { min: 90, max: 280, title: { display: true, text: 'пмоль/л', font: { size: 10 } } } } }
 });
 
@@ -1350,8 +1405,8 @@ new Chart(document.getElementById('pltChart'), {
   data: {
     labels: cbcLabels,
     datasets: [
-      { label: 'Тромбоциты (×10⁹/л), KDL', data: [165, 169, 164, 156, 127, 141, 167, 169, null], borderColor: '#1D9E75', backgroundColor: '#1D9E7522', borderWidth: 2, pointRadius: 5, tension: 0.3, fill: true, spanGaps: true },
-      { label: 'Норма мин. (166)', data: [166, 166, 166, 166, 166, 166, 166, 166, 166], borderColor: '#888', borderWidth: 1, borderDash: [5,5], pointRadius: 0 },
+      { label: 'Тромбоциты (×10⁹/л), KDL', data: [165, 169, 164, 156, 127, 141, 167, 169, 151, null], borderColor: '#1D9E75', backgroundColor: '#1D9E7522', borderWidth: 2, pointRadius: 5, tension: 0.3, fill: true, spanGaps: true },
+      { label: 'Норма мин. (166)', data: [166, 166, 166, 166, 166, 166, 166, 166, 166, 166], borderColor: '#888', borderWidth: 1, borderDash: [5,5], pointRadius: 0 },
     ]
   },
   options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 12 } } }, scales: { y: { min: 100, max: 220 } } }
@@ -1388,7 +1443,7 @@ new Chart(document.getElementById('pltChart'), {
 </div>
 <div class="note-box" style="margin-bottom:16px;">
   <strong>Назначено 13.07.26:</strong> ЛимфоТранзит (2 капс. утром с едой, курс под отёчность — мочегонный эффект, требует усиленной гидратации на курсе) — официально прописан врачом, ранее только обсуждался.<br>
-  Обсуждается, но не внедрено: Аргинин (3-6 г утром натощак, курс 4-8 нед — под обсуждение с кардиологом/андрологом), Цитруллин малат/Бета-аланин/HMB/Tart Cherry (под возврат к тренировкам). Акнекутан/изотретиноин микродозинг — на паузе, тема отложена минимум на 6 мес.
+  Обсуждается, но не внедрено: Аргинин (3-6 г утром натощак, курс 4-8 нед — под обсуждение с кардиологом/андрологом), Цитруллин малат/Бета-аланин/HMB/Tart Cherry (под возврат к тренировкам). Акнекутан/изотретиноин микродозинг — тема закрыта, акне решено топически (Циновит + Dercos anti-forfora 1,3% + цинк пиколинат).
 </div>
 
 <!-- ===== СОСТАВ ТЕЛА ===== -->
