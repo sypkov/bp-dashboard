@@ -11,6 +11,13 @@
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f4f3ee; color: #2c2c2a; font-size: 14px; }
   .header { background: #534AB7; color: #fff; padding: 20px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
   .sticky-panel { position: sticky; top: 0; z-index: 50; background: #fff; border-bottom: 1px solid #d3d1c7; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 8px 12px; }
+  .sticky-item { cursor: pointer; transition: transform 0.1s; }
+  .sticky-item:active { transform: scale(0.96); }
+  @media (max-width: 520px) {
+    .sticky-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+    .sticky-item .sv { font-size: 14px; }
+    .sticky-item .sl { font-size: 8px; }
+  }
   .sticky-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
   .sticky-item { border-radius: 8px; padding: 6px 4px; text-align: center; border: 1.5px solid; }
   .sticky-item .sl { font-size: 9px; text-transform: uppercase; letter-spacing: 0.02em; opacity: 0.75; white-space: nowrap; }
@@ -76,25 +83,25 @@
 
 <div class="sticky-panel">
   <div class="sticky-grid">
-    <div class="sticky-item sticky-warn">
+    <div class="sticky-item sticky-warn" onclick="goToSection('sec-hematology')">
       <div class="sl">Гематокрит</div>
       <div class="sv">52,3%</div>
       <svg class="spark" id="sparkHct" viewBox="0 0 100 28" preserveAspectRatio="none"></svg>
       <div class="st">↓ с 52,4</div>
     </div>
-    <div class="sticky-item sticky-warn">
+    <div class="sticky-item sticky-warn" onclick="goToSection('sec-hormones')">
       <div class="sl">Тестостерон</div>
       <div class="sv">32,3</div>
       <svg class="spark" id="sparkT" viewBox="0 0 100 28" preserveAspectRatio="none"></svg>
       <div class="st">↓ с 34,1</div>
     </div>
-    <div class="sticky-item sticky-bad">
+    <div class="sticky-item sticky-bad" onclick="goToSection('sec-hormones')">
       <div class="sl">Эстрадиол</div>
       <div class="sv">199</div>
       <svg class="spark" id="sparkE2" viewBox="0 0 100 28" preserveAspectRatio="none"></svg>
       <div class="st">↑ с 172</div>
     </div>
-    <div class="sticky-item sticky-bad">
+    <div class="sticky-item sticky-bad" onclick="goToSection('sec-hematology')">
       <div class="sl">Тромбоциты</div>
       <div class="sv">151</div>
       <svg class="spark" id="sparkPlt" viewBox="0 0 100 28" preserveAspectRatio="none"></svg>
@@ -103,6 +110,23 @@
   </div>
 </div>
 <script>
+function goToSection(id) {
+  var title = document.getElementById(id);
+  if (!title) return;
+  if (title.classList.contains('collapsed')) {
+    setSectionCollapsed(title, false);
+  }
+  setTimeout(function() {
+    var top = title.getBoundingClientRect().top + window.pageYOffset - 70;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+    title.style.transition = 'background-color 0.3s';
+    var origBg = title.style.backgroundColor;
+    title.style.backgroundColor = '#EEEDFE';
+    setTimeout(function() { title.style.backgroundColor = origBg; }, 900);
+  }, 50);
+}
+</script>
+
 function renderSparkline(id, values, color) {
   var svg = document.getElementById(id);
   if (!svg || !values || values.length < 2) return;
@@ -145,7 +169,7 @@ renderSparkline('sparkPlt', [127, 141, 167, 169, 151], '#1D9E75');
 <div class="container">
 
 <!-- ГОРМОНЫ -->
-<div class="section-title">Гормоны (последний срез: 24.08.26 / 10.08.26 / 03.08.26 / 27.07.26)</div>
+<div class="section-title" id="sec-hormones">Гормоны (последний срез: 24.08.26 / 10.08.26 / 03.08.26 / 27.07.26)</div>
 
 <div class="cards">
   <div class="card" style="border:1.5px solid #e05a3a;">
@@ -275,7 +299,7 @@ renderSparkline('sparkPlt', [127, 141, 167, 169, 151], '#1D9E75');
 </div>
 
 <!-- ГЕМАТОЛОГИЯ -->
-<div class="section-title">Гематология (24.08.26 / 10.08.26 / 03.08.26 / 27.07.26 / 20.07.26)</div>
+<div class="section-title" id="sec-hematology">Гематология (24.08.26 / 10.08.26 / 03.08.26 / 27.07.26 / 20.07.26)</div>
 <div class="cards">
   <div class="card" style="border:1.5px solid #e05a3a;">
     <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">24.08.26 · КДЛ</span></div>
