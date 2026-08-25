@@ -10,6 +10,16 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f4f3ee; color: #2c2c2a; font-size: 14px; }
   .header { background: #534AB7; color: #fff; padding: 20px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .sticky-panel { position: sticky; top: 0; z-index: 50; background: #fff; border-bottom: 1px solid #d3d1c7; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 8px 12px; }
+  .sticky-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .sticky-item { border-radius: 8px; padding: 6px 4px; text-align: center; border: 1.5px solid; }
+  .sticky-item .sl { font-size: 9px; text-transform: uppercase; letter-spacing: 0.02em; opacity: 0.75; white-space: nowrap; }
+  .sticky-item .sv { font-size: 15px; font-weight: 700; margin-top: 1px; white-space: nowrap; }
+  .sticky-item .st { font-size: 10px; margin-top: 1px; white-space: nowrap; }
+  .spark { display: block; width: 100%; height: 20px; margin: 2px 0; }
+  .sticky-ok { background: #E1F5EE; border-color: #5DCAA5; color: #085041; }
+  .sticky-warn { background: #FFF6DD; border-color: #E0AA2E; color: #7A5A00; }
+  .sticky-bad { background: #FAECE7; border-color: #D85A30; color: #993C1D; }
   .header-text h1 { font-size: 20px; font-weight: 500; }
   .header-text p { font-size: 13px; opacity: 0.8; margin-top: 4px; }
   .header-icon { width: 48px; height: 48px; flex-shrink: 0; border-radius: 10px; }
@@ -63,6 +73,74 @@
   </div>
   <img src="Shield.png" alt="" class="header-icon">
 </div>
+
+<div class="sticky-panel">
+  <div class="sticky-grid">
+    <div class="sticky-item sticky-warn">
+      <div class="sl">Гематокрит</div>
+      <div class="sv">52,3%</div>
+      <svg class="spark" id="sparkHct" viewBox="0 0 100 28" preserveAspectRatio="none"></svg>
+      <div class="st">↓ с 52,4</div>
+    </div>
+    <div class="sticky-item sticky-warn">
+      <div class="sl">Тестостерон</div>
+      <div class="sv">32,3</div>
+      <svg class="spark" id="sparkT" viewBox="0 0 100 28" preserveAspectRatio="none"></svg>
+      <div class="st">↓ с 34,1</div>
+    </div>
+    <div class="sticky-item sticky-bad">
+      <div class="sl">Эстрадиол</div>
+      <div class="sv">199</div>
+      <svg class="spark" id="sparkE2" viewBox="0 0 100 28" preserveAspectRatio="none"></svg>
+      <div class="st">↑ с 172</div>
+    </div>
+    <div class="sticky-item sticky-bad">
+      <div class="sl">Тромбоциты</div>
+      <div class="sv">151</div>
+      <svg class="spark" id="sparkPlt" viewBox="0 0 100 28" preserveAspectRatio="none"></svg>
+      <div class="st">↓ с 169</div>
+    </div>
+  </div>
+</div>
+<script>
+function renderSparkline(id, values, color) {
+  var svg = document.getElementById(id);
+  if (!svg || !values || values.length < 2) return;
+  var w = 100, h = 28, pad = 2;
+  var min = Math.min.apply(null, values);
+  var max = Math.max.apply(null, values);
+  var range = (max - min) || 1;
+  var step = (w - pad * 2) / (values.length - 1);
+  var pts = values.map(function(v, i) {
+    var x = pad + i * step;
+    var y = h - pad - ((v - min) / range) * (h - pad * 2);
+    return x.toFixed(1) + ',' + y.toFixed(1);
+  }).join(' ');
+  var ns = 'http://www.w3.org/2000/svg';
+  var poly = document.createElementNS(ns, 'polyline');
+  poly.setAttribute('points', pts);
+  poly.setAttribute('fill', 'none');
+  poly.setAttribute('stroke', color);
+  poly.setAttribute('stroke-width', '2');
+  poly.setAttribute('stroke-linecap', 'round');
+  poly.setAttribute('stroke-linejoin', 'round');
+  svg.appendChild(poly);
+  var lastI = values.length - 1;
+  var lastX = pad + lastI * step;
+  var lastY = h - pad - ((values[lastI] - min) / range) * (h - pad * 2);
+  var dot = document.createElementNS(ns, 'circle');
+  dot.setAttribute('cx', lastX);
+  dot.setAttribute('cy', lastY);
+  dot.setAttribute('r', '2.6');
+  dot.setAttribute('fill', color);
+  svg.appendChild(dot);
+}
+// Последние 5 замеров: 20.07 / 27.07 / 03.08 / 10.08 / 24.08
+renderSparkline('sparkHct', [51.0, 53.3, 52.7, 52.4, 52.3], '#D85A30');
+renderSparkline('sparkT', [27.25, 22.8, 30.11, 34.1, 32.3], '#534AB7');
+renderSparkline('sparkE2', [113, 165, 176, 172, 199], '#993C1D');
+renderSparkline('sparkPlt', [127, 141, 167, 169, 151], '#1D9E75');
+</script>
 
 <div class="container">
 
@@ -1224,6 +1302,25 @@ const protocolBandsPlugin = {
 };
 Chart.register(protocolBandsPlugin);
 
+// Плагин для горизонтальных цветных зон по оси Y (целевые/пороговые диапазоны)
+const yZonesPlugin = {
+  id: 'yZones',
+  beforeDraw(chart, args, opts) {
+    if (!opts || !opts.zones) return;
+    const { ctx, chartArea, scales } = chart;
+    const yScale = scales.y;
+    ctx.save();
+    opts.zones.forEach(z => {
+      const yTop = yScale.getPixelForValue(z.to);
+      const yBottom = yScale.getPixelForValue(z.from);
+      ctx.fillStyle = z.color;
+      ctx.fillRect(chartArea.left, yTop, chartArea.width, yBottom - yTop);
+    });
+    ctx.restore();
+  }
+};
+Chart.register(yZonesPlugin);
+
 const labels = [
   '25.11.24', '10.07.25', '03.03', '22.03', '25.03\n↓250мг', '19.04', '27.04\n↓250мг',
   '17.05', '27.05\n↓125мг', '31.05', '09.06', '10.06\n125мг', '22.06\n↓60мг', '29.06\ntrough', '06.07\n↓30×2', '20.07\n↓60мг', '27.07', '03.08', '10.08', '24.08', ''
@@ -1293,6 +1390,11 @@ new Chart(document.getElementById('testChart'), {
     plugins: {
       legend: { display: true, position: 'bottom', labels: { font: { size: 10 }, padding: 8, boxWidth: 12 } },
       protocolBands: { bands: tBands },
+      yZones: { zones: [
+        { from: 0, to: 8.33, color: '#BA751722' },
+        { from: 8.33, to: 30.19, color: '#1D9E7522' },
+        { from: 30.19, to: 52, color: '#D85A3033' },
+      ] },
       tooltip: { callbacks: { label: ctx => ctx.raw !== null ? ctx.dataset.label + ': ' + ctx.raw + ' нмоль/л' : '' } }
     },
     scales: {
@@ -1342,7 +1444,11 @@ new Chart(document.getElementById('hctChart'), {
       { label: 'Порог флеботомии (54%)', data: [54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54], borderColor: '#BA1717', borderWidth: 1, borderDash: [3,3], pointRadius: 0 },
     ]
   },
-  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 12 } }, protocolBands: { bands: [
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 12 } }, yZones: { zones: [
+    { from: 44, to: 49.4, color: '#1D9E7522' },
+    { from: 49.4, to: 54, color: '#E0AA2E22' },
+    { from: 54, to: 56, color: '#D85A3033' },
+  ] }, protocolBands: { bands: [
     { start: 0, end: 2, color: pBandColor(PCOL.d250, '28') },
     { start: 2, end: 3, color: pBandColor(PCOL.d125, '28') },
     { start: 3, end: 4, color: pBandColor(PCOL.d60, '28') },
@@ -1390,7 +1496,10 @@ new Chart(document.getElementById('estradiolChart'), {
       { label: 'Верхняя норма (161)', data: [161, 161, 161, 161, 161, 161, 161, 161, 161, 161], borderColor: '#1D9E75', borderWidth: 1, borderDash: [6,4], pointRadius: 0 },
     ]
   },
-  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 12 } }, protocolBands: { bands: [
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 12 } }, yZones: { zones: [
+    { from: 90, to: 161, color: '#1D9E7522' },
+    { from: 161, to: 280, color: '#D85A3033' },
+  ] }, protocolBands: { bands: [
     { start: 0, end: 1, color: pBandColor(PCOL.d250, '28') },
     { start: 1, end: 2, color: pBandColor(PCOL.d125, '28') },
     { start: 2, end: 3, color: pBandColor(PCOL.d60, '28') },
@@ -1409,7 +1518,10 @@ new Chart(document.getElementById('pltChart'), {
       { label: 'Норма мин. (166)', data: [166, 166, 166, 166, 166, 166, 166, 166, 166, 166], borderColor: '#888', borderWidth: 1, borderDash: [5,5], pointRadius: 0 },
     ]
   },
-  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 12 } } }, scales: { y: { min: 100, max: 220 } } }
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 12 } }, yZones: { zones: [
+    { from: 100, to: 166, color: '#D85A3033' },
+    { from: 166, to: 220, color: '#1D9E7522' },
+  ] } }, scales: { y: { min: 100, max: 220 } } }
 });
 </script>
 
@@ -1829,6 +1941,12 @@ document.querySelectorAll('.section-title').forEach(function(title) {
   title.addEventListener('click', function() {
     setSectionCollapsed(title, !title.classList.contains('collapsed'));
   });
+});
+
+// По умолчанию все секции свёрнуты, кроме "Ключевые моменты"
+document.querySelectorAll('.section-title').forEach(function(title) {
+  var isKeyMoments = title.textContent.indexOf('Ключевые моменты') !== -1;
+  setSectionCollapsed(title, !isKeyMoments);
 });
 </script>
 </div>
