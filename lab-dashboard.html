@@ -72,7 +72,7 @@
   <div class="header-text">
     <h1>Медицинский дашборд</h1>
     <p style="font-size:17px;font-weight:600;opacity:1;margin-top:6px;">Сыпков Алексей Васильевич</p>
-    <p style="margin-top:2px;">16.06.1980 · 46 лет · Последнее обновление: 24.08.26</p>
+    <p style="margin-top:2px;">16.06.1980 · 46 лет · Последнее обновление: 30.08.26</p>
     <div style="margin-top:10px;display:flex;gap:8px;">
       <button onclick="setAllSections(false)" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.4);color:#fff;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;">Развернуть всё</button>
       <button onclick="setAllSections(true)" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.4);color:#fff;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;">Свернуть всё</button>
@@ -83,11 +83,11 @@
 
 <div class="sticky-panel">
   <div class="sticky-grid">
-    <div class="sticky-item sticky-warn" onclick="goToSection('sec-hematology')">
+    <div class="sticky-item sticky-ok" onclick="goToSection('sec-hematology')">
       <div class="sl">Гематокрит</div>
-      <div class="sv">52,3%</div>
+      <div class="sv">49,2%</div>
       <svg class="spark" id="sparkHct" viewBox="0 0 100 28" preserveAspectRatio="none"></svg>
-      <div class="st">↓ с 52,4</div>
+      <div class="st">↓ с 52,3 · др. лаб.</div>
     </div>
     <div class="sticky-item sticky-warn" onclick="goToSection('sec-hormones')">
       <div class="sl">Тестостерон</div>
@@ -103,9 +103,9 @@
     </div>
     <div class="sticky-item sticky-bad" onclick="goToSection('sec-hematology')">
       <div class="sl">Тромбоциты</div>
-      <div class="sv">151</div>
+      <div class="sv">139</div>
       <svg class="spark" id="sparkPlt" viewBox="0 0 100 28" preserveAspectRatio="none"></svg>
-      <div class="st">↓ с 169</div>
+      <div class="st">↓ с 151</div>
     </div>
   </div>
 </div>
@@ -159,10 +159,10 @@ function renderSparkline(id, values, color) {
   svg.appendChild(dot);
 }
 // Последние 5 замеров: 20.07 / 27.07 / 03.08 / 10.08 / 24.08
-renderSparkline('sparkHct', [51.0, 53.3, 52.7, 52.4, 52.3], '#D85A30');
+renderSparkline('sparkHct', [53.3, 52.7, 52.4, 52.3, 49.2], '#D85A30');
 renderSparkline('sparkT', [27.25, 22.8, 30.11, 34.1, 32.3], '#534AB7');
 renderSparkline('sparkE2', [113, 165, 176, 172, 199], '#993C1D');
-renderSparkline('sparkPlt', [127, 141, 167, 169, 151], '#1D9E75');
+renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
 </script>
 
 <div class="container">
@@ -298,8 +298,18 @@ renderSparkline('sparkPlt', [127, 141, 167, 169, 151], '#1D9E75');
 </div>
 
 <!-- ГЕМАТОЛОГИЯ -->
-<div class="section-title" id="sec-hematology">Гематология (24.08.26 / 10.08.26 / 03.08.26 / 27.07.26 / 20.07.26)</div>
+<div class="section-title" id="sec-hematology">Гематология (26.08.26 / 24.08.26 / 10.08.26 / 03.08.26 / 27.07.26)</div>
 <div class="cards">
+  <div class="card" style="border:1.5px solid #BA1717;">
+    <div class="card-label">Тромбоциты<br><span style="font-size:10px;color:#aaa">26.08.26 · Гор. больница №9</span></div>
+    <div class="card-value low">139 <span style="font-size:13px">×10⁹/л</span><span class="flag flag-low">↓↓ ниже нормы</span></div>
+    <div class="card-ref">Норма прибора: 150–400 · продолжает снижаться (было 151 на 24.08, КДЛ)</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">26.08.26 · Гор. больница №9</span></div>
+    <div class="card-value ok">49,2 <span style="font-size:13px">%</span></div>
+    <div class="card-ref">Норма прибора: 35–50 (иная шкала, чем у КДЛ 40,0–49,4) — другой метод/прибор, сравнивать напрямую осторожно</div>
+  </div>
   <div class="card" style="border:1.5px solid #e05a3a;">
     <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">24.08.26 · КДЛ</span></div>
     <div class="card-value high">52,3 <span style="font-size:13px">%</span><span class="flag flag-high">↓ 4-й замер подряд</span></div>
@@ -716,20 +726,29 @@ renderSparkline('sparkPlt', [127, 141, 167, 169, 151], '#1D9E75');
 </div>
 
 <!-- КОАГУЛОЛОГИЯ -->
-<div class="section-title">Коагулограмма (13.08.26 / 09.06.26)</div>
+<div class="section-title">Коагулограмма (30.08.26 / 13.08.26 / 09.06.26)</div>
 <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
 <table>
   <thead>
     <tr><th>Показатель</th><th>Результат</th><th>Референс</th><th>Дата</th><th>Статус</th></tr>
   </thead>
   <tbody>
-    <tr><td>АЧТВ</td><td>40,9 сек</td><td>30,8–41,4</td><td>13.08.26</td><td><span class="badge badge-ok">норма</span></td></tr>
+    <tr><td>АЧТВ</td><td>39,9 сек</td><td>25,1–36,5 (ММК)</td><td>30.08.26</td><td><span class="badge badge-high">↑ выше по референсу ММК*</span></td></tr>
+    <tr><td>Тромбиновое время</td><td>12,00 сек</td><td>10,3–16,6</td><td>30.08.26</td><td><span class="badge badge-ok">норма</span></td></tr>
+    <tr><td>Протромбин по Квику</td><td>95%</td><td>70–120</td><td>30.08.26</td><td><span class="badge badge-ok">норма</span></td></tr>
+    <tr><td>МНО</td><td>1,04</td><td>0,8–1,2</td><td>30.08.26</td><td><span class="badge badge-ok">норма</span></td></tr>
+    <tr><td>Протромбиновое время</td><td>12,20 сек</td><td>9,4–12,5</td><td>30.08.26</td><td><span class="badge badge-ok">норма</span></td></tr>
+    <tr><td>Фибриноген</td><td>2,48 г/л</td><td>2–3,9</td><td>30.08.26</td><td><span class="badge badge-ok">норма</span></td></tr>
+    <tr><td>АЧТВ</td><td>40,9 сек</td><td>30,8–41,4 (КДЛ)</td><td>13.08.26</td><td><span class="badge badge-ok">норма</span></td></tr>
     <tr><td>Фибриноген</td><td>3,02 г/л</td><td>2,0–4,0</td><td>09.06.26</td><td><span class="badge badge-ok">норма</span></td></tr>
     <tr><td>АЧТВ</td><td>40,8 сек</td><td>30,8–41,4</td><td>09.06.26</td><td><span class="badge badge-ok">норма</span></td></tr>
     <tr><td>МНО</td><td>1,20</td><td>0,8–1,2</td><td>09.06.26</td><td><span class="badge badge-ok">норма</span></td></tr>
     <tr><td>Протромбин %</td><td>73%</td><td>70–120</td><td>09.06.26</td><td><span class="badge badge-ok">норма</span></td></tr>
   </tbody>
 </table>
+</div>
+<div class="note-box" style="margin-top:0;">
+  * АЧТВ 39,9 сек помечено ММК как выше нормы (референс лаборатории 25,1–36,5), но у КДЛ более широкий референс (30,8–41,4), где почти идентичный результат (40,9, 13.08) считался нормой. Разные лаборатории/реагенты — не обязательно новая проблема, но стоит показать оба результата врачу для трактовки.
 </div>
 
 <div class="note-box">
@@ -802,6 +821,8 @@ renderSparkline('sparkPlt', [127, 141, 167, 169, 151], '#1D9E75');
     <tr><td>ММП-9 / ТИМП-1</td><td>—</td><td><span class="badge" style="background:#EEEDFE;color:#3C3489;">назначено, результата ещё нет</span></td><td>27.07.26</td></tr>
     <tr><td>Витамин K</td><td>—</td><td><span class="badge" style="background:#EEEDFE;color:#3C3489;">назначено, результата ещё нет</span></td><td>27.07.26</td></tr>
     <tr><td>Витамин D (25-OH)</td><td>22,0 нг/мл</td><td><span class="badge badge-high">↓ недостаточность (20–30)</span></td><td>13.07.26</td></tr>
+    <tr><td>Витамин B9 (фолиевая)</td><td>8,38 нмоль/л (≈3,7 нг/мл)</td><td><span class="badge badge-high">норма, у нижней границы (7,0–39,7 нмоль/л)</span></td><td>30.08.26 · ММК</td></tr>
+    <tr><td>Витамин B12</td><td>501 пг/мл</td><td><span class="badge badge-ok">норма (197–771)</span></td><td>30.08.26 · ММК</td></tr>
     <tr><td>Витамин B9 (фолиевая)</td><td>3,9 нг/мл</td><td><span class="badge badge-high">норма, у нижней границы (3,1–20,5)</span></td><td>13.07.26</td></tr>
     <tr><td>Витамин B12</td><td>465 пг/мл</td><td><span class="badge badge-ok">норма (187–883)</span></td><td>13.07.26</td></tr>
     <tr><td>Кортизол (утро)</td><td>17,2 мкг/дл</td><td><span class="badge badge-ok">норма 3,7–19,4 (до 10:00)</span></td><td>13.07.26</td></tr>
@@ -911,10 +932,10 @@ renderSparkline('sparkPlt', [127, 141, 167, 169, 151], '#1D9E75');
 </div>
 
 <!-- КЛЮЧЕВЫЕ ВЫВОДЫ -->
-<div class="section-title">Ключевые моменты для обсуждения с врачом (на 24.08.26)</div>
+<div class="section-title">Ключевые моменты для обсуждения с врачом (на 26.08.26)</div>
 <div class="warn-box">
   <strong>Требуют внимания / контроля:</strong><br>
-  1. <strong>Тромбоциты откатились: 151 (24.08)</strong> — прервали серию из 3 нормальных замеров подряд (167→169→151). Причина неясна — <strong>не депо-схема ХГЧ</strong> (её отличительная доза 1500 ед по четвергам на 24.08 ещё не наступала, была только обычная 500 ед в воскресенье 23.08). Стоит explicitly обсудить с врачом настоящую причину, не откладывая.<br>
+  1. <strong>Тромбоциты продолжают снижаться: 139 (26.08, Гор. больница №9)</strong> — после отката до 151 на 24.08 (КДЛ), тренд не остановился (169→151→139). Это уже не разовое колебание, а устойчивое повторное снижение — стоит explicitly обсудить с врачом причину и, возможно, повторить в КДЛ для сверки методов (разные лаборатории/приборы).<br>
   2. <strong>Эстрадиол заметно вырос: 199 (24.08)</strong> — было 172 на 10.08. Причина пока не ясна: доза ХГЧ на этот момент не менялась (депо-эффект ещё не начался), Омнадрен стабильно 60 мг всё это время. Тестостерон при этом чуть снизился (32,3, было 34,1), но всё ещё выше нормы (30,19).<br>
   3. <strong>С 24.08 — пауза в ХГЧ на пару недель</strong> (по указанию врача на визите 24.08). Ранее обсуждавшаяся депо-схема (Вс+Вт 500 ед + Чт 1500 ед) отменена — фактически так и не вышла за рамки обычной дозы, последний укол (23.08) был стандартным 500 ед.<br>
   4. <strong>Тирзепатид — сознательно пропускается уже 3 недели подряд</strong> (07.08, 14.08, 21.08) — цель: остановить снижение мышечной массы и немного набрать вес после сигнала о потере мышц 04.08 (49,97 кг).<br>
@@ -1532,13 +1553,15 @@ new Chart(document.getElementById('estradiolChart'), {
   ] } }, scales: { y: { min: 90, max: 280, title: { display: true, text: 'пмоль/л', font: { size: 10 } } } } }
 });
 
+const pltLabels = ['09.06.26', '29.06.26', '06.07.26', '13.07.26', '20.07.26', '27.07.26', '03.08.26', '10.08.26', '24.08.26', '26.08.26', ''];
 new Chart(document.getElementById('pltChart'), {
   type: 'line',
   data: {
-    labels: cbcLabels,
+    labels: pltLabels,
     datasets: [
-      { label: 'Тромбоциты (×10⁹/л), KDL', data: [165, 169, 164, 156, 127, 141, 167, 169, 151, null], borderColor: '#1D9E75', backgroundColor: '#1D9E7522', borderWidth: 2, pointRadius: 5, tension: 0.3, fill: true, spanGaps: true },
-      { label: 'Норма мин. (166)', data: [166, 166, 166, 166, 166, 166, 166, 166, 166, 166], borderColor: '#888', borderWidth: 1, borderDash: [5,5], pointRadius: 0 },
+      { label: 'Тромбоциты (×10⁹/л), KDL', data: [165, 169, 164, 156, 127, 141, 167, 169, 151, null, null], borderColor: '#1D9E75', backgroundColor: '#1D9E7522', borderWidth: 2, pointRadius: 5, tension: 0.3, fill: true, spanGaps: true },
+      { label: 'Тромбоциты, Гор. больница №9', data: [null, null, null, null, null, null, null, null, 151, 139, null], borderColor: '#BA1717', backgroundColor: 'transparent', borderWidth: 2, borderDash: [4,3], pointRadius: 5, pointStyle: 'triangle', tension: 0, spanGaps: true },
+      { label: 'Норма мин. (166)', data: [166, 166, 166, 166, 166, 166, 166, 166, 166, 166, 166], borderColor: '#888', borderWidth: 1, borderDash: [5,5], pointRadius: 0 },
     ]
   },
   options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 12 } }, yZones: { zones: [
