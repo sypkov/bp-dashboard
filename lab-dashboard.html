@@ -39,6 +39,9 @@
   .card-label { font-size: 11px; color: #888780; margin-bottom: 4px; line-height: 1.3; }
   .card-value { font-size: 20px; font-weight: 500; }
   .card-ref { font-size: 11px; color: #888780; margin-top: 2px; }
+  .date-divider { grid-column: 1 / -1; display: flex; align-items: center; gap: 8px; margin: 4px 0 2px; }
+  .date-divider::before, .date-divider::after { content: ''; flex: 1; height: 1px; background: #E4E2DC; }
+  .date-divider span { font-size: 11px; font-weight: 600; color: #A8A6A0; white-space: nowrap; letter-spacing: 0.02em; }
   .ok { color: #1D9E75; }
   .high { color: #D85A30; }
   .low { color: #BA7517; }
@@ -172,11 +175,13 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
 <div class="section-title" id="sec-hormones">Гормоны (последний срез: 30.08.26 / 24.08.26 / 10.08.26 / 03.08.26 / 27.07.26)</div>
 
 <div class="cards">
+  <div class="date-divider"><span>30.08.26</span></div>
   <div class="card" style="border:1.5px solid #1D9E75;">
     <div class="card-label">Тестостерон общий (trough)<br><span style="font-size:10px;color:#aaa">30.08.26 · ММК, комплексная панель</span></div>
     <div class="card-value ok">14,5 <span style="font-size:13px">нмоль/л</span><span class="flag flag-ok">✓ норма</span></div>
     <div class="card-ref">Норма: 8,64–29,0 · воскресенье, за день до укола — самый низкий (trough) уровень цикла, комфортно в норме</div>
   </div>
+  <div class="date-divider"><span>24.08.26</span></div>
   <div class="card" style="border:1.5px solid #e05a3a;">
     <div class="card-label">Тестостерон общий<br><span style="font-size:10px;color:#aaa">24.08.26 · КДЛ</span></div>
     <div class="card-value high">32,3 <span style="font-size:13px">нмоль/л</span><span class="flag flag-high">↑ выше нормы</span></div>
@@ -187,6 +192,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-value high">199 <span style="font-size:13px">пмоль/л</span><span class="flag flag-high">↑↑ заметный рост</span></div>
     <div class="card-ref">Норма муж: 40–161 · выросло с 172, причина пока не ясна (доза ХГЧ на 24.08 ещё не менялась)</div>
   </div>
+  <div class="date-divider"><span>10.08.26</span></div>
   <div class="card" style="border:1.5px solid #BA1717;">
     <div class="card-label">Тестостерон общий<br><span style="font-size:10px;color:#aaa">10.08.26 · КДЛ</span></div>
     <div class="card-value high">34,1 <span style="font-size:13px">нмоль/л</span><span class="flag flag-high">↑↑ выше нормы</span></div>
@@ -197,6 +203,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-value high">172 <span style="font-size:13px">пмоль/л</span><span class="flag flag-high">↑ выше</span></div>
     <div class="card-ref">Норма муж: 40–161 · стабильно выше (было 176)</div>
   </div>
+  <div class="date-divider"><span>03.08.26</span></div>
   <div class="card" style="border:1.5px solid #e05a3a;">
     <div class="card-label">Тестостерон общий<br><span style="font-size:10px;color:#aaa">03.08.26 · КДЛ</span></div>
     <div class="card-value high">30,11 <span style="font-size:13px">нмоль/л</span><span class="flag flag-high">⚠ на грани</span></div>
@@ -207,6 +214,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-value high">176 <span style="font-size:13px">пмоль/л</span><span class="flag flag-high">↑ выше</span></div>
     <div class="card-ref">Норма муж: 40–161 · продолжает расти (было 165)</div>
   </div>
+  <div class="date-divider"><span>27.07.26</span></div>
   <div class="card" style="border:1.5px solid #1D9E75;">
     <div class="card-label">Тестостерон общий<br><span style="font-size:10px;color:#aaa">27.07.26 · КДЛ</span></div>
     <div class="card-value ok">22,8 <span style="font-size:13px">нмоль/л</span><span class="flag flag-ok">✓ норма</span></div>
@@ -217,6 +225,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-value high">165 <span style="font-size:13px">пмоль/л</span><span class="flag flag-high">↑ чуть выше</span></div>
     <div class="card-ref">Норма муж: 40–161 · вышел за границу после возврата на 60 мг</div>
   </div>
+  <div class="date-divider"><span>20.07.26</span></div>
   <div class="card" style="border:1.5px solid #1D9E75;">
     <div class="card-label">Тестостерон общий<br><span style="font-size:10px;color:#aaa">20.07.26 · КДЛ</span></div>
     <div class="card-value ok">27,25 <span style="font-size:13px">нмоль/л</span><span class="flag flag-ok">✓ норма</span></div>
@@ -227,6 +236,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-value ok">113 <span style="font-size:13px">пмоль/л</span><span class="flag flag-ok">✓ норма</span></div>
     <div class="card-ref">Норма муж: 40–161 · впервые в норме</div>
   </div>
+  <div class="date-divider"><span>06.07.26</span></div>
   <div class="card" style="border:1.5px solid #e05a3a;">
     <div class="card-label">Эстрадиол (Е2)<br><span style="font-size:10px;color:#aaa">06.07.26 · КДЛ</span></div>
     <div class="card-value high">261 <span style="font-size:13px">пмоль/л</span><span class="flag flag-high">↑↑</span></div>
@@ -237,6 +247,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-value high">42,21 <span style="font-size:13px">нмоль/л</span><span class="flag flag-high">↑</span></div>
     <div class="card-ref">Норма: 8,33–30,19 · перед переходом на 30×2/нед</div>
   </div>
+  <div class="date-divider"><span>29.06.26</span></div>
   <div class="card" style="border:1.5px solid #e05a3a;">
     <div class="card-label">Тестостерон общий<br><span style="font-size:10px;color:#aaa">29.06.26 · КДЛ · trough</span></div>
     <div class="card-value high">46,24 <span style="font-size:13px">нмоль/л</span><span class="flag flag-high">↑↑</span></div>
@@ -247,6 +258,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-value high">236 <span style="font-size:13px">пмоль/л</span><span class="flag flag-high">↑↑</span></div>
     <div class="card-ref">Норма муж: 40–161 · растёт</div>
   </div>
+  <div class="date-divider"><span>ранняя история / до ГЗТ</span></div>
   <div class="card">
     <div class="card-label">Тестостерон общий<br><span style="font-size:10px;color:#aaa">09.06.26 · KDL</span></div>
     <div class="card-value high">38,08 <span style="font-size:13px">нмоль/л</span><span class="flag flag-high">↑</span></div>
@@ -306,16 +318,33 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
 <!-- ГЕМАТОЛОГИЯ -->
 <div class="section-title" id="sec-hematology">Гематология (26.08.26 / 24.08.26 / 10.08.26 / 03.08.26 / 27.07.26)</div>
 <div class="cards">
+  <div class="date-divider"><span>26.08.26</span></div>
   <div class="card" style="border:1.5px solid #BA1717;">
-    <div class="card-label">Тромбоциты<br><span style="font-size:10px;color:#aaa">26.08.26 · Гор. больница №9</span></div>
+    <div class="card-label">Тромбоциты<br><span style="font-size:10px;color:#aaa">26.08.26 · Гор. больница №8</span></div>
     <div class="card-value low">139 <span style="font-size:13px">×10⁹/л</span><span class="flag flag-low">↓↓ ниже нормы</span></div>
     <div class="card-ref">Норма прибора: 150–400 · продолжает снижаться (было 151 на 24.08, КДЛ)</div>
   </div>
   <div class="card">
-    <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">26.08.26 · Гор. больница №9</span></div>
+    <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">26.08.26 · Гор. больница №8</span></div>
     <div class="card-value ok">49,2 <span style="font-size:13px">%</span></div>
     <div class="card-ref">Норма прибора: 35–50 (иная шкала, чем у КДЛ 40,0–49,4) — другой метод/прибор, сравнивать напрямую осторожно</div>
   </div>
+  <div class="card">
+    <div class="card-label">MPV (средний объём тромб.)<br><span style="font-size:10px;color:#aaa">26.08.26 · Гор. больница №8</span></div>
+    <div class="card-value ok">7,5 <span style="font-size:13px">фл</span></div>
+    <div class="card-ref">Норма прибора: 7,0–11,0 · норма</div>
+  </div>
+  <div class="card">
+    <div class="card-label">PCT (тромбокрит)<br><span style="font-size:10px;color:#aaa">26.08.26 · Гор. больница №8</span></div>
+    <div class="card-value ok">0,104 <span style="font-size:13px">%</span></div>
+    <div class="card-ref">Норма прибора: 0,10–0,50 · норма</div>
+  </div>
+  <div class="card">
+    <div class="card-label">P-LCR (крупные тромбоциты)<br><span style="font-size:10px;color:#aaa">26.08.26 · Гор. больница №8</span></div>
+    <div class="card-value ok">15,5 <span style="font-size:13px">%</span></div>
+    <div class="card-ref">Норма прибора: 13,0–43,0 · норма</div>
+  </div>
+  <div class="date-divider"><span>24.08.26</span></div>
   <div class="card" style="border:1.5px solid #e05a3a;">
     <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">24.08.26 · КДЛ</span></div>
     <div class="card-value high">52,3 <span style="font-size:13px">%</span><span class="flag flag-high">↓ 4-й замер подряд</span></div>
@@ -356,6 +385,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-value ok">4 <span style="font-size:13px">мм/час</span></div>
     <div class="card-ref">Норма: 0–15</div>
   </div>
+  <div class="date-divider"><span>10.08.26</span></div>
   <div class="card" style="border:1.5px solid #e05a3a;">
     <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">10.08.26 · КДЛ</span></div>
     <div class="card-value high">52,4 <span style="font-size:13px">%</span><span class="flag flag-high">↓ немного</span></div>
@@ -391,6 +421,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-value ok">6,26 <span style="font-size:13px">×10⁹/л</span></div>
     <div class="card-ref">Норма: 3,91–8,77</div>
   </div>
+  <div class="date-divider"><span>03.08.26</span></div>
   <div class="card" style="border:1.5px solid #e05a3a;">
     <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">03.08.26 · КДЛ</span></div>
     <div class="card-value high">52,7 <span style="font-size:13px">%</span><span class="flag flag-high">↓ немного</span></div>
@@ -436,6 +467,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-value ok">2 <span style="font-size:13px">мм/час</span></div>
     <div class="card-ref">Норма: 0–15</div>
   </div>
+  <div class="date-divider"><span>27.07.26</span></div>
   <div class="card" style="border:1.5px solid #e05a3a;">
     <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">27.07.26 · КДЛ</span></div>
     <div class="card-value high">53,3 <span style="font-size:13px">%</span><span class="flag flag-high">↑ рост</span></div>
@@ -476,6 +508,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-value ok">5 <span style="font-size:13px">мм/час</span></div>
     <div class="card-ref">Норма: 0–15</div>
   </div>
+  <div class="date-divider"><span>20.07.26</span></div>
   <div class="card">
     <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">20.07.26 · КДЛ</span></div>
     <div class="card-value high">51,0 <span style="font-size:13px">%</span><span class="flag flag-high">↓ улучшение</span></div>
@@ -511,6 +544,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-value ok">6,17 <span style="font-size:13px">×10⁹/л</span></div>
     <div class="card-ref">Норма: 3,91–8,77</div>
   </div>
+  <div class="date-divider"><span>13.07.26</span></div>
   <div class="card">
     <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">13.07.26 · КДЛ</span></div>
     <div class="card-value high">54,2 <span style="font-size:13px">%</span><span class="flag flag-high">↑↑</span></div>
@@ -551,6 +585,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-value ok">2,20 <span style="font-size:13px">×10⁹/л</span></div>
     <div class="card-ref">Норма: 0,85–3,00 · вернулись в норму (было 3,36)</div>
   </div>
+  <div class="date-divider"><span>более ранние данные (06.07 и раньше)</span></div>
   <div class="card">
     <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">06.07.26 · КДЛ · с гидратацией</span></div>
     <div class="card-value high">53,7 <span style="font-size:13px">%</span><span class="flag flag-high">↑↑</span></div>
@@ -664,8 +699,8 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
 </div>
 
 <div class="warn-box">
-  ✓ <strong>Гематокрит устойчиво снижается — 4 замера подряд вниз:</strong> 53,3% (27.07) → 52,7% (03.08) → 52,4% (10.08) → 52,3% (24.08, КДЛ). Динамика (последовательный ряд KDL): 49,8% (05.04) → 52,4% (19.04) → 52,1% (09.06) → 53,0% (29.06) → 53,7% (06.07) → 54,2% (13.07) → 51,0% (20.07) → 53,3% (27.07) → 52,7% (03.08) → 52,4% (10.08) → 52,3% (24.08). На графике не участвует точка 31.05 (49,0%, Invitro) — другая лаборатория. Отдельный замер 26.08 (49,2%, Гор. больница №9) — другой прибор/методика, не сравнивать напрямую с рядом KDL. Гипотеза: стабильная доза 60 мг/нед без пропусков сама по себе постепенно нормализует гематокрит — Телмисартан (начат 23.08) пока слишком свеж, чтобы объяснять этот многонедельный тренд.<br><br>
-  ⚠ <strong>Тромбоциты — после серии из 3 нормальных значений (167→169) снова упали: 151 (24.08, КДЛ) → 139 (26.08, Гор. больница №9)</strong> — самый тревожный момент в текущей картине. Причина не установлена; важно: это <u>не связано со схемой депо ХГЧ</u> — на 24.08 успела пройти только одна обычная доза 500 ед (23.08), депо-схема так и не стартовала. Д-р Зеленский назначил дополнительные анализы: СРБ, гомоцистеин, ММП-9/ТИМП-1, витамин K. <strong>Результат расследования (30.08, ММК): СРБ повышен — 2,07 мг/л (норма &lt;1)</strong> — первая зацепка, стоит обсудить с врачом в связке со снижением тромбоцитов. Гомоцистеин 12,34 мкмоль/л — норма (&lt;15), исключён как причина. ММП-9/ТИМП-1 и витамин K всё ещё не сданы (KDL не делает, лаборатория не найдена).
+  ✓ <strong>Гематокрит устойчиво снижается — 4 замера подряд вниз:</strong> 53,3% (27.07) → 52,7% (03.08) → 52,4% (10.08) → 52,3% (24.08, КДЛ). Динамика (последовательный ряд KDL): 49,8% (05.04) → 52,4% (19.04) → 52,1% (09.06) → 53,0% (29.06) → 53,7% (06.07) → 54,2% (13.07) → 51,0% (20.07) → 53,3% (27.07) → 52,7% (03.08) → 52,4% (10.08) → 52,3% (24.08). На графике не участвует точка 31.05 (49,0%, Invitro) — другая лаборатория. Отдельный замер 26.08 (49,2%, Гор. больница №8) — другой прибор/методика, не сравнивать напрямую с рядом KDL. Гипотеза: стабильная доза 60 мг/нед без пропусков сама по себе постепенно нормализует гематокрит — Телмисартан (начат 23.08) пока слишком свеж, чтобы объяснять этот многонедельный тренд.<br><br>
+  ⚠ <strong>Тромбоциты — после серии из 3 нормальных значений (167→169) снова упали: 151 (24.08, КДЛ) → 139 (26.08, Гор. больница №8)</strong> — самый тревожный момент в текущей картине. Причина не установлена; важно: это <u>не связано со схемой депо ХГЧ</u> — на 24.08 успела пройти только одна обычная доза 500 ед (23.08), депо-схема так и не стартовала. Д-р Зеленский назначил дополнительные анализы: СРБ, гомоцистеин, ММП-9/ТИМП-1, витамин K. <strong>Результат расследования (30.08, ММК): СРБ повышен — 2,07 мг/л (норма &lt;1)</strong> — первая зацепка, стоит обсудить с врачом в связке со снижением тромбоцитов. Гомоцистеин 12,34 мкмоль/л — норма (&lt;15), исключён как причина. ММП-9/ТИМП-1 и витамин K всё ещё не сданы (KDL не делает, лаборатория не найдена).
 </div>
 
 <!-- БИОХИМИЯ -->
@@ -1182,7 +1217,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
 </table>
 </div>
 <div class="note-box" style="margin-top:0;margin-bottom:12px;">
-  ⚠ <strong>Проба завершена (10.08) — решение: остаёмся на 60 мг, но 24.08 принёс тревожный сигнал.</strong> Гематологически доза долго работала хорошо (тромбоциты 3 раза подряд в норме), но на 24.08 <strong>тромбоциты откатились до 151</strong> (норма 166-308), а 26.08 упали дальше до 139 (Гор. больница №9) — стоит обсудить с врачом причину. Тестостерон снизился до 32,3 (был 34,1), но эстрадиол вырос до 199 (было 172) — <strong>это НЕ связано с депо-схемой ХГЧ</strong>: на 24.08 успела пройти только одна обычная доза 500 ед (23.08), депо-схема так и не стартовала, причина роста эстрадиола не установлена. Гематокрит устойчиво снижается 4 замера подряд (53,3→52,7→52,4→52,3%) — <strong>с 23.08 добавлен Телмисартан 40 мг</strong> для медикаментозного снижения. Д-р Зеленский назначил СРБ, гомоцистеин, ММП-9/ТИМП-1, витамин K для расследования тромбоцитов — результат 30.08: СРБ повышен (2,07, норма &lt;1), гомоцистеин в норме. Trough-тестостерон 30.08 — 14,5 нмоль/л, комфортно в норме. <strong>31.08 — очередная инъекция 60 мг выполнена без изменений схемы.</strong> <strong>Правило безопасности:</strong> если гематокрит превысит 54% — пропуск инъекции той недели.
+  ⚠ <strong>Проба завершена (10.08) — решение: остаёмся на 60 мг, но 24.08 принёс тревожный сигнал.</strong> Гематологически доза долго работала хорошо (тромбоциты 3 раза подряд в норме), но на 24.08 <strong>тромбоциты откатились до 151</strong> (норма 166-308), а 26.08 упали дальше до 139 (Гор. больница №8) — стоит обсудить с врачом причину. Тестостерон снизился до 32,3 (был 34,1), но эстрадиол вырос до 199 (было 172) — <strong>это НЕ связано с депо-схемой ХГЧ</strong>: на 24.08 успела пройти только одна обычная доза 500 ед (23.08), депо-схема так и не стартовала, причина роста эстрадиола не установлена. Гематокрит устойчиво снижается 4 замера подряд (53,3→52,7→52,4→52,3%) — <strong>с 23.08 добавлен Телмисартан 40 мг</strong> для медикаментозного снижения. Д-р Зеленский назначил СРБ, гомоцистеин, ММП-9/ТИМП-1, витамин K для расследования тромбоцитов — результат 30.08: СРБ повышен (2,07, норма &lt;1), гомоцистеин в норме. Trough-тестостерон 30.08 — 14,5 нмоль/л, комфортно в норме. <strong>31.08 — очередная инъекция 60 мг выполнена без изменений схемы.</strong> <strong>Правило безопасности:</strong> если гематокрит превысит 54% — пропуск инъекции той недели.
 </div>
 <div class="note-box" style="margin-top:0;margin-bottom:12px;">
   ℹ <strong>Исходный план (20.07):</strong> Омнадрен 60 мг раз в неделю 3 недели подряд (20.07/27.07/03.08) вместо схемы 25 мг×2/нед — доктор был недоступен по чт/пт, а разовая недельная доза не даёт тестостерону падать ниже нормы между уколами. Это также давало более чистую оценку эффекта именно 60 мг — предыдущий период на этой дозе (22.06-05.07) был на фоне остаточного депо от более высоких доз. Итог пробы см. выше — тестостерон превысил норму на 3-й неделе (10.08).
@@ -1619,7 +1654,7 @@ new Chart(document.getElementById('pltChart'), {
     labels: pltLabels,
     datasets: [
       { label: 'Тромбоциты (×10⁹/л), KDL', data: [165, 169, 164, 156, 127, 141, 167, 169, 151, null, null], borderColor: '#1D9E75', backgroundColor: '#1D9E7522', borderWidth: 2, pointRadius: 5, tension: 0.3, fill: true, spanGaps: true },
-      { label: 'Тромбоциты, Гор. больница №9', data: [null, null, null, null, null, null, null, null, 151, 139, null], borderColor: '#BA1717', backgroundColor: 'transparent', borderWidth: 2, borderDash: [4,3], pointRadius: 5, pointStyle: 'triangle', tension: 0, spanGaps: true },
+      { label: 'Тромбоциты, Гор. больница №8', data: [null, null, null, null, null, null, null, null, 151, 139, null], borderColor: '#BA1717', backgroundColor: 'transparent', borderWidth: 2, borderDash: [4,3], pointRadius: 5, pointStyle: 'triangle', tension: 0, spanGaps: true },
       { label: 'Норма мин. (166)', data: [166, 166, 166, 166, 166, 166, 166, 166, 166, 166, 166], borderColor: '#888', borderWidth: 1, borderDash: [5,5], pointRadius: 0 },
     ]
   },
