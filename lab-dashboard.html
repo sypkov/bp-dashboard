@@ -182,10 +182,10 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-ref">Норма: 8,64–29,0 · воскресенье, за день до укола — самый низкий (trough) уровень цикла, комфортно в норме</div>
   </div>
   <div class="date-divider"><span>24.08.26</span></div>
-  <div class="card" style="border:1.5px solid #e05a3a;">
+  <div class="card" style="border:1.5px solid #E0AA2E;">
     <div class="card-label">Тестостерон общий<br><span style="font-size:10px;color:#aaa">24.08.26 · КДЛ</span></div>
-    <div class="card-value high">32,3 <span style="font-size:13px">нмоль/л</span><span class="flag flag-high">↑ выше нормы</span></div>
-    <div class="card-ref">Норма: 8,33–30,19 · чуть снизился (было 34,1), всё ещё выше</div>
+    <div class="card-value high">32,3 <span style="font-size:13px">нмоль/л</span><span class="flag flag-high">↓ выше нормы, но снижается</span></div>
+    <div class="card-ref">Норма: 8,33–30,19 · выше нормы, но снизился (было 34,1)</div>
   </div>
   <div class="card" style="border:1.5px solid #BA1717;">
     <div class="card-label">Эстрадиол (Е2)<br><span style="font-size:10px;color:#aaa">24.08.26 · КДЛ</span></div>
@@ -198,18 +198,18 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-value high">34,1 <span style="font-size:13px">нмоль/л</span><span class="flag flag-high">↑↑ выше нормы</span></div>
     <div class="card-ref">Норма: 8,33–30,19 · неделя 3 на 60 мг — впервые превысил норму</div>
   </div>
-  <div class="card" style="border:1.5px solid #e05a3a;">
+  <div class="card" style="border:1.5px solid #E0AA2E;">
     <div class="card-label">Эстрадиол (Е2)<br><span style="font-size:10px;color:#aaa">10.08.26 · КДЛ</span></div>
     <div class="card-value high">172 <span style="font-size:13px">пмоль/л</span><span class="flag flag-high">↑ выше</span></div>
     <div class="card-ref">Норма муж: 40–161 · стабильно выше (было 176)</div>
   </div>
   <div class="date-divider"><span>03.08.26</span></div>
-  <div class="card" style="border:1.5px solid #e05a3a;">
+  <div class="card" style="border:1.5px solid #BA1717;">
     <div class="card-label">Тестостерон общий<br><span style="font-size:10px;color:#aaa">03.08.26 · КДЛ</span></div>
     <div class="card-value high">30,11 <span style="font-size:13px">нмоль/л</span><span class="flag flag-high">⚠ на грани</span></div>
     <div class="card-ref">Норма: 8,33–30,19 · вплотную к верхней границе, неделя 2 на 60 мг</div>
   </div>
-  <div class="card" style="border:1.5px solid #e05a3a;">
+  <div class="card" style="border:1.5px solid #BA1717;">
     <div class="card-label">Эстрадиол (Е2)<br><span style="font-size:10px;color:#aaa">03.08.26 · КДЛ</span></div>
     <div class="card-value high">176 <span style="font-size:13px">пмоль/л</span><span class="flag flag-high">↑ выше</span></div>
     <div class="card-ref">Норма муж: 40–161 · продолжает расти (было 165)</div>
@@ -220,7 +220,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-value ok">22,8 <span style="font-size:13px">нмоль/л</span><span class="flag flag-ok">✓ норма</span></div>
     <div class="card-ref">Норма: 8,33–30,19 · неделя на 60 мг/нед, ещё в норме</div>
   </div>
-  <div class="card" style="border:1.5px solid #e05a3a;">
+  <div class="card" style="border:1.5px solid #BA1717;">
     <div class="card-label">Эстрадиол (Е2)<br><span style="font-size:10px;color:#aaa">27.07.26 · КДЛ</span></div>
     <div class="card-value high">165 <span style="font-size:13px">пмоль/л</span><span class="flag flag-high">↑ чуть выше</span></div>
     <div class="card-ref">Норма муж: 40–161 · вышел за границу после возврата на 60 мг</div>
@@ -311,8 +311,12 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
   </div>
 </div>
 
+<div class="note-box">
+  <strong>Тестостерон — сейчас в норме, история дозирования:</strong> проба 60 мг/нед (20.07–10.08): 27,25 (20.07, ещё спад после пропущенной 16.07 инъекции, не эффект новой дозы) → 22,8 (27.07) → 30,11 (03.08) → <strong>34,1 (10.08, впервые выше нормы 30,19)</strong> → 32,3 (24.08, день укола) → <strong>14,5 (30.08, trough перед следующим уколом — комфортно в норме)</strong>. Решение принято (10.08): остаёмся на 60 мг — пик в день инъекции иногда превышает норму, но к концу недели (trough) стабильно в норме. По позиции врача сама цифра T не главный ориентир на ГЗТ — важнее эстрадиол и гематокрит (см. ниже). ФСГ подавлен до 0,09 мМЕ/мл — ожидаемо на ГЗТ.
+</div>
+
 <div class="warn-box">
-  ⚠ <strong>Проба на 60 мг завершена (10.08) — тестостерон превысил норму, решение принято: продолжаем.</strong> Эстрадиол: 220 (17.05) → 193 (09.06) → 236 (29.06) → 261 (06.07) → 113 (20.07, до эффекта 60 мг) → 165 (27.07, неделя 1) → 176 (03.08, неделя 2) → <strong>172 (10.08, неделя 3, стабильно выше нормы)</strong> → <strong>199 (24.08, заметный рост)</strong> пмоль/л. Тестостерон: 46,24 (29.06, пик) → 42,21 (06.07) → 27,25 (20.07, до эффекта 60 мг) → 22,8 (27.07, неделя 1) → 30,11 (03.08, неделя 2, на грани) → 34,1 (10.08, неделя 3, выше нормы 30,19) → 32,3 (24.08, день укола) → <strong>14,5 (30.08, trough — за день до следующего укола, комфортно в норме)</strong> нмоль/л. <strong>Важно:</strong> точка 20.07 — это не результат дозы 60 мг, а спад после пропущенной инъекции 16.07. Точка 30.08 — это не отдельное клиническое ухудшение, а нормальный trough-уровень недельного цикла (взят из общей биохимической панели, не привязан к дню укола) — картина «пик >30 в день инъекции → trough ~14,5 к концу недели» ожидаема для этой схемы дозирования. По позиции врача, сама цифра T не проблема на ГЗТ — важнее эстрадиол и гематокрит, которые остаются выше нормы. <strong>С 23.08 — добавлен Телмисартан 40 мг</strong> для медикаментозного снижения гематокрита; <strong>с 24.08 — пауза в ХГЧ на пару недель по указанию врача</strong> (24.08 эстрадиол вырос до 199, причина пока не ясна — стоит проверить, как повлияет пауза в ХГЧ). ФСГ ранее был подавлен до 0,09 мМЕ/мл — ожидаемо на ГЗТ.
+  ⚠ <strong>Эстрадиол — стабильно выше нормы весь период и продолжает расти, причина неясна.</strong> Динамика: 220 (17.05) → 193 (09.06) → 236 (29.06) → 261 (06.07) → 113 (20.07, кратковременно в норме) → 165 (27.07) → 176 (03.08) → 172 (10.08) → <strong>199 (24.08, заметный рост)</strong> пмоль/л (норма муж. 40–161). Рост на 24.08 <strong>не объясняется</strong> дозой ХГЧ — депо-схема на тот момент ещё не стартовала (см. раздел «Гематология» и расписание ХГЧ для деталей по паузе с 24.08 и Телмисартану с 23.08). Стоит уточнить у врача возможную причину роста и не связан ли он с чем-то ещё.
 </div>
 
 <!-- ГЕМАТОЛОГИЯ -->
@@ -324,10 +328,10 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-value low">139 <span style="font-size:13px">×10⁹/л</span><span class="flag flag-low">↓↓ ниже нормы</span></div>
     <div class="card-ref">Норма прибора: 150–400 · продолжает снижаться (было 151 на 24.08, КДЛ)</div>
   </div>
-  <div class="card">
+  <div class="card" style="border:1.5px solid #1D9E75;">
     <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">26.08.26 · Гор. больница №8</span></div>
-    <div class="card-value ok">49,2 <span style="font-size:13px">%</span></div>
-    <div class="card-ref">Норма прибора: 35–50 (иная шкала, чем у КДЛ 40,0–49,4) — другой метод/прибор, сравнивать напрямую осторожно</div>
+    <div class="card-value ok">49,2 <span style="font-size:13px">%</span><span class="flag flag-ok">✓ в норме (и по КДЛ тоже)</span></div>
+    <div class="card-ref">Норма прибора: 35–50 · укладывается и в референс КДЛ (40,0–49,4). Замер сделан на другом приборе (портативный анализатор)</div>
   </div>
   <div class="card">
     <div class="card-label">MPV (средний объём тромб.)<br><span style="font-size:10px;color:#aaa">26.08.26 · Гор. больница №8</span></div>
@@ -345,10 +349,10 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-ref">Норма прибора: 13,0–43,0 · норма</div>
   </div>
   <div class="date-divider"><span>24.08.26</span></div>
-  <div class="card" style="border:1.5px solid #e05a3a;">
+  <div class="card" style="border:1.5px solid #E0AA2E;">
     <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">24.08.26 · КДЛ</span></div>
     <div class="card-value high">52,3 <span style="font-size:13px">%</span><span class="flag flag-high">↓ 4-й замер подряд</span></div>
-    <div class="card-ref">Норма: 40,0–49,4 · устойчиво снижается 4 замера подряд (53,3→52,7→52,4→52,3) — стабильная схема 60 мг работает</div>
+    <div class="card-ref">Норма: 40,0–49,4 · выше нормы, но устойчиво снижается 4 замера подряд (53,3→52,7→52,4→52,3) — стабильная схема 60 мг работает</div>
   </div>
   <div class="card">
     <div class="card-label">Эритроциты<br><span style="font-size:10px;color:#aaa">24.08.26 · КДЛ</span></div>
@@ -386,10 +390,10 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-ref">Норма: 0–15</div>
   </div>
   <div class="date-divider"><span>10.08.26</span></div>
-  <div class="card" style="border:1.5px solid #e05a3a;">
+  <div class="card" style="border:1.5px solid #E0AA2E;">
     <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">10.08.26 · КДЛ</span></div>
     <div class="card-value high">52,4 <span style="font-size:13px">%</span><span class="flag flag-high">↓ немного</span></div>
-    <div class="card-ref">Норма: 40,0–49,4 · чуть снизился с 52,7%, неделя 3 на 60 мг/нед</div>
+    <div class="card-ref">Норма: 40,0–49,4 · выше нормы, но продолжает снижаться (было 52,7%), неделя 3 на 60 мг/нед</div>
   </div>
   <div class="card">
     <div class="card-label">Эритроциты<br><span style="font-size:10px;color:#aaa">10.08.26 · КДЛ</span></div>
@@ -422,10 +426,10 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-ref">Норма: 3,91–8,77</div>
   </div>
   <div class="date-divider"><span>03.08.26</span></div>
-  <div class="card" style="border:1.5px solid #e05a3a;">
+  <div class="card" style="border:1.5px solid #E0AA2E;">
     <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">03.08.26 · КДЛ</span></div>
     <div class="card-value high">52,7 <span style="font-size:13px">%</span><span class="flag flag-high">↓ немного</span></div>
-    <div class="card-ref">Норма: 40,0–49,4 · чуть снизился с 53,3%, 3-я неделя на 60 мг/нед</div>
+    <div class="card-ref">Норма: 40,0–49,4 · выше нормы, но снижается (было 53,3%), 3-я неделя на 60 мг/нед</div>
   </div>
   <div class="card">
     <div class="card-label">Эритроциты<br><span style="font-size:10px;color:#aaa">03.08.26 · КДЛ</span></div>
@@ -468,7 +472,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-ref">Норма: 0–15</div>
   </div>
   <div class="date-divider"><span>27.07.26</span></div>
-  <div class="card" style="border:1.5px solid #e05a3a;">
+  <div class="card" style="border:1.5px solid #BA1717;">
     <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">27.07.26 · КДЛ</span></div>
     <div class="card-value high">53,3 <span style="font-size:13px">%</span><span class="flag flag-high">↑ рост</span></div>
     <div class="card-ref">Норма: 40,0–49,4 · выросло с 51,0%, неделя на 60 мг/нед, к порогу 54%</div>
@@ -483,10 +487,10 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-value high">173 <span style="font-size:13px">г/л</span><span class="flag flag-high">↑</span></div>
     <div class="card-ref">Норма: 135–169 · выше нормы, было 169</div>
   </div>
-  <div class="card" style="border:1.5px solid #1D9E75;">
+  <div class="card" style="border:1.5px solid #E0AA2E;">
     <div class="card-label">Тромбоциты<br><span style="font-size:10px;color:#aaa">27.07.26 · КДЛ</span></div>
     <div class="card-value low">141 <span style="font-size:13px">×10⁹/л</span><span class="flag flag-low">↑ улучшение</span></div>
-    <div class="card-ref">Норма: 166–308 · первое улучшение за долгое время (было 127)</div>
+    <div class="card-ref">Норма: 166–308 · ниже нормы, но первое улучшение за долгое время (было 127)</div>
   </div>
   <div class="card" style="border:1.5px solid #1D9E75;">
     <div class="card-label">PDW (ширина тромб.)<br><span style="font-size:10px;color:#aaa">27.07.26 · КДЛ</span></div>
@@ -509,7 +513,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-ref">Норма: 0–15</div>
   </div>
   <div class="date-divider"><span>20.07.26</span></div>
-  <div class="card">
+  <div class="card" style="border:1.5px solid #E0AA2E;">
     <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">20.07.26 · КДЛ</span></div>
     <div class="card-value high">51,0 <span style="font-size:13px">%</span><span class="flag flag-high">↓ улучшение</span></div>
     <div class="card-ref">Норма: 40,0–49,4 · снизился с 54,2%, ушли от порога флеботомии</div>
@@ -545,7 +549,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-ref">Норма: 3,91–8,77</div>
   </div>
   <div class="date-divider"><span>13.07.26</span></div>
-  <div class="card">
+  <div class="card" style="border:1.5px solid #BA1717;">
     <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">13.07.26 · КДЛ</span></div>
     <div class="card-value high">54,2 <span style="font-size:13px">%</span><span class="flag flag-high">↑↑</span></div>
     <div class="card-ref">Норма: 40,0–49,4 · пик, порог флеботомии</div>
@@ -560,7 +564,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-value high">176 <span style="font-size:13px">г/л</span><span class="flag flag-high">↑</span></div>
     <div class="card-ref">Норма: 135–169</div>
   </div>
-  <div class="card" style="border:1.5px solid #e05a3a;">
+  <div class="card" style="border:1.5px solid #BA1717;">
     <div class="card-label">Тромбоциты<br><span style="font-size:10px;color:#aaa">13.07.26 · КДЛ</span></div>
     <div class="card-value low">156 <span style="font-size:13px">×10⁹/л</span><span class="flag flag-low">↓↓</span></div>
     <div class="card-ref">Норма: 166–308 · продолжают снижаться (было 164)</div>
@@ -586,7 +590,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-ref">Норма: 0,85–3,00 · вернулись в норму (было 3,36)</div>
   </div>
   <div class="date-divider"><span>более ранние данные (06.07 и раньше)</span></div>
-  <div class="card">
+  <div class="card" style="border:1.5px solid #BA1717;">
     <div class="card-label">Гематокрит<br><span style="font-size:10px;color:#aaa">06.07.26 · КДЛ · с гидратацией</span></div>
     <div class="card-value high">53,7 <span style="font-size:13px">%</span><span class="flag flag-high">↑↑</span></div>
     <div class="card-ref">Норма: 40,0–49,4 · порог флеботомии ≥54 ⚠</div>
@@ -601,7 +605,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
     <div class="card-value high">178 <span style="font-size:13px">г/л</span><span class="flag flag-high">↑</span></div>
     <div class="card-ref">Норма: 135–169</div>
   </div>
-  <div class="card">
+  <div class="card" style="border:1.5px solid #E0AA2E;">
     <div class="card-label">Тромбоциты<br><span style="font-size:10px;color:#aaa">06.07.26 · КДЛ</span></div>
     <div class="card-value low">164 <span style="font-size:13px">×10⁹/л</span><span class="flag flag-low">↓</span></div>
     <div class="card-ref">Норма: 166–308 · вышли за нижнюю границу</div>
@@ -698,8 +702,11 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
   </div>
 </div>
 
+<div class="note-box">
+  ✓ <strong>Гематокрит устойчиво снижается — уже 5 замеров подряд вниз, и последний впервые в норме:</strong> 53,3% (27.07) → 52,7% (03.08) → 52,4% (10.08) → 52,3% (24.08, КДЛ) → <strong>49,2% (26.08, Гор. больница №8)</strong>. Последнее значение укладывается и в референс KDL (40,0–49,4), и в референс самого прибора (35–50). Полная динамика (последовательный ряд KDL): 49,8% (05.04) → 52,4% (19.04) → 52,1% (09.06) → 53,0% (29.06) → 53,7% (06.07) → 54,2% (13.07) → 51,0% (20.07) → 53,3% (27.07) → 52,7% (03.08) → 52,4% (10.08) → 52,3% (24.08). На графике не участвует точка 31.05 (49,0%, Invitro) — другая лаборатория. Точка 26.08 получена на другом приборе (портативный анализатор). Гипотеза: стабильная доза 60 мг/нед без пропусков сама по себе постепенно нормализует гематокрит — Телмисартан (начат 23.08) пока слишком свеж, чтобы объяснять этот многонедельный тренд.
+</div>
+
 <div class="warn-box">
-  ✓ <strong>Гематокрит устойчиво снижается — 4 замера подряд вниз:</strong> 53,3% (27.07) → 52,7% (03.08) → 52,4% (10.08) → 52,3% (24.08, КДЛ). Динамика (последовательный ряд KDL): 49,8% (05.04) → 52,4% (19.04) → 52,1% (09.06) → 53,0% (29.06) → 53,7% (06.07) → 54,2% (13.07) → 51,0% (20.07) → 53,3% (27.07) → 52,7% (03.08) → 52,4% (10.08) → 52,3% (24.08). На графике не участвует точка 31.05 (49,0%, Invitro) — другая лаборатория. Отдельный замер 26.08 (49,2%, Гор. больница №8) — другой прибор/методика, не сравнивать напрямую с рядом KDL. Гипотеза: стабильная доза 60 мг/нед без пропусков сама по себе постепенно нормализует гематокрит — Телмисартан (начат 23.08) пока слишком свеж, чтобы объяснять этот многонедельный тренд.<br><br>
   ⚠ <strong>Тромбоциты — после серии из 3 нормальных значений (167→169) снова упали: 151 (24.08, КДЛ) → 139 (26.08, Гор. больница №8)</strong> — самый тревожный момент в текущей картине. Причина не установлена; важно: это <u>не связано со схемой депо ХГЧ</u> — на 24.08 успела пройти только одна обычная доза 500 ед (23.08), депо-схема так и не стартовала. Д-р Зеленский назначил дополнительные анализы: СРБ, гомоцистеин, ММП-9/ТИМП-1, витамин K. <strong>Результат расследования (30.08, ММК): СРБ повышен — 2,07 мг/л (норма &lt;1)</strong> — первая зацепка, стоит обсудить с врачом в связке со снижением тромбоцитов. Гомоцистеин 12,34 мкмоль/л — норма (&lt;15), исключён как причина. ММП-9/ТИМП-1 и витамин K всё ещё не сданы (KDL не делает, лаборатория не найдена).
 </div>
 
@@ -1011,7 +1018,7 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
 </div>
 <div class="note-box">
   <strong>Хорошие новости:</strong><br>
-  ✓✓ <strong>Гематокрит устойчиво снижается 4 замера подряд</strong> (53,3%→52,7%→52,4%→52,3%) — похоже, стабильная схема 60 мг раз в неделю без пропусков сама по себе постепенно нормализует показатель, ещё до эффекта телмисартана (начат только 23.08).<br>
+  ✓✓ <strong>Гематокрит устойчиво снижается 5 замеров подряд, последний — впервые в норме</strong> (53,3%→52,7%→52,4%→52,3%→49,2% на 26.08, укладывается в референс KDL 40,0–49,4) — похоже, стабильная схема 60 мг раз в неделю без пропусков сама по себе постепенно нормализует показатель, ещё до эффекта телмисартана (начат только 23.08).<br>
   ✓✓ <strong>Тестостерон в trough-точке (30.08, за день до укола) — 14,5 нмоль/л, комфортно в норме</strong> — картина «пик выше нормы в день укола → trough в норме к концу недели» ожидаема для схемы 60 мг/нед.<br>
   ✓✓ NT-proBNP 33,60 (норма &lt;173) — сердечная недостаточность полностью исключена.<br>
   ✓✓ PDW полностью нормализовался — 15,5% (норма до 16,1), устойчивое улучшение (23,5→21,0→17,5→16,3→15,5).<br>
@@ -1216,8 +1223,11 @@ renderSparkline('sparkPlt', [141, 167, 169, 151, 139], '#1D9E75');
   </tbody>
 </table>
 </div>
+<div class="warn-box" style="margin-top:0;margin-bottom:12px;">
+  ⚠ <strong>Проба завершена (10.08) — решение: остаёмся на 60 мг, но 24.08 принёс тревожный сигнал.</strong> Гематологически доза долго работала хорошо (тромбоциты 3 раза подряд в норме), но на 24.08 <strong>тромбоциты откатились до 151</strong> (норма 166-308), а 26.08 упали дальше до 139 (Гор. больница №8) — стоит обсудить с врачом причину. Эстрадиол вырос до 199 (было 172) — <strong>это НЕ связано с депо-схемой ХГЧ</strong>: на 24.08 успела пройти только одна обычная доза 500 ед (23.08), депо-схема так и не стартовала, причина роста эстрадиола не установлена. Д-р Зеленский назначил СРБ, гомоцистеин, ММП-9/ТИМП-1, витамин K для расследования тромбоцитов — результат 30.08: СРБ повышен (2,07, норма &lt;1), гомоцистеин в норме.
+</div>
 <div class="note-box" style="margin-top:0;margin-bottom:12px;">
-  ⚠ <strong>Проба завершена (10.08) — решение: остаёмся на 60 мг, но 24.08 принёс тревожный сигнал.</strong> Гематологически доза долго работала хорошо (тромбоциты 3 раза подряд в норме), но на 24.08 <strong>тромбоциты откатились до 151</strong> (норма 166-308), а 26.08 упали дальше до 139 (Гор. больница №8) — стоит обсудить с врачом причину. Тестостерон снизился до 32,3 (был 34,1), но эстрадиол вырос до 199 (было 172) — <strong>это НЕ связано с депо-схемой ХГЧ</strong>: на 24.08 успела пройти только одна обычная доза 500 ед (23.08), депо-схема так и не стартовала, причина роста эстрадиола не установлена. Гематокрит устойчиво снижается 4 замера подряд (53,3→52,7→52,4→52,3%) — <strong>с 23.08 добавлен Телмисартан 40 мг</strong> для медикаментозного снижения. Д-р Зеленский назначил СРБ, гомоцистеин, ММП-9/ТИМП-1, витамин K для расследования тромбоцитов — результат 30.08: СРБ повышен (2,07, норма &lt;1), гомоцистеин в норме. Trough-тестостерон 30.08 — 14,5 нмоль/л, комфортно в норме. <strong>31.08 — очередная инъекция 60 мг выполнена без изменений схемы.</strong> <strong>Правило безопасности:</strong> если гематокрит превысит 54% — пропуск инъекции той недели.
+  <strong>Гематокрит продолжает устойчиво снижаться</strong> (53,3→52,7→52,4→52,3% на КДЛ, затем 49,2% на 26.08 — в норме и по референсу KDL, хоть и с другого прибора) — с 23.08 добавлен Телмисартан 40 мг для медикаментозного снижения. Тестостерон снизился до 32,3 (был 34,1) на 24.08, а trough-замер 30.08 — 14,5 нмоль/л, комфортно в норме. <strong>31.08 — очередная инъекция 60 мг выполнена без изменений схемы.</strong> <strong>Правило безопасности:</strong> если гематокрит превысит 54% — пропуск инъекции той недели.
 </div>
 <div class="note-box" style="margin-top:0;margin-bottom:12px;">
   ℹ <strong>Исходный план (20.07):</strong> Омнадрен 60 мг раз в неделю 3 недели подряд (20.07/27.07/03.08) вместо схемы 25 мг×2/нед — доктор был недоступен по чт/пт, а разовая недельная доза не даёт тестостерону падать ниже нормы между уколами. Это также давало более чистую оценку эффекта именно 60 мг — предыдущий период на этой дозе (22.06-05.07) был на фоне остаточного депо от более высоких доз. Итог пробы см. выше — тестостерон превысил норму на 3-й неделе (10.08).
